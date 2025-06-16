@@ -1,0 +1,15 @@
+E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.Infrastructure\bin\Debug\net9.0\MyImage.Infrastructure.deps.json
+E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.Infrastructure\bin\Debug\net9.0\MyImage.Infrastructure.dll
+E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.Infrastructure\bin\Debug\net9.0\MyImage.Infrastructure.pdb
+E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.Infrastructure\bin\Debug\net9.0\MyImage.Core.dll
+E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.Infrastructure\bin\Debug\net9.0\MyImage.Core.pdb
+E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.Infrastructure\obj\Debug\net9.0\MyImage.Infrastructure.csproj.AssemblyReference.cache
+E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.Infrastructure\obj\Debug\net9.0\MyImage.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.Infrastructure\obj\Debug\net9.0\MyImage.Infrastructure.AssemblyInfoInputs.cache
+E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.Infrastructure\obj\Debug\net9.0\MyImage.Infrastructure.AssemblyInfo.cs
+E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.Infrastructure\obj\Debug\net9.0\MyImage.Infrastructure.csproj.CoreCompileInputs.cache
+E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.Infrastructure\obj\Debug\net9.0\MyImage..A4D6B357.Up2Date
+E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.Infrastructure\obj\Debug\net9.0\MyImage.Infrastructure.dll
+E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.Infrastructure\obj\Debug\net9.0\refint\MyImage.Infrastructure.dll
+E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.Infrastructure\obj\Debug\net9.0\MyImage.Infrastructure.pdb
+E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.Infrastructure\obj\Debug\net9.0\ref\MyImage.Infrastructure.dll

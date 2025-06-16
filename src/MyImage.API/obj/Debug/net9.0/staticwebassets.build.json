@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "1z+u9P2iCc2GvgtFHbvjX8U30zQd44j1UcH4iyntr9s=",
+  "Source": "MyImage.API",
+  "BasePath": "_content/MyImage.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

@@ -1,0 +1,12 @@
+E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.Core\bin\Debug\net9.0\MyImage.Core.deps.json
+E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.Core\bin\Debug\net9.0\MyImage.Core.dll
+E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.Core\bin\Debug\net9.0\MyImage.Core.pdb
+E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.Core\obj\Debug\net9.0\MyImage.Core.csproj.AssemblyReference.cache
+E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.Core\obj\Debug\net9.0\MyImage.Core.GeneratedMSBuildEditorConfig.editorconfig
+E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.Core\obj\Debug\net9.0\MyImage.Core.AssemblyInfoInputs.cache
+E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.Core\obj\Debug\net9.0\MyImage.Core.AssemblyInfo.cs
+E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.Core\obj\Debug\net9.0\MyImage.Core.csproj.CoreCompileInputs.cache
+E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.Core\obj\Debug\net9.0\MyImage.Core.dll
+E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.Core\obj\Debug\net9.0\refint\MyImage.Core.dll
+E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.Core\obj\Debug\net9.0\MyImage.Core.pdb
+E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.Core\obj\Debug\net9.0\ref\MyImage.Core.dll
