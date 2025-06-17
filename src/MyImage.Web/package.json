@@ -1,13 +1,16 @@
 {
-  "name": "temp-angular-app",
-  "version": "0.0.0",
+  "name": "MyImage.Web",
+  "version": "1.0.0",
+  "description": "MyImage Photo Printing Service - Frontend Application",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:prod": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:temp-angular-app": "node dist/temp-angular-app/server/server.mjs"
+    "serve:ssr": "node dist/MyImage.Web/server/server.mjs",
+    "lint": "ng lint"
   },
   "private": true,
   "dependencies": {

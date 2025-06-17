@@ -1,0 +1,185 @@
+2025-06-17 13:47:38.721 +07:00 [INF] Starting MyImage Photo Printing API
+2025-06-17 13:47:38.908 +07:00 [INF] Initializing database...
+2025-06-17 13:47:38.924 +07:00 [INF] Connecting to MongoDB database: myimage_dev
+2025-06-17 13:47:39.015 +07:00 [INF] MongoDB context initialized successfully
+2025-06-17 13:47:39.018 +07:00 [INF] Creating MongoDB indexes...
+2025-06-17 13:47:39.085 +07:00 [INF] Database connection established successfully
+2025-06-17 13:47:39.087 +07:00 [INF] Seeding initial data...
+2025-06-17 13:47:39.089 +07:00 [INF] AuthService initialized with JWT expiration: 24 hours
+2025-06-17 13:47:39.099 +07:00 [INF] MongoDB indexes created successfully
+2025-06-17 13:47:39.148 +07:00 [INF] Seeding system settings...
+2025-06-17 13:47:39.195 +07:00 [INF] Upserted setting: tax_rates
+2025-06-17 13:47:39.205 +07:00 [ERR] Failed to upsert setting: branch_locations
+MongoDB.Driver.MongoWriteException: A write operation resulted in an error. WriteError: { Category : "DuplicateKey", Code : 11000, Message : "E11000 duplicate key error collection: myimage_dev.systemSettings index: _id_ dup key: { _id: ObjectId('000000000000000000000000') }" }.
+ ---> MongoDB.Driver.MongoBulkWriteException`1[MyImage.Core.Entities.SystemSettings]: A bulk write operation resulted in one or more errors. WriteErrors: [ { Category : "DuplicateKey", Code : 11000, Message : "E11000 duplicate key error collection: myimage_dev.systemSettings index: _id_ dup key: { _id: ObjectId('000000000000000000000000') }" } ].
+   at MongoDB.Driver.MongoCollectionImpl`1.BulkWriteAsync(IClientSessionHandle session, IEnumerable`1 requests, BulkWriteOptions options, CancellationToken cancellationToken)
+   at MongoDB.Driver.MongoCollectionImpl`1.UsingImplicitSessionAsync[TResult](Func`2 funcAsync, CancellationToken cancellationToken)
+   at MongoDB.Driver.MongoCollectionBase`1.ReplaceOneAsync(FilterDefinition`1 filter, TDocument replacement, ReplaceOptions options, Func`3 bulkWriteAsync)
+   --- End of inner exception stack trace ---
+   at MongoDB.Driver.MongoCollectionBase`1.ReplaceOneAsync(FilterDefinition`1 filter, TDocument replacement, ReplaceOptions options, Func`3 bulkWriteAsync)
+   at MyImage.Infrastructure.Data.Repositories.SystemSettingsRepository.UpsertAsync(SystemSettings setting) in E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.Infrastructure\Data\Repositories\SystemSettingsRepository.cs:line 62
+2025-06-17 13:47:39.223 +07:00 [ERR] Failed to seed initial data
+MongoDB.Driver.MongoWriteException: A write operation resulted in an error. WriteError: { Category : "DuplicateKey", Code : 11000, Message : "E11000 duplicate key error collection: myimage_dev.systemSettings index: _id_ dup key: { _id: ObjectId('000000000000000000000000') }" }.
+ ---> MongoDB.Driver.MongoBulkWriteException`1[MyImage.Core.Entities.SystemSettings]: A bulk write operation resulted in one or more errors. WriteErrors: [ { Category : "DuplicateKey", Code : 11000, Message : "E11000 duplicate key error collection: myimage_dev.systemSettings index: _id_ dup key: { _id: ObjectId('000000000000000000000000') }" } ].
+   at MongoDB.Driver.MongoCollectionImpl`1.BulkWriteAsync(IClientSessionHandle session, IEnumerable`1 requests, BulkWriteOptions options, CancellationToken cancellationToken)
+   at MongoDB.Driver.MongoCollectionImpl`1.UsingImplicitSessionAsync[TResult](Func`2 funcAsync, CancellationToken cancellationToken)
+   at MongoDB.Driver.MongoCollectionBase`1.ReplaceOneAsync(FilterDefinition`1 filter, TDocument replacement, ReplaceOptions options, Func`3 bulkWriteAsync)
+   --- End of inner exception stack trace ---
+   at MongoDB.Driver.MongoCollectionBase`1.ReplaceOneAsync(FilterDefinition`1 filter, TDocument replacement, ReplaceOptions options, Func`3 bulkWriteAsync)
+   at MyImage.Infrastructure.Data.Repositories.SystemSettingsRepository.UpsertAsync(SystemSettings setting) in E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.Infrastructure\Data\Repositories\SystemSettingsRepository.cs:line 62
+   at Program.<<Main>$>g__SeedSystemSettingsAsync|0_2(ISystemSettingsRepository settingsRepo) in E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.API\Program.cs:line 527
+   at Program.<<Main>$>g__SeedInitialDataAsync|0_1(IServiceProvider serviceProvider) in E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.API\Program.cs:line 449
+2025-06-17 13:47:39.228 +07:00 [FTL] Failed to initialize database
+MongoDB.Driver.MongoWriteException: A write operation resulted in an error. WriteError: { Category : "DuplicateKey", Code : 11000, Message : "E11000 duplicate key error collection: myimage_dev.systemSettings index: _id_ dup key: { _id: ObjectId('000000000000000000000000') }" }.
+ ---> MongoDB.Driver.MongoBulkWriteException`1[MyImage.Core.Entities.SystemSettings]: A bulk write operation resulted in one or more errors. WriteErrors: [ { Category : "DuplicateKey", Code : 11000, Message : "E11000 duplicate key error collection: myimage_dev.systemSettings index: _id_ dup key: { _id: ObjectId('000000000000000000000000') }" } ].
+   at MongoDB.Driver.MongoCollectionImpl`1.BulkWriteAsync(IClientSessionHandle session, IEnumerable`1 requests, BulkWriteOptions options, CancellationToken cancellationToken)
+   at MongoDB.Driver.MongoCollectionImpl`1.UsingImplicitSessionAsync[TResult](Func`2 funcAsync, CancellationToken cancellationToken)
+   at MongoDB.Driver.MongoCollectionBase`1.ReplaceOneAsync(FilterDefinition`1 filter, TDocument replacement, ReplaceOptions options, Func`3 bulkWriteAsync)
+   --- End of inner exception stack trace ---
+   at MongoDB.Driver.MongoCollectionBase`1.ReplaceOneAsync(FilterDefinition`1 filter, TDocument replacement, ReplaceOptions options, Func`3 bulkWriteAsync)
+   at MyImage.Infrastructure.Data.Repositories.SystemSettingsRepository.UpsertAsync(SystemSettings setting) in E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.Infrastructure\Data\Repositories\SystemSettingsRepository.cs:line 62
+   at Program.<<Main>$>g__SeedSystemSettingsAsync|0_2(ISystemSettingsRepository settingsRepo) in E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.API\Program.cs:line 527
+   at Program.<<Main>$>g__SeedInitialDataAsync|0_1(IServiceProvider serviceProvider) in E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.API\Program.cs:line 449
+   at Program.<<Main>$>g__InitializeDatabaseAsync|0_0(IServiceProvider services) in E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.API\Program.cs:line 333
+2025-06-17 13:47:39.236 +07:00 [FTL] Application terminated unexpectedly
+MongoDB.Driver.MongoWriteException: A write operation resulted in an error. WriteError: { Category : "DuplicateKey", Code : 11000, Message : "E11000 duplicate key error collection: myimage_dev.systemSettings index: _id_ dup key: { _id: ObjectId('000000000000000000000000') }" }.
+ ---> MongoDB.Driver.MongoBulkWriteException`1[MyImage.Core.Entities.SystemSettings]: A bulk write operation resulted in one or more errors. WriteErrors: [ { Category : "DuplicateKey", Code : 11000, Message : "E11000 duplicate key error collection: myimage_dev.systemSettings index: _id_ dup key: { _id: ObjectId('000000000000000000000000') }" } ].
+   at MongoDB.Driver.MongoCollectionImpl`1.BulkWriteAsync(IClientSessionHandle session, IEnumerable`1 requests, BulkWriteOptions options, CancellationToken cancellationToken)
+   at MongoDB.Driver.MongoCollectionImpl`1.UsingImplicitSessionAsync[TResult](Func`2 funcAsync, CancellationToken cancellationToken)
+   at MongoDB.Driver.MongoCollectionBase`1.ReplaceOneAsync(FilterDefinition`1 filter, TDocument replacement, ReplaceOptions options, Func`3 bulkWriteAsync)
+   --- End of inner exception stack trace ---
+   at MongoDB.Driver.MongoCollectionBase`1.ReplaceOneAsync(FilterDefinition`1 filter, TDocument replacement, ReplaceOptions options, Func`3 bulkWriteAsync)
+   at MyImage.Infrastructure.Data.Repositories.SystemSettingsRepository.UpsertAsync(SystemSettings setting) in E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.Infrastructure\Data\Repositories\SystemSettingsRepository.cs:line 62
+   at Program.<<Main>$>g__SeedSystemSettingsAsync|0_2(ISystemSettingsRepository settingsRepo) in E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.API\Program.cs:line 527
+   at Program.<<Main>$>g__SeedInitialDataAsync|0_1(IServiceProvider serviceProvider) in E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.API\Program.cs:line 449
+   at Program.<<Main>$>g__InitializeDatabaseAsync|0_0(IServiceProvider services) in E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.API\Program.cs:line 333
+   at Program.<Main>$(String[] args) in E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.API\Program.cs:line 287
+2025-06-17 13:52:50.763 +07:00 [INF] Starting MyImage Photo Printing API
+2025-06-17 13:52:50.940 +07:00 [INF] Initializing database...
+2025-06-17 13:52:50.954 +07:00 [INF] Connecting to MongoDB database: myimage_dev
+2025-06-17 13:52:51.039 +07:00 [INF] MongoDB context initialized successfully
+2025-06-17 13:52:51.042 +07:00 [INF] Creating MongoDB indexes...
+2025-06-17 13:52:51.104 +07:00 [INF] Database connection established successfully
+2025-06-17 13:52:51.106 +07:00 [INF] Seeding initial data...
+2025-06-17 13:52:51.108 +07:00 [INF] AuthService initialized with JWT expiration: 24 hours
+2025-06-17 13:52:51.114 +07:00 [INF] MongoDB indexes created successfully
+2025-06-17 13:52:51.162 +07:00 [INF] Seeding system settings...
+2025-06-17 13:52:51.215 +07:00 [ERR] Failed to upsert setting: tax_rates
+MongoDB.Driver.MongoWriteException: A write operation resulted in an error. WriteError: { Category : "Uncategorized", Code : 66, Message : "After applying the update, the (immutable) field '_id' was found to have been altered to _id: ObjectId('685110c3c7442f24e0a36aac')" }.
+ ---> MongoDB.Driver.MongoBulkWriteException`1[MyImage.Core.Entities.SystemSettings]: A bulk write operation resulted in one or more errors. WriteErrors: [ { Category : "Uncategorized", Code : 66, Message : "After applying the update, the (immutable) field '_id' was found to have been altered to _id: ObjectId('685110c3c7442f24e0a36aac')" } ].
+   at MongoDB.Driver.MongoCollectionImpl`1.BulkWriteAsync(IClientSessionHandle session, IEnumerable`1 requests, BulkWriteOptions options, CancellationToken cancellationToken)
+   at MongoDB.Driver.MongoCollectionImpl`1.UsingImplicitSessionAsync[TResult](Func`2 funcAsync, CancellationToken cancellationToken)
+   at MongoDB.Driver.MongoCollectionBase`1.ReplaceOneAsync(FilterDefinition`1 filter, TDocument replacement, ReplaceOptions options, Func`3 bulkWriteAsync)
+   --- End of inner exception stack trace ---
+   at MongoDB.Driver.MongoCollectionBase`1.ReplaceOneAsync(FilterDefinition`1 filter, TDocument replacement, ReplaceOptions options, Func`3 bulkWriteAsync)
+   at MyImage.Infrastructure.Data.Repositories.SystemSettingsRepository.UpsertAsync(SystemSettings setting) in E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.Infrastructure\Data\Repositories\SystemSettingsRepository.cs:line 62
+2025-06-17 13:52:51.227 +07:00 [ERR] Failed to seed initial data
+MongoDB.Driver.MongoWriteException: A write operation resulted in an error. WriteError: { Category : "Uncategorized", Code : 66, Message : "After applying the update, the (immutable) field '_id' was found to have been altered to _id: ObjectId('685110c3c7442f24e0a36aac')" }.
+ ---> MongoDB.Driver.MongoBulkWriteException`1[MyImage.Core.Entities.SystemSettings]: A bulk write operation resulted in one or more errors. WriteErrors: [ { Category : "Uncategorized", Code : 66, Message : "After applying the update, the (immutable) field '_id' was found to have been altered to _id: ObjectId('685110c3c7442f24e0a36aac')" } ].
+   at MongoDB.Driver.MongoCollectionImpl`1.BulkWriteAsync(IClientSessionHandle session, IEnumerable`1 requests, BulkWriteOptions options, CancellationToken cancellationToken)
+   at MongoDB.Driver.MongoCollectionImpl`1.UsingImplicitSessionAsync[TResult](Func`2 funcAsync, CancellationToken cancellationToken)
+   at MongoDB.Driver.MongoCollectionBase`1.ReplaceOneAsync(FilterDefinition`1 filter, TDocument replacement, ReplaceOptions options, Func`3 bulkWriteAsync)
+   --- End of inner exception stack trace ---
+   at MongoDB.Driver.MongoCollectionBase`1.ReplaceOneAsync(FilterDefinition`1 filter, TDocument replacement, ReplaceOptions options, Func`3 bulkWriteAsync)
+   at MyImage.Infrastructure.Data.Repositories.SystemSettingsRepository.UpsertAsync(SystemSettings setting) in E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.Infrastructure\Data\Repositories\SystemSettingsRepository.cs:line 62
+   at Program.<<Main>$>g__SeedSystemSettingsAsync|0_2(ISystemSettingsRepository settingsRepo) in E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.API\Program.cs:line 495
+   at Program.<<Main>$>g__SeedInitialDataAsync|0_1(IServiceProvider serviceProvider) in E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.API\Program.cs:line 449
+2025-06-17 13:52:51.230 +07:00 [FTL] Failed to initialize database
+MongoDB.Driver.MongoWriteException: A write operation resulted in an error. WriteError: { Category : "Uncategorized", Code : 66, Message : "After applying the update, the (immutable) field '_id' was found to have been altered to _id: ObjectId('685110c3c7442f24e0a36aac')" }.
+ ---> MongoDB.Driver.MongoBulkWriteException`1[MyImage.Core.Entities.SystemSettings]: A bulk write operation resulted in one or more errors. WriteErrors: [ { Category : "Uncategorized", Code : 66, Message : "After applying the update, the (immutable) field '_id' was found to have been altered to _id: ObjectId('685110c3c7442f24e0a36aac')" } ].
+   at MongoDB.Driver.MongoCollectionImpl`1.BulkWriteAsync(IClientSessionHandle session, IEnumerable`1 requests, BulkWriteOptions options, CancellationToken cancellationToken)
+   at MongoDB.Driver.MongoCollectionImpl`1.UsingImplicitSessionAsync[TResult](Func`2 funcAsync, CancellationToken cancellationToken)
+   at MongoDB.Driver.MongoCollectionBase`1.ReplaceOneAsync(FilterDefinition`1 filter, TDocument replacement, ReplaceOptions options, Func`3 bulkWriteAsync)
+   --- End of inner exception stack trace ---
+   at MongoDB.Driver.MongoCollectionBase`1.ReplaceOneAsync(FilterDefinition`1 filter, TDocument replacement, ReplaceOptions options, Func`3 bulkWriteAsync)
+   at MyImage.Infrastructure.Data.Repositories.SystemSettingsRepository.UpsertAsync(SystemSettings setting) in E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.Infrastructure\Data\Repositories\SystemSettingsRepository.cs:line 62
+   at Program.<<Main>$>g__SeedSystemSettingsAsync|0_2(ISystemSettingsRepository settingsRepo) in E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.API\Program.cs:line 495
+   at Program.<<Main>$>g__SeedInitialDataAsync|0_1(IServiceProvider serviceProvider) in E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.API\Program.cs:line 449
+   at Program.<<Main>$>g__InitializeDatabaseAsync|0_0(IServiceProvider services) in E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.API\Program.cs:line 333
+2025-06-17 13:52:51.234 +07:00 [FTL] Application terminated unexpectedly
+MongoDB.Driver.MongoWriteException: A write operation resulted in an error. WriteError: { Category : "Uncategorized", Code : 66, Message : "After applying the update, the (immutable) field '_id' was found to have been altered to _id: ObjectId('685110c3c7442f24e0a36aac')" }.
+ ---> MongoDB.Driver.MongoBulkWriteException`1[MyImage.Core.Entities.SystemSettings]: A bulk write operation resulted in one or more errors. WriteErrors: [ { Category : "Uncategorized", Code : 66, Message : "After applying the update, the (immutable) field '_id' was found to have been altered to _id: ObjectId('685110c3c7442f24e0a36aac')" } ].
+   at MongoDB.Driver.MongoCollectionImpl`1.BulkWriteAsync(IClientSessionHandle session, IEnumerable`1 requests, BulkWriteOptions options, CancellationToken cancellationToken)
+   at MongoDB.Driver.MongoCollectionImpl`1.UsingImplicitSessionAsync[TResult](Func`2 funcAsync, CancellationToken cancellationToken)
+   at MongoDB.Driver.MongoCollectionBase`1.ReplaceOneAsync(FilterDefinition`1 filter, TDocument replacement, ReplaceOptions options, Func`3 bulkWriteAsync)
+   --- End of inner exception stack trace ---
+   at MongoDB.Driver.MongoCollectionBase`1.ReplaceOneAsync(FilterDefinition`1 filter, TDocument replacement, ReplaceOptions options, Func`3 bulkWriteAsync)
+   at MyImage.Infrastructure.Data.Repositories.SystemSettingsRepository.UpsertAsync(SystemSettings setting) in E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.Infrastructure\Data\Repositories\SystemSettingsRepository.cs:line 62
+   at Program.<<Main>$>g__SeedSystemSettingsAsync|0_2(ISystemSettingsRepository settingsRepo) in E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.API\Program.cs:line 495
+   at Program.<<Main>$>g__SeedInitialDataAsync|0_1(IServiceProvider serviceProvider) in E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.API\Program.cs:line 449
+   at Program.<<Main>$>g__InitializeDatabaseAsync|0_0(IServiceProvider services) in E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.API\Program.cs:line 333
+   at Program.<Main>$(String[] args) in E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.API\Program.cs:line 287
+2025-06-17 15:43:09.498 +07:00 [INF] Starting MyImage Photo Printing API
+2025-06-17 15:43:09.850 +07:00 [INF] Initializing database...
+2025-06-17 15:43:09.920 +07:00 [INF] Connecting to MongoDB database: myimage_dev
+2025-06-17 15:43:10.023 +07:00 [INF] MongoDB context initialized successfully
+2025-06-17 15:43:10.026 +07:00 [INF] Creating MongoDB indexes...
+2025-06-17 15:43:10.095 +07:00 [INF] Database connection established successfully
+2025-06-17 15:43:10.098 +07:00 [INF] Seeding initial data...
+2025-06-17 15:43:10.100 +07:00 [INF] AuthService initialized with JWT expiration: 24 hours
+2025-06-17 15:43:10.110 +07:00 [INF] MongoDB indexes created successfully
+2025-06-17 15:43:10.169 +07:00 [INF] Seeding system settings...
+2025-06-17 15:43:10.234 +07:00 [INF] Created new setting: branch_locations
+2025-06-17 15:43:10.235 +07:00 [INF] Seeded branch locations setting
+2025-06-17 15:43:10.238 +07:00 [INF] Created new setting: photo_cleanup_settings
+2025-06-17 15:43:10.239 +07:00 [INF] Seeded photo cleanup settings
+2025-06-17 15:43:10.240 +07:00 [INF] System settings seeding completed successfully
+2025-06-17 15:43:10.240 +07:00 [INF] Initial data seeding completed successfully
+2025-06-17 15:43:10.241 +07:00 [INF] Database initialization completed successfully
+2025-06-17 15:43:10.242 +07:00 [INF] MyImage API starting on Development environment
+2025-06-17 15:43:10.243 +07:00 [INF] API documentation available at: /swagger (development only)
+2025-06-17 15:43:10.243 +07:00 [INF] Health check available at: /health
+2025-06-17 15:43:10.258 +07:00 [INF] User profile is available. Using 'C:\Users\ACER\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-17 15:43:10.324 +07:00 [INF] Now listening on: http://localhost:5159
+2025-06-17 15:43:10.324 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-17 15:43:10.325 +07:00 [INF] Hosting environment: Development
+2025-06-17 15:43:10.326 +07:00 [INF] Content root path: E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.API
+2025-06-17 15:43:33.329 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5159/ - null null
+2025-06-17 15:43:33.350 +07:00 [INF] Incoming GET request to / from ::1
+2025-06-17 15:43:33.363 +07:00 [WRN] Failed to determine the https port for redirect.
+2025-06-17 15:43:33.411 +07:00 [INF] Authorization failed. These requirements were not met:
+DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
+2025-06-17 15:43:33.414 +07:00 [INF] AuthenticationScheme: Bearer was challenged.
+2025-06-17 15:43:33.415 +07:00 [INF] Completed GET / with status 401 in 71ms
+2025-06-17 15:43:33.422 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5159/ - 401 0 null 94.3621ms
+2025-06-17 15:43:42.833 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5159/swagger - null null
+2025-06-17 15:43:42.836 +07:00 [INF] Incoming GET request to /swagger from ::1
+2025-06-17 15:43:42.838 +07:00 [INF] Completed GET /swagger with status 301 in 2ms
+2025-06-17 15:43:42.840 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5159/swagger - 301 0 null 6.6786ms
+2025-06-17 15:43:42.842 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5159/swagger/index.html - null null
+2025-06-17 15:43:42.845 +07:00 [INF] Incoming GET request to /swagger/index.html from ::1
+2025-06-17 15:43:42.884 +07:00 [INF] Completed GET /swagger/index.html with status 200 in 38ms
+2025-06-17 15:43:42.886 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5159/swagger/index.html - 200 null text/html;charset=utf-8 44.1632ms
+2025-06-17 15:43:42.898 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5159/swagger/swagger-ui.css - null null
+2025-06-17 15:43:42.900 +07:00 [INF] Incoming GET request to /swagger/swagger-ui.css from ::1
+2025-06-17 15:43:42.907 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5159/swagger/swagger-ui-bundle.js - null null
+2025-06-17 15:43:42.907 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5159/swagger/index.css - null null
+2025-06-17 15:43:42.909 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5159/swagger/swagger-ui-standalone-preset.js - null null
+2025-06-17 15:43:42.909 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5159/swagger/index.js - null null
+2025-06-17 15:43:42.911 +07:00 [INF] Incoming GET request to /swagger/swagger-ui-bundle.js from ::1
+2025-06-17 15:43:42.912 +07:00 [INF] Incoming GET request to /swagger/index.css from ::1
+2025-06-17 15:43:42.915 +07:00 [INF] Incoming GET request to /swagger/swagger-ui-standalone-preset.js from ::1
+2025-06-17 15:43:42.917 +07:00 [INF] Incoming GET request to /swagger/index.js from ::1
+2025-06-17 15:43:42.919 +07:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2025-06-17 15:43:42.919 +07:00 [INF] Sending file. Request path: '/index.css'. Physical path: 'N/A'
+2025-06-17 15:43:42.923 +07:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2025-06-17 15:43:42.924 +07:00 [INF] Completed GET /swagger/index.js with status 200 in 7ms
+2025-06-17 15:43:42.925 +07:00 [INF] Completed GET /swagger/swagger-ui.css with status 200 in 25ms
+2025-06-17 15:43:42.925 +07:00 [INF] Completed GET /swagger/index.css with status 200 in 12ms
+2025-06-17 15:43:42.926 +07:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2025-06-17 15:43:42.926 +07:00 [INF] Completed GET /swagger/swagger-ui-standalone-preset.js with status 200 in 11ms
+2025-06-17 15:43:42.928 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5159/swagger/index.js - 200 null application/javascript;charset=utf-8 18.8735ms
+2025-06-17 15:43:42.930 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5159/swagger/swagger-ui.css - 200 152035 text/css 32.0735ms
+2025-06-17 15:43:42.932 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5159/swagger/index.css - 200 202 text/css 24.6921ms
+2025-06-17 15:43:42.933 +07:00 [INF] Completed GET /swagger/swagger-ui-bundle.js with status 200 in 22ms
+2025-06-17 15:43:42.935 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5159/swagger/swagger-ui-standalone-preset.js - 200 230007 text/javascript 25.942ms
+2025-06-17 15:43:42.944 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5159/swagger/swagger-ui-bundle.js - 200 1426050 text/javascript 36.6211ms
+2025-06-17 15:43:43.058 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5159/swagger/v1/swagger.json - null null
+2025-06-17 15:43:43.060 +07:00 [INF] Incoming GET request to /swagger/v1/swagger.json from ::1
+2025-06-17 15:43:43.074 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5159/swagger/favicon-32x32.png - null null
+2025-06-17 15:43:43.076 +07:00 [INF] Incoming GET request to /swagger/favicon-32x32.png from ::1
+2025-06-17 15:43:43.078 +07:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2025-06-17 15:43:43.079 +07:00 [INF] Completed GET /swagger/favicon-32x32.png with status 200 in 2ms
+2025-06-17 15:43:43.081 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5159/swagger/favicon-32x32.png - 200 628 image/png 6.3135ms
+2025-06-17 15:43:43.178 +07:00 [INF] Completed GET /swagger/v1/swagger.json with status 200 in 118ms
+2025-06-17 15:43:43.180 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5159/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 121.9027ms

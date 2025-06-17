@@ -11,7 +11,7 @@ using MyImage.API.Middleware;
 using MyImage.Core.Entities;
 using MongoDB.Bson;
 
-// Configure Serilog for structured logging
+// Configure Serilog for structured logging throughout the application
 Log.Logger = new LoggerConfiguration()
     .WriteTo.Console()
     .WriteTo.File("logs/myimage-.txt", rollingInterval: RollingInterval.Day)
@@ -30,11 +30,11 @@ try
     // SERVICE CONFIGURATION
     // ============================================================================
 
-    // Add controllers with API configuration
+    // Add controllers with API configuration and custom error handling
     builder.Services.AddControllers()
         .ConfigureApiBehaviorOptions(options =>
         {
-            // Customize model validation error responses
+            // Customize model validation error responses to use our ApiResponse format
             options.InvalidModelStateResponseFactory = context =>
             {
                 var errors = context.ModelState.Values
@@ -60,7 +60,7 @@ try
             policy.WithOrigins(allowedOrigins)
                   .AllowAnyMethod()
                   .AllowAnyHeader()
-                  .AllowCredentials(); // Allow cookies/auth headers
+                  .AllowCredentials(); // Allow cookies/auth headers for JWT tokens
         });
     });
 
@@ -68,10 +68,10 @@ try
     // DATABASE CONFIGURATION
     // ============================================================================
 
-    // Register MongoDB context as singleton (connection pooling handled by driver)
+    // Register MongoDB context as singleton (connection pooling handled by MongoDB driver)
     builder.Services.AddSingleton<MongoDbContext>();
 
-    // Register repositories as scoped services (per-request lifecycle)
+    // Register repositories as scoped services (per-request lifecycle for better transaction consistency)
     builder.Services.AddScoped<IUserRepository, UserRepository>();
     builder.Services.AddScoped<IPhotoRepository, PhotoRepository>();
     builder.Services.AddScoped<IPrintSizeRepository, PrintSizeRepository>();
@@ -92,7 +92,7 @@ try
     // AUTHENTICATION AND AUTHORIZATION CONFIGURATION
     // ============================================================================
 
-    // Configure JWT authentication
+    // Configure JWT authentication with comprehensive security settings
     var jwtSettings = builder.Configuration.GetSection("JwtSettings");
     var jwtSecret = jwtSettings["Secret"] ?? throw new InvalidOperationException("JWT Secret not configured");
     var jwtIssuer = jwtSettings["Issuer"] ?? throw new InvalidOperationException("JWT Issuer not configured");
@@ -106,7 +106,7 @@ try
     })
     .AddJwtBearer(options =>
     {
-        options.RequireHttpsMetadata = !builder.Environment.IsDevelopment(); // Allow HTTP in development
+        options.RequireHttpsMetadata = !builder.Environment.IsDevelopment(); // Allow HTTP in development only
         options.SaveToken = true;
         options.TokenValidationParameters = new TokenValidationParameters
         {
@@ -117,11 +117,11 @@ try
             ValidateAudience = true,
             ValidAudience = jwtAudience,
             ValidateLifetime = true,
-            ClockSkew = TimeSpan.FromMinutes(5), // Allow 5 minutes clock skew
+            ClockSkew = TimeSpan.FromMinutes(5), // Allow 5 minutes clock skew for server time differences
             RequireExpirationTime = true
         };
 
-        // Enhanced logging for authentication events
+        // Enhanced logging for authentication events to aid in debugging
         options.Events = new JwtBearerEvents
         {
             OnAuthenticationFailed = context =>
@@ -139,15 +139,15 @@ try
         };
     });
 
-    // Configure authorization policies
+    // Configure authorization policies for role-based access control
     builder.Services.AddAuthorization(options =>
     {
-        // Default policy requires authentication
+        // Default policy requires authentication for all endpoints
         options.FallbackPolicy = new Microsoft.AspNetCore.Authorization.AuthorizationPolicyBuilder()
             .RequireAuthenticatedUser()
             .Build();
 
-        // Admin policy requires admin role
+        // Admin policy requires admin role for administrative endpoints
         options.AddPolicy("AdminOnly", policy =>
             policy.RequireRole("admin"));
 
@@ -160,7 +160,7 @@ try
     // API DOCUMENTATION CONFIGURATION
     // ============================================================================
 
-    // Add API documentation with Swagger/OpenAPI
+    // Add API documentation with Swagger/OpenAPI for development
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen(options =>
     {
@@ -176,7 +176,7 @@ try
             }
         });
 
-        // Configure JWT authentication in Swagger
+        // Configure JWT authentication in Swagger UI for testing
         options.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
         {
             Name = "Authorization",
@@ -202,7 +202,7 @@ try
             }
         });
 
-        // Include XML documentation if available
+        // Include XML documentation if available for better API docs
         var xmlFile = $"{System.Reflection.Assembly.GetExecutingAssembly().GetName().Name}.xml";
         var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
         if (File.Exists(xmlPath))
@@ -215,7 +215,7 @@ try
     // ADDITIONAL SERVICES
     // ============================================================================
 
-    // Add health checks for monitoring
+    // Add health checks for monitoring and load balancer integration
     builder.Services.AddHealthChecks()
         .AddCheck<DatabaseHealthCheck>("database");
 
@@ -232,19 +232,19 @@ try
     var app = builder.Build();
 
     // ============================================================================
-    // MIDDLEWARE PIPELINE CONFIGURATION
+    // MIDDLEWARE PIPELINE CONFIGURATION (ORDER IS CRITICAL)
     // ============================================================================
 
     // Global error handling (must be first to catch all exceptions)
     app.UseMiddleware<ErrorHandlingMiddleware>();
 
-    // Request logging for monitoring (early in pipeline)
+    // Request logging for monitoring (early in pipeline for complete request tracking)
     app.UseMiddleware<RequestLoggingMiddleware>();
 
     // Development-specific middleware
     if (app.Environment.IsDevelopment())
     {
-        // Enable Swagger UI in development
+        // Enable Swagger UI in development environment only
         app.UseSwagger();
         app.UseSwaggerUI(options =>
         {
@@ -265,25 +265,25 @@ try
     // Security middleware
     app.UseHttpsRedirection(); // Redirect HTTP to HTTPS
 
-    // CORS (must be before authentication)
+    // CORS (must be before authentication to handle preflight requests)
     app.UseCors("AllowFrontend");
 
-    // Authentication and authorization middleware
+    // Authentication and authorization middleware (order matters)
     app.UseAuthentication(); // JWT token validation
-    app.UseMiddleware<JwtMiddleware>(); // Custom JWT logging
+    app.UseMiddleware<JwtMiddleware>(); // Custom JWT logging middleware
     app.UseAuthorization(); // Role-based access control
 
     // Controller routing
     app.MapControllers();
 
-    // Health check endpoint for monitoring
+    // Health check endpoint for monitoring systems
     app.MapHealthChecks("/health");
 
     // ============================================================================
     // DATABASE INITIALIZATION AND SEEDING
     // ============================================================================
 
-    // Initialize database and seed data
+    // Initialize database and seed essential data
     await InitializeDatabaseAsync(app.Services);
 
     // ============================================================================
@@ -320,7 +320,7 @@ static async Task InitializeDatabaseAsync(IServiceProvider services)
         using var scope = services.CreateScope();
         var context = scope.ServiceProvider.GetRequiredService<MongoDbContext>();
 
-        // Test database connectivity
+        // Test database connectivity before proceeding
         var isConnected = await context.TestConnectionAsync();
         if (!isConnected)
         {
@@ -329,7 +329,7 @@ static async Task InitializeDatabaseAsync(IServiceProvider services)
 
         Log.Information("Database connection established successfully");
 
-        // Seed initial data
+        // Seed initial data required for application operation
         await SeedInitialDataAsync(scope.ServiceProvider);
 
         Log.Information("Database initialization completed successfully");
@@ -437,7 +437,7 @@ static async Task SeedInitialDataAsync(IServiceProvider serviceProvider)
                 "System",
                 "Administrator");
 
-            // Update role to admin
+            // Update role to admin through repository
             adminUser.Role = "admin";
             await userRepo.UpdateAsync(adminUser);
 
@@ -445,7 +445,7 @@ static async Task SeedInitialDataAsync(IServiceProvider serviceProvider)
             Log.Warning("Default admin password is 'Admin123!@#' - CHANGE IMMEDIATELY IN PRODUCTION");
         }
 
-        // Seed system settings
+        // Seed system settings with proper _id handling
         await SeedSystemSettingsAsync(settingsRepo);
 
         Log.Information("Initial data seeding completed successfully");
@@ -458,8 +458,9 @@ static async Task SeedInitialDataAsync(IServiceProvider serviceProvider)
 }
 
 /// <summary>
-/// Seed system settings with default configuration values.
+/// FIXED: Seed system settings with default configuration values.
 /// Creates tax rates, branch locations, and other system configuration.
+/// Now properly handles MongoDB _id field immutability by checking for existence first.
 /// </summary>
 /// <param name="settingsRepo">System settings repository</param>
 /// <returns>Task representing the asynchronous seeding</returns>
@@ -467,85 +468,117 @@ static async Task SeedSystemSettingsAsync(ISystemSettingsRepository settingsRepo
 {
     Log.Information("Seeding system settings...");
 
-    // Tax rates by state
-    var taxRatesSetting = new SystemSettings
+    try
     {
-        Key = "tax_rates",
-        Value = new BsonDocument
+        // FIXED: Check if tax rates setting already exists before creating
+        var existingTaxRates = await settingsRepo.GetByKeyAsync("tax_rates");
+        if (existingTaxRates == null)
         {
-            ["default"] = 0.0625, // 6.25% default rate
-            ["byState"] = new BsonDocument
+            // Tax rates by state - CRITICAL: Do NOT set Id explicitly, let MongoDB generate it
+            var taxRatesSetting = new SystemSettings
             {
-                ["MA"] = 0.0625, // Massachusetts
-                ["NH"] = 0.0000, // New Hampshire (no sales tax)
-                ["CT"] = 0.0635, // Connecticut
-                ["RI"] = 0.0700, // Rhode Island
-                ["VT"] = 0.0600, // Vermont
-                ["NY"] = 0.0800  // New York
-            }
-        },
-        Metadata = new SettingMetadata
-        {
-            Description = "Sales tax rates by state for order calculations",
-            UpdatedBy = "system"
-        }
-    };
-
-    await settingsRepo.UpsertAsync(taxRatesSetting);
-
-    // Branch locations for in-person payment
-    var branchLocationsSetting = new SystemSettings
-    {
-        Key = "branch_locations",
-        Value = new BsonDocument
-        {
-            ["locations"] = new BsonArray
-            {
-                new BsonDocument
+                // Id will be auto-generated by MongoDB during insert
+                Key = "tax_rates",
+                Value = new BsonDocument
                 {
-                    ["name"] = "Boston Downtown",
-                    ["address"] = "123 Main Street, Boston, MA 02101",
-                    ["phone"] = "+1-617-555-0100",
-                    ["hours"] = "Mon-Fri 9AM-6PM, Sat 10AM-4PM"
+                    ["default"] = 0.0625, // 6.25% default rate
+                    ["byState"] = new BsonDocument
+                    {
+                        ["MA"] = 0.0625, // Massachusetts
+                        ["NH"] = 0.0000, // New Hampshire (no sales tax)
+                        ["CT"] = 0.0635, // Connecticut
+                        ["RI"] = 0.0700, // Rhode Island
+                        ["VT"] = 0.0600, // Vermont
+                        ["NY"] = 0.0800  // New York
+                    }
                 },
-                new BsonDocument
+                Metadata = new SettingMetadata
                 {
-                    ["name"] = "Cambridge Center",
-                    ["address"] = "456 Tech Boulevard, Cambridge, MA 02139",
-                    ["phone"] = "+1-617-555-0200",
-                    ["hours"] = "Mon-Fri 9AM-6PM, Sat 10AM-4PM"
+                    Description = "Sales tax rates by state for order calculations",
+                    UpdatedBy = "system",
+                    LastUpdated = DateTime.UtcNow
                 }
-            }
-        },
-        Metadata = new SettingMetadata
-        {
-            Description = "Branch locations for in-person payment option",
-            UpdatedBy = "system"
+            };
+
+            await settingsRepo.UpsertAsync(taxRatesSetting);
+            Log.Information("Seeded tax rates setting");
         }
-    };
 
-    await settingsRepo.UpsertAsync(branchLocationsSetting);
+        // FIXED: Check if branch locations setting already exists before creating
+        var existingBranchLocations = await settingsRepo.GetByKeyAsync("branch_locations");
+        if (existingBranchLocations == null)
+        {
+            // Branch locations for in-person payment - CRITICAL: Do NOT set Id explicitly
+            var branchLocationsSetting = new SystemSettings
+            {
+                // Id will be auto-generated by MongoDB during insert
+                Key = "branch_locations",
+                Value = new BsonDocument
+                {
+                    ["locations"] = new BsonArray
+                    {
+                        new BsonDocument
+                        {
+                            ["name"] = "Boston Downtown",
+                            ["address"] = "123 Main Street, Boston, MA 02101",
+                            ["phone"] = "+1-617-555-0100",
+                            ["hours"] = "Mon-Fri 9AM-6PM, Sat 10AM-4PM"
+                        },
+                        new BsonDocument
+                        {
+                            ["name"] = "Cambridge Center",
+                            ["address"] = "456 Tech Boulevard, Cambridge, MA 02139",
+                            ["phone"] = "+1-617-555-0200",
+                            ["hours"] = "Mon-Fri 9AM-6PM, Sat 10AM-4PM"
+                        }
+                    }
+                },
+                Metadata = new SettingMetadata
+                {
+                    Description = "Branch locations for in-person payment option",
+                    UpdatedBy = "system",
+                    LastUpdated = DateTime.UtcNow
+                }
+            };
 
-    // Photo cleanup settings
-    var cleanupSettings = new SystemSettings
+            await settingsRepo.UpsertAsync(branchLocationsSetting);
+            Log.Information("Seeded branch locations setting");
+        }
+
+        // FIXED: Check if photo cleanup settings already exist before creating
+        var existingCleanupSettings = await settingsRepo.GetByKeyAsync("photo_cleanup_settings");
+        if (existingCleanupSettings == null)
+        {
+            // Photo cleanup settings - CRITICAL: Do NOT set Id explicitly
+            var cleanupSettings = new SystemSettings
+            {
+                // Id will be auto-generated by MongoDB during insert
+                Key = "photo_cleanup_settings",
+                Value = new BsonDocument
+                {
+                    ["retentionDays"] = 7, // Keep photos 7 days after order completion
+                    ["cleanupSchedule"] = "daily", // Run cleanup daily
+                    ["bufferDays"] = 3 // Additional buffer for customer service
+                },
+                Metadata = new SettingMetadata
+                {
+                    Description = "Photo cleanup schedule and retention policies",
+                    UpdatedBy = "system",
+                    LastUpdated = DateTime.UtcNow
+                }
+            };
+
+            await settingsRepo.UpsertAsync(cleanupSettings);
+            Log.Information("Seeded photo cleanup settings");
+        }
+
+        Log.Information("System settings seeding completed successfully");
+    }
+    catch (Exception ex)
     {
-        Key = "photo_cleanup_settings",
-        Value = new BsonDocument
-        {
-            ["retentionDays"] = 7, // Keep photos 7 days after order completion
-            ["cleanupSchedule"] = "daily", // Run cleanup daily
-            ["bufferDays"] = 3 // Additional buffer for customer service
-        },
-        Metadata = new SettingMetadata
-        {
-            Description = "Photo cleanup schedule and retention policies",
-            UpdatedBy = "system"
-        }
-    };
-
-    await settingsRepo.UpsertAsync(cleanupSettings);
-
-    Log.Information("System settings seeded successfully");
+        Log.Error(ex, "Failed to seed system settings: {Error}", ex.Message);
+        throw;
+    }
 }
 
 /// <summary>
@@ -567,6 +600,7 @@ public class DatabaseHealthCheck : Microsoft.Extensions.Diagnostics.HealthChecks
     {
         try
         {
+            // Test database connectivity with proper timeout handling
             var isConnected = await _context.TestConnectionAsync();
 
             if (isConnected)

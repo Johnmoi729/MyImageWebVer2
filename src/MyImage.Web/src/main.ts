@@ -1,6 +1,19 @@
-import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app/app.config';
-import { AppComponent } from './app/app.component';
+import { AppModule } from './app/app.module';
 
-bootstrapApplication(AppComponent, appConfig)
-  .catch((err) => console.error(err));
+// For standalone bootstrap (if using standalone components)
+// bootstrapApplication(AppComponent, {
+//   providers: [
+//     importProvidersFrom(
+//       BrowserAnimationsModule,
+//       HttpClientModule,
+//       RouterModule.forRoot([])
+//     )
+//   ]
+// });
+
+// Using traditional module bootstrap
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+
+platformBrowserDynamic()
+  .bootstrapModule(AppModule)
+  .catch(err => console.error(err));
