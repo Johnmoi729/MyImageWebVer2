@@ -1,13 +1,7 @@
-import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
 import { MatDialog } from '@angular/material/dialog';
-import { MatDividerModule } from '@angular/material/divider';
-import { MatIconModule } from '@angular/material/icon';
-import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
-import { MatTooltipModule } from '@angular/material/tooltip';
-import { Router, RouterModule } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 import { CartService } from '../../../core/services/cart.service';
 import { Cart, CartItem } from '../../../shared/models/cart.models';
@@ -30,17 +24,8 @@ import { PrintSelectorComponent } from '../../photo/print-selector/print-selecto
  */
 @Component({
   selector: 'app-cart',
+  standalone: false,
 
-  imports: [
-    CommonModule,
-    RouterModule,
-    MatCardModule,
-    MatButtonModule,
-    MatIconModule,
-    MatDividerModule,
-    MatTooltipModule,
-    MatSnackBarModule
-  ],
   template: `
     <div class="cart-container">
       <div class="cart-header">

@@ -7,6 +7,7 @@ import { OrderStatusDialogComponent } from '../order-status-dialog/order-status-
 
 @Component({
   selector: 'app-admin-orders',
+  standalone: false,
   template: `
     <div class="admin-orders-container">
       <div class="orders-header">

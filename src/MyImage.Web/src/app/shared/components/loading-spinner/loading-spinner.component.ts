@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-loading-spinner',
+  standalone: false,
   template: `
     <div class="loading-container" [class.overlay]="overlay">
       <mat-spinner [diameter]="size"></mat-spinner>

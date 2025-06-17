@@ -1,14 +1,7 @@
-import { CommonModule } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { CartService } from '../../../core/services/cart.service';
 import { PrintSizeService } from '../../../core/services/print-size.service';
@@ -30,18 +23,7 @@ import { PrintSize } from '../../../shared/models/print-size.models';
 @Component({
   selector: 'app-print-selector',
   // Modern Angular standalone component
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    MatDialogModule,
-    MatButtonModule,
-    MatIconModule,
-    MatCheckboxModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatProgressSpinnerModule,
-    MatSnackBarModule
-  ],
+  standalone: false,
   template: `
     <div class="selector-container">
       <div class="selector-header">
@@ -61,53 +43,57 @@ import { PrintSize } from '../../../shared/models/print-size.models';
 
       <form [formGroup]="printForm" class="print-form">
         <div class="size-selections" formArrayName="selections">
-          <div class="size-item"
-               *ngFor="let selection of selectionsArray.controls; let i = index"
-               [formGroupName]="i">
+          <!-- Use ng-container to handle both *ngFor and *ngIf without conflict -->
+          <ng-container *ngFor="let selection of selectionsArray.controls; let i = index; trackBy: trackByIndex">
+            <div class="size-item"
+                 [formGroupName]="i"
+                 *ngIf="printSizes[i]">
 
-            <div class="size-header">
-              <mat-checkbox formControlName="selected"
-                           (change)="onSizeToggle(i, $event.checked)">
-                <div class="size-info">
-                  <span class="size-name">{{ printSizes[i]?.displayName }}</span>
-                  <span class="size-dimensions">
-                    {{ printSizes[i]?.width }}" × {{ printSizes[i]?.height }}"
-                  </span>
+              <div class="size-header">
+                <mat-checkbox formControlName="selected"
+                             (change)="onSizeToggle(i, $event.checked)">
+                  <div class="size-info">
+                    <!-- Safe to use direct access since we check existence with *ngIf -->
+                    <span class="size-name">{{ printSizes[i].displayName }}</span>
+                    <span class="size-dimensions">
+                      {{ printSizes[i].width }}" × {{ printSizes[i].height }}"
+                    </span>
+                  </div>
+                </mat-checkbox>
+
+                <div class="size-price">
+                  {{ printSizes[i].price | currency:'USD':'symbol':'1.2-2' }} each
                 </div>
-              </mat-checkbox>
+              </div>
 
-              <div class="size-price">
-                {{ printSizes[i]?.price | currency:'USD':'symbol':'1.2-2' }} each
+              <div class="quantity-section" *ngIf="selection.get('selected')?.value">
+                <mat-form-field appearance="outline" class="quantity-field">
+                  <mat-label>Quantity</mat-label>
+                  <input matInput type="number"
+                         formControlName="quantity"
+                         min="1" max="100"
+                         (input)="calculateTotal()">
+                  <mat-error *ngIf="selection.get('quantity')?.errors?.['min']">
+                    Minimum quantity is 1
+                  </mat-error>
+                  <mat-error *ngIf="selection.get('quantity')?.errors?.['max']">
+                    Maximum quantity is 100
+                  </mat-error>
+                </mat-form-field>
+
+                <div class="line-total">
+                  Total: {{ getLineTotal(i) | currency:'USD':'symbol':'1.2-2' }}
+                </div>
+              </div>
+
+              <div class="quality-indicator" *ngIf="selection.get('selected')?.value">
+                <div class="quality-rating" [class]="getQualityClass(i)">
+                  <mat-icon>{{ getQualityIcon(i) }}</mat-icon>
+                  <span>{{ getQualityText(i) }}</span>
+                </div>
               </div>
             </div>
-
-            <div class="quantity-section" *ngIf="selection.get('selected')?.value">
-              <mat-form-field appearance="outline" class="quantity-field">
-                <mat-label>Quantity</mat-label>
-                <input matInput type="number"
-                       formControlName="quantity"
-                       min="1" max="100"
-                       (input)="calculateTotal()">
-                <mat-error *ngIf="selection.get('quantity')?.errors?.['min']">
-                  Minimum quantity is 1
-                </mat-error>
-                <mat-error *ngIf="selection.get('quantity')?.errors?.['max']">
-                  Maximum quantity is 100
-                </mat-error>
-              </mat-form-field>
-
-              <div class="line-total">
-                Total: {{ getLineTotal(i) | currency:'USD':'symbol':'1.2-2' }}
-              </div>
-            </div>
-
-            <div class="quality-indicator" *ngIf="selection.get('selected')?.value">
-              <div class="quality-rating" [class]="getQualityClass(i)">
-                <mat-icon>{{ getQualityIcon(i) }}</mat-icon>
-                <span>{{ getQualityText(i) }}</span>
-              </div>
-            </div>
-          </div>
+          </ng-container>
         </div>
 
         <div class="total-section" *ngIf="getTotalCost() > 0">
@@ -323,6 +309,14 @@ export class PrintSelectorComponent implements OnInit {
   }
 
   /**
+   * TrackBy function for ngFor to improve performance and prevent unnecessary re-renders.
+   * This helps Angular track which items have changed when the array is updated.
+   */
+  trackByIndex(index: number, item: any): number {
+    return index;
+  }
+
+  /**
    * Loads available print sizes from the API and initializes the form.
    * This implements the API call to /api/print-sizes endpoint.
    */
@@ -345,6 +339,7 @@ export class PrintSelectorComponent implements OnInit {
   /**
    * Initializes the reactive form with FormGroups for each print size.
    * Creates a FormGroup for each size containing selection state, quantity, and pricing info.
+   * Ensures the form array length matches the printSizes array length for consistency.
    */
   private initializeForm(): void {
     const selectionsArray = this.fb.array(
@@ -383,12 +378,19 @@ export class PrintSelectorComponent implements OnInit {
   /**
    * Calculates the total cost for a specific print size selection.
    * Multiplies quantity by unit price only if the size is selected.
+   * Returns 0 if the print size doesn't exist at the given index.
    */
   getLineTotal(index: number): number {
     const selection = this.selectionsArray.at(index);
+    const printSize = this.printSizes[index];
+
+    if (!selection || !printSize) {
+      return 0;
+    }
+
     const selected = selection.get('selected')?.value;
     const quantity = selection.get('quantity')?.value || 0;
-    const unitPrice = selection.get('unitPrice')?.value || 0;
+    const unitPrice = selection.get('unitPrice')?.value || printSize.price;
 
     return selected ? quantity * unitPrice : 0;
   }
@@ -417,6 +419,7 @@ export class PrintSelectorComponent implements OnInit {
   /**
    * Determines print quality CSS class based on photo resolution vs print requirements.
    * Compares photo dimensions with recommended and minimum print size requirements.
+   * Returns 'fair' if print size doesn't exist to prevent errors.
    */
   getQualityClass(index: number): string {
     const printSize = this.printSizes[index];
@@ -483,13 +486,16 @@ export class PrintSelectorComponent implements OnInit {
         const printSize = this.printSizes[index];
         const quantity = control.get('quantity')?.value || 0;
 
-        printSelections.push({
-          sizeCode: printSize.sizeCode,
-          sizeName: printSize.displayName,
-          quantity: quantity,
-          unitPrice: printSize.price,
-          lineTotal: quantity * printSize.price
-        });
+        // Only add if print size exists
+        if (printSize) {
+          printSelections.push({
+            sizeCode: printSize.sizeCode,
+            sizeName: printSize.displayName,
+            quantity: quantity,
+            unitPrice: printSize.price,
+            lineTotal: quantity * printSize.price
+          });
+        }
       }
     });
 

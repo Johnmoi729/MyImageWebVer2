@@ -6,6 +6,7 @@ import { AdminService } from '../../../core/services/admin.service';
 
 @Component({
   selector: 'app-order-status-dialog',
+  standalone: false,
   template: `
     <div class="dialog-container">
       <h2 mat-dialog-title>Update Order Status</h2>

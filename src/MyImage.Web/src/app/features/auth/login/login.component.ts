@@ -6,6 +6,7 @@ import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
   selector: 'app-login',
+  standalone: false,
   template: `
     <div class="auth-container">
       <mat-card class="auth-card">

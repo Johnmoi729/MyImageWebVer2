@@ -5,6 +5,7 @@ import { OrderService } from '../../../core/services/order.service';
 
 @Component({
   selector: 'app-order-detail',
+  standalone: false,
   template: `
     <div class="order-detail-container" *ngIf="order">
       <!-- Order Header -->

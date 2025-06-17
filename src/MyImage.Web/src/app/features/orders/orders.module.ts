@@ -9,6 +9,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTableModule } from '@angular/material/table';
 
 import { OrderDetailComponent } from './order-detail/order-detail.component';
@@ -34,7 +35,8 @@ const routes: Routes = [
     MatPaginatorModule,
     MatChipsModule,
     MatDividerModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatProgressSpinnerModule
   ]
 })
 export class OrdersModule { }

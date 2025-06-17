@@ -4,6 +4,7 @@ import { Photo } from '../../../shared/models/photo.models';
 
 @Component({
   selector: 'app-photo-preview',
+  standalone: false,
   template: `
     <div class="preview-container">
       <div class="preview-header">

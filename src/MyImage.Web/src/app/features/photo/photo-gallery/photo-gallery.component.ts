@@ -9,6 +9,7 @@ import { PrintSelectorComponent } from '../print-selector/print-selector.compone
 
 @Component({
   selector: 'app-photo-gallery',
+  standalone: false,
   template: `
     <div class="gallery-container">
       <div class="gallery-header">

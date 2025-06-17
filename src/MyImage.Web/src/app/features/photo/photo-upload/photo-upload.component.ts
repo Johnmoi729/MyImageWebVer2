@@ -5,6 +5,7 @@ import { PhotoService } from '../../../core/services/photo.service';
 
 @Component({
   selector: 'app-photo-upload',
+  standalone: false,
   template: `
     <div class="upload-container">
       <mat-card class="upload-card">

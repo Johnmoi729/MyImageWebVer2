@@ -3,6 +3,7 @@ import { AdminService } from '../../../core/services/admin.service';
 
 @Component({
   selector: 'app-admin-dashboard',
+  standalone: false,
   template: `
     <div class="dashboard-container">
       <h2>Admin Dashboard</h2>

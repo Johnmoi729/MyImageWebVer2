@@ -6,6 +6,7 @@ import { Order } from '../../../shared/models/order.models';
 
 @Component({
   selector: 'app-order-list',
+  standalone: false,
   template: `
     <div class="orders-container">
       <div class="orders-header">

@@ -7,6 +7,7 @@ import { CartService } from '../../../core/services/cart.service';
 
 @Component({
   selector: 'app-header',
+  standalone: false,
   template: `
     <mat-toolbar color="primary" class="header-toolbar">
       <div class="toolbar-content">

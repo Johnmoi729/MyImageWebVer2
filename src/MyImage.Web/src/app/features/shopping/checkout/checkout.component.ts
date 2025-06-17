@@ -20,6 +20,7 @@ interface ShippingAddress {
 
 @Component({
   selector: 'app-checkout',
+  standalone: false,
   template: `
     <div class="checkout-container">
       <h2>Checkout</h2>

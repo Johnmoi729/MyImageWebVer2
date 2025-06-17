@@ -6,6 +6,7 @@ import { AdminService } from '../../../core/services/admin.service';
 
 @Component({
   selector: 'app-admin-pricing',
+  standalone: false,
   template: `
     <div class="pricing-container">
       <div class="pricing-header">
