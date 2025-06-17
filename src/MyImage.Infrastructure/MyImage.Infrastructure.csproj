@@ -1,24 +1,43 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <!-- Updated root namespace to match project structure -->
+    <RootNamespace>MyImage.Infrastructure</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
   <ItemGroup>
+    <!-- Reference to Core business logic layer - this layer implements Core interfaces -->
     <ProjectReference Include="..\MyImage.Core\MyImage.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>
+    <!-- Object mapping between entities and DTOs -->
     <PackageReference Include="AutoMapper" Version="13.0.1" />
+
+    <!-- Microsoft dependency injection and configuration support -->
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.0" />
-    <PackageReference Include="MongoDB.Driver" Version="2.29.0" />
-    <PackageReference Include="SixLabors.ImageSharp" Version="3.1.6" />
-    <PackageReference Include="Stripe.net" Version="47.2.0" />
-  </ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Options" Version="9.0.0" />
 
-  <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
-    <RootNamespace>temp_infrastructure</RootNamespace>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+    <!-- MongoDB database driver for data persistence and GridFS file storage -->
+    <PackageReference Include="MongoDB.Driver" Version="3.0.0" />
+
+    <!-- Image processing library for thumbnail generation -->
+    <PackageReference Include="SixLabors.ImageSharp" Version="3.1.6" />
+
+    <!-- Stripe payment processing integration -->
+    <PackageReference Include="Stripe.net" Version="47.2.0" />
+
+    <!-- BCrypt for password hashing (used in services) -->
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+
+    <!-- JWT token generation utilities -->
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.2.1" />
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="8.2.1" />
+  </ItemGroup>
 
 </Project>

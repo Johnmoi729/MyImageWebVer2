@@ -2,13 +2,21 @@
 
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
-    <RootNamespace>temp_core</RootNamespace>
+    <!-- Updated root namespace to match project structure -->
+    <RootNamespace>MyImage.Core</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
+    <!-- FluentValidation for domain model validation -->
     <PackageReference Include="FluentValidation" Version="11.9.2" />
+
+    <!-- MongoDB attributes and BSON serialization support for entities -->
+    <PackageReference Include="MongoDB.Bson" Version="2.29.0" />
+
+    <!-- System components needed for interfaces and DTOs -->
+    <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
   </ItemGroup>
 
 </Project>

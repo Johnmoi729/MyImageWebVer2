@@ -7,8 +7,6 @@ E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImag
 E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.API\bin\Debug\net9.0\MyImage.API.dll
 E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.API\bin\Debug\net9.0\MyImage.API.pdb
 E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.API\bin\Debug\net9.0\AutoMapper.dll
-E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.API\bin\Debug\net9.0\AWSSDK.Core.dll
-E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.API\bin\Debug\net9.0\AWSSDK.SecurityToken.dll
 E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.API\bin\Debug\net9.0\BCrypt.Net-Next.dll
 E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.API\bin\Debug\net9.0\DnsClient.dll
 E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.API\bin\Debug\net9.0\FluentValidation.dll
@@ -24,8 +22,6 @@ E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImag
 E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.API\bin\Debug\net9.0\Microsoft.OpenApi.dll
 E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.API\bin\Debug\net9.0\MongoDB.Bson.dll
 E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.API\bin\Debug\net9.0\MongoDB.Driver.dll
-E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.API\bin\Debug\net9.0\MongoDB.Driver.Core.dll
-E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.API\bin\Debug\net9.0\MongoDB.Libmongocrypt.dll
 E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.API\bin\Debug\net9.0\Newtonsoft.Json.dll
 E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.API\bin\Debug\net9.0\Serilog.dll
 E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.API\bin\Debug\net9.0\Serilog.AspNetCore.dll
@@ -47,9 +43,6 @@ E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImag
 E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.API\bin\Debug\net9.0\System.IdentityModel.Tokens.Jwt.dll
 E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.API\bin\Debug\net9.0\System.Security.Cryptography.ProtectedData.dll
 E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.API\bin\Debug\net9.0\ZstdSharp.dll
-E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.API\bin\Debug\net9.0\runtimes\linux\native\libmongocrypt.so
-E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.API\bin\Debug\net9.0\runtimes\osx\native\libmongocrypt.dylib
-E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.API\bin\Debug\net9.0\runtimes\win\native\mongocrypt.dll
 E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.API\bin\Debug\net9.0\MyImage.Core.dll
 E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.API\bin\Debug\net9.0\MyImage.Infrastructure.dll
 E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.API\bin\Debug\net9.0\MyImage.Core.pdb
@@ -77,3 +70,6 @@ E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImag
 E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.API\obj\Debug\net9.0\MyImage.API.pdb
 E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.API\obj\Debug\net9.0\MyImage.API.genruntimeconfig.cache
 E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.API\obj\Debug\net9.0\ref\MyImage.API.dll
+E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.API\bin\Debug\net9.0\FluentValidation.AspNetCore.dll
+E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.API\bin\Debug\net9.0\FluentValidation.DependencyInjectionExtensions.dll
+E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.API\obj\Debug\net9.0\MyImage.API.sourcelink.json

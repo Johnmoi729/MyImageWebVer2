@@ -4,23 +4,39 @@
     <TargetFramework>net9.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>temp_api</RootNamespace>
+    <!-- Updated root namespace to match project structure -->
+    <RootNamespace>MyImage.API</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
+    <!-- Authentication and Security packages -->
     <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.2.1" />
+
+    <!-- CORS support for frontend communication -->
     <PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.2.0" />
+
+    <!-- API Documentation and OpenAPI support -->
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="7.2.0" />
+
+    <!-- Logging infrastructure using Serilog -->
     <PackageReference Include="Serilog.AspNetCore" Version="8.0.4" />
     <PackageReference Include="Serilog.Sinks.Console" Version="6.0.0" />
     <PackageReference Include="Serilog.Sinks.File" Version="6.0.0" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="7.2.0" />
-    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.2.1" />
+
+    <!-- MongoDB support for dependency injection and configuration -->
+    <PackageReference Include="MongoDB.Driver" Version="3.0.0" />
+
+    <!-- Model validation support -->
+    <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <!-- Reference to Core business logic layer -->
     <ProjectReference Include="..\MyImage.Core\MyImage.Core.csproj" />
+    <!-- Reference to Infrastructure data access layer -->
     <ProjectReference Include="..\MyImage.Infrastructure\MyImage.Infrastructure.csproj" />
   </ItemGroup>
 
