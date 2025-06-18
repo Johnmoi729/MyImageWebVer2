@@ -23,8 +23,8 @@ public class ChangePasswordDto
     /// </summary>
     [Required(ErrorMessage = "New password is required")]
     [MinLength(8, ErrorMessage = "Password must be at least 8 characters long")]
-    [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]",
-        ErrorMessage = "Password must contain uppercase, lowercase, number, and special character")]
+    [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$",
+        ErrorMessage = "Password must contain uppercase, lowercase, number, and special character")] //Fixed malformed regex pattern
     public string NewPassword { get; set; } = string.Empty;
 
     /// <summary>

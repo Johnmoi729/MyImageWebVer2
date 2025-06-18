@@ -153,10 +153,13 @@ try
         options.AddPolicy("CustomerOnly", policy =>
             policy.RequireRole("customer"));
 
+        // Removed due to [AllowAnonymous] not working properly
+        // No DefaultPolicy set - this allows [AllowAnonymous] to work properly
         // Default policy for protected endpoints - only set where explicitly needed
-        options.DefaultPolicy = new Microsoft.AspNetCore.Authorization.AuthorizationPolicyBuilder()
+        /* options.DefaultPolicy = new Microsoft.AspNetCore.Authorization.AuthorizationPolicyBuilder()
             .RequireAuthenticatedUser()
             .Build();
+        */
     });
 
     // ============================================================================
@@ -258,15 +261,18 @@ try
 
         // Detailed error pages in development
         app.UseDeveloperExceptionPage();
+
+        // FIXED: Only use HTTPS redirection in production to avoid SSL certificate issues in development
+        Log.Information("Development mode: HTTPS redirection disabled for easier local development");
     }
     else
     {
         // Production security headers
         app.UseHsts(); // HTTP Strict Transport Security
-    }
 
-    // Security middleware
-    app.UseHttpsRedirection(); // Redirect HTTP to HTTPS
+        // HTTPS redirection only in production, this is a Security middleware
+        app.UseHttpsRedirection(); // Redirect HTTP to HTTPS
+    }
 
     // CORS (must be before authentication to handle preflight requests)
     app.UseCors("AllowFrontend");

@@ -29,8 +29,8 @@ public class RegisterDto
     /// </summary>
     [Required(ErrorMessage = "Password is required")]
     [MinLength(8, ErrorMessage = "Password must be at least 8 characters long")]
-    [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]",
-        ErrorMessage = "Password must contain uppercase, lowercase, number, and special character")]
+    [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$",
+        ErrorMessage = "Password must contain uppercase, lowercase, number, and special character")] //Fixed malformed regex pattern
     public string Password { get; set; } = string.Empty;
 
     /// <summary>

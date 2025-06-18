@@ -481,7 +481,7 @@ public class AuthService : IAuthService
         bool hasUpper = password.Any(char.IsUpper);
         bool hasLower = password.Any(char.IsLower);
         bool hasDigit = password.Any(char.IsDigit);
-        bool hasSpecial = password.Any(c => "!@#$%^&*()_+-=[]{}|;:,.<>?".Contains(c));
+        bool hasSpecial = password.Any(c => "@$!%*?&".Contains(c)); // Match DTO validation
 
         return hasUpper && hasLower && hasDigit && hasSpecial;
     }
