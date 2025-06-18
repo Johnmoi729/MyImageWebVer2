@@ -17,7 +17,7 @@ namespace MyImage.API.Controllers;
 /// - POST /api/auth/register - User registration with generated ID
 /// - POST /api/auth/login - Authentication with email or User ID
 /// - POST /api/auth/change-password - Secure password change
-/// - POST /api/auth/refresh - Token refresh (future enhancement)
+/// - GET /api/auth/me - Get current user info
 /// </summary>
 [ApiController]
 [Route("api/[controller]")]
@@ -51,6 +51,7 @@ public class AuthController : ControllerBase
     /// <response code="400">Invalid input data or validation errors</response>
     /// <response code="409">Email address already registered</response>
     [HttpPost("register")]
+    [AllowAnonymous] // FIXED: Allow anonymous access for registration
     [ProducesResponseType(typeof(ApiResponse<AuthResponseDto>), StatusCodes.Status201Created)]
     [ProducesResponseType(typeof(ApiResponse<object>), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(ApiResponse<object>), StatusCodes.Status409Conflict)]
@@ -152,6 +153,7 @@ public class AuthController : ControllerBase
     /// <response code="400">Invalid input data</response>
     /// <response code="401">Invalid credentials</response>
     [HttpPost("login")]
+    [AllowAnonymous] // FIXED: Allow anonymous access for login
     [ProducesResponseType(typeof(ApiResponse<AuthResponseDto>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ApiResponse<object>), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(ApiResponse<object>), StatusCodes.Status401Unauthorized)]

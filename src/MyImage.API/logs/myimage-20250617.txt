@@ -305,3 +305,168 @@ DenyAnonymousAuthorizationRequirement: Requires an authenticated user.
 2025-06-17 17:48:58.393 +07:00 [INF] Completed POST /api/Auth/login with status 401 in 11ms
 2025-06-17 17:48:58.395 +07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5159/api/Auth/login - 401 0 null 16.6073ms
 2025-06-17 18:36:01.908 +07:00 [INF] Application is shutting down...
+2025-06-17 18:39:51.330 +07:00 [INF] Starting MyImage Photo Printing API
+2025-06-17 18:39:51.500 +07:00 [INF] Initializing database...
+2025-06-17 18:39:51.515 +07:00 [INF] Connecting to MongoDB database: myimage_dev
+2025-06-17 18:39:51.600 +07:00 [INF] MongoDB context initialized successfully
+2025-06-17 18:39:51.602 +07:00 [INF] Creating MongoDB indexes...
+2025-06-17 18:39:51.663 +07:00 [INF] Database connection established successfully
+2025-06-17 18:39:51.666 +07:00 [INF] Seeding initial data...
+2025-06-17 18:39:51.667 +07:00 [INF] AuthService initialized with JWT expiration: 24 hours
+2025-06-17 18:39:51.673 +07:00 [INF] MongoDB indexes created successfully
+2025-06-17 18:39:51.722 +07:00 [INF] Seeding system settings...
+2025-06-17 18:39:51.732 +07:00 [INF] System settings seeding completed successfully
+2025-06-17 18:39:51.732 +07:00 [INF] Initial data seeding completed successfully
+2025-06-17 18:39:51.734 +07:00 [INF] Database initialization completed successfully
+2025-06-17 18:39:51.735 +07:00 [INF] MyImage API starting on Development environment
+2025-06-17 18:39:51.737 +07:00 [INF] API documentation available at: /swagger (development only)
+2025-06-17 18:39:51.737 +07:00 [INF] Health check available at: /health
+2025-06-17 18:39:51.749 +07:00 [INF] User profile is available. Using 'C:\Users\ACER\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-17 18:39:51.790 +07:00 [INF] Now listening on: http://localhost:7037
+2025-06-17 18:39:51.790 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-17 18:39:51.791 +07:00 [INF] Hosting environment: Development
+2025-06-17 18:39:51.791 +07:00 [INF] Content root path: E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.API
+2025-06-17 19:09:23.496 +07:00 [INF] Application is shutting down...
+2025-06-17 19:09:31.463 +07:00 [INF] Starting MyImage Photo Printing API
+2025-06-17 19:09:31.642 +07:00 [INF] Initializing database...
+2025-06-17 19:09:31.659 +07:00 [INF] Connecting to MongoDB database: myimage_dev
+2025-06-17 19:09:31.776 +07:00 [INF] MongoDB context initialized successfully
+2025-06-17 19:09:31.779 +07:00 [INF] Creating MongoDB indexes...
+2025-06-17 19:09:31.871 +07:00 [INF] Database connection established successfully
+2025-06-17 19:09:31.872 +07:00 [INF] Seeding initial data...
+2025-06-17 19:09:31.874 +07:00 [INF] AuthService initialized with JWT expiration: 24 hours
+2025-06-17 19:09:31.885 +07:00 [INF] MongoDB indexes created successfully
+2025-06-17 19:09:31.934 +07:00 [INF] Seeding system settings...
+2025-06-17 19:09:31.944 +07:00 [INF] System settings seeding completed successfully
+2025-06-17 19:09:31.944 +07:00 [INF] Initial data seeding completed successfully
+2025-06-17 19:09:31.945 +07:00 [INF] Database initialization completed successfully
+2025-06-17 19:09:31.946 +07:00 [INF] MyImage API starting on Development environment
+2025-06-17 19:09:31.947 +07:00 [INF] API documentation available at: /swagger (development only)
+2025-06-17 19:09:31.947 +07:00 [INF] Health check available at: /health
+2025-06-17 19:09:31.960 +07:00 [INF] User profile is available. Using 'C:\Users\ACER\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-17 19:09:32.000 +07:00 [INF] Now listening on: http://localhost:5159
+2025-06-17 19:09:32.000 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-17 19:09:32.001 +07:00 [INF] Hosting environment: Development
+2025-06-17 19:09:32.002 +07:00 [INF] Content root path: E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.API
+2025-06-17 19:10:51.210 +07:00 [INF] Application is shutting down...
+2025-06-17 19:11:02.741 +07:00 [INF] Starting MyImage Photo Printing API
+2025-06-17 19:11:02.922 +07:00 [INF] Initializing database...
+2025-06-17 19:11:02.937 +07:00 [INF] Connecting to MongoDB database: myimage_dev
+2025-06-17 19:11:03.028 +07:00 [INF] MongoDB context initialized successfully
+2025-06-17 19:11:03.031 +07:00 [INF] Creating MongoDB indexes...
+2025-06-17 19:11:03.093 +07:00 [INF] Database connection established successfully
+2025-06-17 19:11:03.094 +07:00 [INF] Seeding initial data...
+2025-06-17 19:11:03.096 +07:00 [INF] AuthService initialized with JWT expiration: 24 hours
+2025-06-17 19:11:03.104 +07:00 [INF] MongoDB indexes created successfully
+2025-06-17 19:11:03.150 +07:00 [INF] Seeding system settings...
+2025-06-17 19:11:03.162 +07:00 [INF] System settings seeding completed successfully
+2025-06-17 19:11:03.163 +07:00 [INF] Initial data seeding completed successfully
+2025-06-17 19:11:03.163 +07:00 [INF] Database initialization completed successfully
+2025-06-17 19:11:03.164 +07:00 [INF] MyImage API starting on Development environment
+2025-06-17 19:11:03.165 +07:00 [INF] API documentation available at: /swagger (development only)
+2025-06-17 19:11:03.166 +07:00 [INF] Health check available at: /health
+2025-06-17 19:11:03.179 +07:00 [INF] User profile is available. Using 'C:\Users\ACER\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-17 19:11:03.223 +07:00 [INF] Now listening on: http://localhost:7037
+2025-06-17 19:11:03.225 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-17 19:11:03.225 +07:00 [INF] Hosting environment: Development
+2025-06-17 19:11:03.226 +07:00 [INF] Content root path: E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.API
+2025-06-17 19:12:14.182 +07:00 [INF] Application is shutting down...
+2025-06-17 19:12:23.696 +07:00 [INF] Starting MyImage Photo Printing API
+2025-06-17 19:12:23.872 +07:00 [INF] Initializing database...
+2025-06-17 19:12:23.889 +07:00 [INF] Connecting to MongoDB database: myimage_dev
+2025-06-17 19:12:23.977 +07:00 [INF] MongoDB context initialized successfully
+2025-06-17 19:12:23.980 +07:00 [INF] Creating MongoDB indexes...
+2025-06-17 19:12:24.040 +07:00 [INF] Database connection established successfully
+2025-06-17 19:12:24.041 +07:00 [INF] Seeding initial data...
+2025-06-17 19:12:24.042 +07:00 [INF] AuthService initialized with JWT expiration: 24 hours
+2025-06-17 19:12:24.050 +07:00 [INF] MongoDB indexes created successfully
+2025-06-17 19:12:24.096 +07:00 [INF] Seeding system settings...
+2025-06-17 19:12:24.108 +07:00 [INF] System settings seeding completed successfully
+2025-06-17 19:12:24.108 +07:00 [INF] Initial data seeding completed successfully
+2025-06-17 19:12:24.109 +07:00 [INF] Database initialization completed successfully
+2025-06-17 19:12:24.111 +07:00 [INF] MyImage API starting on Development environment
+2025-06-17 19:12:24.112 +07:00 [INF] API documentation available at: /swagger (development only)
+2025-06-17 19:12:24.112 +07:00 [INF] Health check available at: /health
+2025-06-17 19:12:24.125 +07:00 [INF] User profile is available. Using 'C:\Users\ACER\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-17 19:12:24.167 +07:00 [INF] Now listening on: http://localhost:7037
+2025-06-17 19:12:24.169 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-17 19:12:24.170 +07:00 [INF] Hosting environment: Development
+2025-06-17 19:12:24.170 +07:00 [INF] Content root path: E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.API
+2025-06-17 19:12:25.337 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:7037/ - null null
+2025-06-17 19:12:25.358 +07:00 [INF] Incoming GET request to / from ::1
+2025-06-17 19:12:25.371 +07:00 [WRN] Failed to determine the https port for redirect.
+2025-06-17 19:12:25.395 +07:00 [INF] Completed GET / with status 404 in 44ms
+2025-06-17 19:12:25.401 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:7037/ - 404 0 null 65.5423ms
+2025-06-17 19:12:25.412 +07:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:7037/, Response status code: 404
+2025-06-17 19:12:33.480 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:7037/swagger - null null
+2025-06-17 19:12:33.483 +07:00 [INF] Incoming GET request to /swagger from ::1
+2025-06-17 19:12:33.485 +07:00 [INF] Completed GET /swagger with status 301 in 2ms
+2025-06-17 19:12:33.487 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:7037/swagger - 301 0 null 7.2509ms
+2025-06-17 19:12:33.490 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:7037/swagger/index.html - null null
+2025-06-17 19:12:33.494 +07:00 [INF] Incoming GET request to /swagger/index.html from ::1
+2025-06-17 19:12:33.532 +07:00 [INF] Completed GET /swagger/index.html with status 200 in 38ms
+2025-06-17 19:12:33.535 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:7037/swagger/index.html - 200 null text/html;charset=utf-8 44.619ms
+2025-06-17 19:12:33.549 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:7037/swagger/swagger-ui.css - null null
+2025-06-17 19:12:33.550 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:7037/swagger/swagger-ui-bundle.js - null null
+2025-06-17 19:12:33.550 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:7037/swagger/index.css - null null
+2025-06-17 19:12:33.550 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:7037/swagger/swagger-ui-standalone-preset.js - null null
+2025-06-17 19:12:33.550 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:7037/swagger/index.js - null null
+2025-06-17 19:12:33.551 +07:00 [INF] Incoming GET request to /swagger/swagger-ui.css from ::1
+2025-06-17 19:12:33.553 +07:00 [INF] Incoming GET request to /swagger/swagger-ui-bundle.js from ::1
+2025-06-17 19:12:33.555 +07:00 [INF] Incoming GET request to /swagger/index.css from ::1
+2025-06-17 19:12:33.556 +07:00 [INF] Incoming GET request to /swagger/swagger-ui-standalone-preset.js from ::1
+2025-06-17 19:12:33.558 +07:00 [INF] Incoming GET request to /swagger/index.js from ::1
+2025-06-17 19:12:33.565 +07:00 [INF] Completed GET /swagger/index.js with status 200 in 6ms
+2025-06-17 19:12:33.567 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:7037/swagger/index.js - 200 null application/javascript;charset=utf-8 16.8769ms
+2025-06-17 19:12:33.573 +07:00 [INF] Sending file. Request path: '/index.css'. Physical path: 'N/A'
+2025-06-17 19:12:33.574 +07:00 [INF] Completed GET /swagger/index.css with status 200 in 19ms
+2025-06-17 19:12:33.576 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:7037/swagger/index.css - 200 202 text/css 25.9392ms
+2025-06-17 19:12:33.578 +07:00 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2025-06-17 19:12:33.578 +07:00 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2025-06-17 19:12:33.582 +07:00 [INF] Completed GET /swagger/swagger-ui.css with status 200 in 30ms
+2025-06-17 19:12:33.582 +07:00 [INF] Completed GET /swagger/swagger-ui-standalone-preset.js with status 200 in 26ms
+2025-06-17 19:12:33.588 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:7037/swagger/swagger-ui.css - 200 152035 text/css 38.8054ms
+2025-06-17 19:12:33.588 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:7037/swagger/swagger-ui-standalone-preset.js - 200 230007 text/javascript 37.832ms
+2025-06-17 19:12:33.596 +07:00 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2025-06-17 19:12:33.597 +07:00 [INF] Completed GET /swagger/swagger-ui-bundle.js with status 200 in 44ms
+2025-06-17 19:12:33.599 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:7037/swagger/swagger-ui-bundle.js - 200 1426050 text/javascript 49.5196ms
+2025-06-17 19:12:33.710 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:7037/swagger/v1/swagger.json - null null
+2025-06-17 19:12:33.712 +07:00 [INF] Incoming GET request to /swagger/v1/swagger.json from ::1
+2025-06-17 19:12:33.724 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:7037/swagger/favicon-32x32.png - null null
+2025-06-17 19:12:33.726 +07:00 [INF] Incoming GET request to /swagger/favicon-32x32.png from ::1
+2025-06-17 19:12:33.728 +07:00 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2025-06-17 19:12:33.729 +07:00 [INF] Completed GET /swagger/favicon-32x32.png with status 200 in 2ms
+2025-06-17 19:12:33.731 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:7037/swagger/favicon-32x32.png - 200 628 image/png 6.5541ms
+2025-06-17 19:12:33.849 +07:00 [INF] Completed GET /swagger/v1/swagger.json with status 200 in 137ms
+2025-06-17 19:12:33.851 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:7037/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 141.0078ms
+2025-06-17 19:13:03.446 +07:00 [INF] Request starting HTTP/1.1 POST http://localhost:7037/api/Auth/register - application/json 109
+2025-06-17 19:13:03.449 +07:00 [INF] Incoming POST request to /api/Auth/register from ::1
+2025-06-17 19:13:03.451 +07:00 [INF] CORS policy execution failed.
+2025-06-17 19:13:03.452 +07:00 [INF] Request origin http://localhost:7037 does not have permission to access the resource.
+2025-06-17 19:13:03.455 +07:00 [INF] Executing endpoint 'MyImage.API.Controllers.AuthController.Register (MyImage.API)'
+2025-06-17 19:13:03.472 +07:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[MyImage.Core.DTOs.Common.ApiResponse`1[MyImage.Core.DTOs.Auth.AuthResponseDto]]] Register(MyImage.Core.DTOs.Auth.RegisterDto) on controller MyImage.API.Controllers.AuthController (MyImage.API).
+2025-06-17 19:13:03.475 +07:00 [INF] AuthService initialized with JWT expiration: 24 hours
+2025-06-17 19:13:03.498 +07:00 [INF] Executing BadRequestObjectResult, writing value of type 'MyImage.Core.DTOs.Common.ApiResponse`1[[System.Object, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-17 19:13:03.508 +07:00 [INF] Executed action MyImage.API.Controllers.AuthController.Register (MyImage.API) in 32.2822ms
+2025-06-17 19:13:03.509 +07:00 [INF] Executed endpoint 'MyImage.API.Controllers.AuthController.Register (MyImage.API)'
+2025-06-17 19:13:03.510 +07:00 [INF] Completed POST /api/Auth/register with status 400 in 61ms
+2025-06-17 19:13:03.511 +07:00 [INF] Request finished HTTP/1.1 POST http://localhost:7037/api/Auth/register - 400 null application/json; charset=utf-8 65.0099ms
+2025-06-17 19:14:34.359 +07:00 [INF] Request starting HTTP/1.1 POST http://localhost:7037/api/Auth/login - application/json 90
+2025-06-17 19:14:34.362 +07:00 [INF] Incoming POST request to /api/Auth/login from ::1
+2025-06-17 19:14:34.364 +07:00 [INF] CORS policy execution failed.
+2025-06-17 19:14:34.365 +07:00 [INF] Request origin http://localhost:7037 does not have permission to access the resource.
+2025-06-17 19:14:34.367 +07:00 [INF] Executing endpoint 'MyImage.API.Controllers.AuthController.Login (MyImage.API)'
+2025-06-17 19:14:34.372 +07:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[MyImage.Core.DTOs.Common.ApiResponse`1[MyImage.Core.DTOs.Auth.AuthResponseDto]]] Login(MyImage.Core.DTOs.Auth.LoginDto) on controller MyImage.API.Controllers.AuthController (MyImage.API).
+2025-06-17 19:14:34.375 +07:00 [INF] AuthService initialized with JWT expiration: 24 hours
+2025-06-17 19:14:34.381 +07:00 [INF] Login attempt for identifier: admin@myimage.com
+2025-06-17 19:14:34.388 +07:00 [ERR] Error during login for identifier: admin@myimage.com
+System.ArgumentException: Invalid salt: salt cannot be null or empty (Parameter 'salt')
+   at BCrypt.Net.BCrypt.HashPassword(String inputKey, String salt, Boolean enhancedEntropy, HashType hashType)
+   at BCrypt.Net.BCrypt.Verify(String text, String hash, Boolean enhancedEntropy, HashType hashType)
+   at MyImage.Infrastructure.Services.AuthService.LoginAsync(String identifier, String password) in E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.Infrastructure\Services\AuthService.cs:line 205
+2025-06-17 19:14:34.398 +07:00 [WRN] Login failed for identifier: admin@myimage.com
+2025-06-17 19:14:34.400 +07:00 [INF] Executing UnauthorizedObjectResult, writing value of type 'MyImage.Core.DTOs.Common.ApiResponse`1[[System.Object, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-17 19:14:34.402 +07:00 [INF] Executed action MyImage.API.Controllers.AuthController.Login (MyImage.API) in 27.733ms
+2025-06-17 19:14:34.403 +07:00 [INF] Executed endpoint 'MyImage.API.Controllers.AuthController.Login (MyImage.API)'
+2025-06-17 19:14:34.404 +07:00 [INF] Completed POST /api/Auth/login with status 401 in 41ms
+2025-06-17 19:14:34.405 +07:00 [INF] Request finished HTTP/1.1 POST http://localhost:7037/api/Auth/login - 401 null application/json; charset=utf-8 46.2224ms

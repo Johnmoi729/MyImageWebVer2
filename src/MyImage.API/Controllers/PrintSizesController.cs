@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using MyImage.Core.Interfaces.Repositories;
 using MyImage.Core.DTOs.PrintSizes;
 using MyImage.Core.DTOs.Common;
@@ -45,6 +46,7 @@ public class PrintSizesController : ControllerBase
     /// <response code="200">Print sizes retrieved successfully</response>
     /// <response code="500">Internal server error</response>
     [HttpGet]
+    [AllowAnonymous] // FIXED: Allow anonymous access for public pricing information
     [ProducesResponseType(typeof(ApiResponse<List<PrintSizeDto>>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ApiResponse<object>), StatusCodes.Status500InternalServerError)]
     public async Task<ActionResult<ApiResponse<List<PrintSizeDto>>>> GetActivePrintSizes()
@@ -101,6 +103,7 @@ public class PrintSizesController : ControllerBase
     /// <response code="404">Print size not found or inactive</response>
     /// <response code="500">Internal server error</response>
     [HttpGet("{sizeCode}")]
+    [AllowAnonymous] // FIXED: Allow anonymous access for public pricing information
     [ProducesResponseType(typeof(ApiResponse<PrintSizeDto>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ApiResponse<object>), StatusCodes.Status404NotFound)]
     [ProducesResponseType(typeof(ApiResponse<object>), StatusCodes.Status500InternalServerError)]
@@ -170,6 +173,7 @@ public class PrintSizesController : ControllerBase
     /// <response code="400">Invalid photo dimensions</response>
     /// <response code="500">Internal server error</response>
     [HttpGet("recommendations")]
+    [AllowAnonymous] // FIXED: Allow anonymous access for public recommendations
     [ProducesResponseType(typeof(ApiResponse<List<PrintSizeRecommendationDto>>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ApiResponse<object>), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(ApiResponse<object>), StatusCodes.Status500InternalServerError)]
@@ -262,27 +266,16 @@ public class PrintSizesController : ControllerBase
     {
         var requirements = printSize.Dimensions.PixelRequirements;
 
-        // Calculate effective pixels for this print size orientation
-        var printAspectRatio = (double)printSize.Dimensions.Width / (double)printSize.Dimensions.Height;
-        var photoAspectRatio = (double)photoWidth / photoHeight;
+        // Calculate scaling factors for both dimensions
+        var scaleX = (double)requirements.RecommendedWidth / photoWidth;
+        var scaleY = (double)requirements.RecommendedHeight / photoHeight;
 
-        int effectiveWidth, effectiveHeight;
+        // Use the larger scale to see if photo can fill the print size
+        var scale = Math.Max(scaleX, scaleY);
 
-        if (Math.Abs(printAspectRatio - photoAspectRatio) < 0.1) // Similar aspect ratios
-        {
-            effectiveWidth = photoWidth;
-            effectiveHeight = photoHeight;
-        }
-        else if (printAspectRatio > photoAspectRatio) // Print is wider, limited by height
-        {
-            effectiveHeight = photoHeight;
-            effectiveWidth = (int)(photoHeight * (decimal)printAspectRatio);
-        }
-        else // Print is taller, limited by width
-        {
-            effectiveWidth = photoWidth;
-            effectiveHeight = (int)(photoWidth / (decimal)printAspectRatio);
-        }
+        // Calculate effective resolution when scaled to print size
+        var effectiveWidth = (int)(photoWidth / scale);
+        var effectiveHeight = (int)(photoHeight / scale);
 
         // Determine quality based on resolution
         if (effectiveWidth >= requirements.RecommendedWidth && effectiveHeight >= requirements.RecommendedHeight)
