@@ -49,19 +49,62 @@ try
             };
         });
 
-    // Configure CORS for frontend communication
+    // ============================================================================
+    // ENHANCED CORS CONFIGURATION FOR DIRECT FRONTEND COMMUNICATION
+    // ============================================================================
+
+    // Configure CORS for direct frontend communication (bypassing proxy issues)
+    // This allows your Angular app to communicate directly with the backend
     builder.Services.AddCors(options =>
     {
         options.AddPolicy("AllowFrontend", policy =>
         {
-            var allowedOrigins = builder.Configuration.GetSection("CorsSettings:AllowedOrigins").Get<string[]>()
-                ?? new[] { "http://localhost:4200", "http://localhost:5159", "https://localhost:7037" };
+            // Development origins - includes Angular dev server default port
+            // This array defines which websites are allowed to make requests to your API
+            var allowedOrigins = new[]
+            {
+                "http://localhost:4200",   // Angular dev server HTTP (primary)
+                "https://localhost:4200",  // Angular dev server HTTPS (if configured)
+                "http://localhost:3000",   // Alternative dev port (for flexibility)
+                "http://localhost:5159",   // API HTTP port (for API testing)
+                "https://localhost:7037"   // API HTTPS port (for API testing)
+            };
+
+            Log.Information("Configuring CORS for direct frontend communication with origins: {Origins}",
+                string.Join(", ", allowedOrigins));
 
             policy.WithOrigins(allowedOrigins)
-                  .AllowAnyMethod()
-                  .AllowAnyHeader()
-                  .AllowCredentials(); // Allow cookies/auth headers for JWT tokens
+                  .AllowAnyMethod()         // Allow GET, POST, PUT, DELETE, etc.
+                  .AllowAnyHeader()         // Allow Authorization, Content-Type, etc.
+                  .AllowCredentials()       // Required for cookies and auth headers
+                  .SetPreflightMaxAge(TimeSpan.FromMinutes(30)) // Cache preflight requests for performance
+                  .SetIsOriginAllowed(origin =>
+                  {
+                      // Enhanced origin checking with detailed logging for debugging
+                      // This function decides whether to allow requests from a specific origin
+                      var isAllowed = allowedOrigins.Contains(origin, StringComparer.OrdinalIgnoreCase) ||
+                                      (builder.Environment.IsDevelopment() &&
+                                       origin != null &&
+                                       (origin.StartsWith("http://localhost:", StringComparison.OrdinalIgnoreCase) ||
+                                        origin.StartsWith("https://localhost:", StringComparison.OrdinalIgnoreCase)));
+
+                      Log.Debug("CORS origin check: '{Origin}' -> {IsAllowed}", origin ?? "null", isAllowed);
+                      return isAllowed;
+                  });
         });
+
+        // Add a completely permissive policy for development debugging
+        // This policy allows requests from any origin, useful for troubleshooting
+        if (builder.Environment.IsDevelopment())
+        {
+            options.AddPolicy("DevelopmentDebug", policy =>
+            {
+                policy.AllowAnyOrigin()
+                      .AllowAnyMethod()
+                      .AllowAnyHeader();
+                Log.Information("Created permissive CORS policy for development debugging");
+            });
+        }
     });
 
     // ============================================================================
@@ -238,7 +281,7 @@ try
     var app = builder.Build();
 
     // ============================================================================
-    // FIXED: MIDDLEWARE PIPELINE CONFIGURATION (ORDER IS CRITICAL)
+    // ENHANCED MIDDLEWARE PIPELINE CONFIGURATION (ORDER IS CRITICAL)
     // ============================================================================
 
     // Global error handling (must be first to catch all exceptions)
@@ -247,37 +290,95 @@ try
     // Request logging for monitoring (early in pipeline for complete request tracking)
     app.UseMiddleware<RequestLoggingMiddleware>();
 
-    // Development-specific middleware
+    // ============================================================================
+    // ENHANCED DEVELOPMENT AND PRODUCTION MIDDLEWARE CONFIGURATION
+    // ============================================================================
+
     if (app.Environment.IsDevelopment())
     {
-        // Enable Swagger UI in development environment only
+        // Enable Swagger UI in development
         app.UseSwagger();
         app.UseSwaggerUI(options =>
         {
             options.SwaggerEndpoint("/swagger/v1/swagger.json", "MyImage API v1");
-            options.RoutePrefix = "swagger"; // Access at /swagger
+            options.RoutePrefix = "swagger";
             options.DocumentTitle = "MyImage Photo Printing API";
         });
 
-        // Detailed error pages in development
+        // Detailed error pages
         app.UseDeveloperExceptionPage();
 
-        // FIXED: Only use HTTPS redirection in production to avoid SSL certificate issues in development
-        Log.Information("Development mode: HTTPS redirection disabled for easier local development");
+        // Use the frontend-friendly CORS policy in development
+        app.UseCors("AllowFrontend");
+
+        Log.Information("Development mode: Using direct frontend CORS policy");
+        Log.Information("Frontend should connect to: https://localhost:7037/api");
+        Log.Information("HTTPS redirection disabled for easier local development");
     }
     else
     {
-        // Production security headers
-        app.UseHsts(); // HTTP Strict Transport Security
-
-        // HTTPS redirection only in production, this is a Security middleware
-        app.UseHttpsRedirection(); // Redirect HTTP to HTTPS
+        // Production settings
+        app.UseHsts();
+        app.UseHttpsRedirection();
+        app.UseCors("AllowFrontend"); // Use same policy but with production origins
     }
 
-    // CORS (must be before authentication to handle preflight requests)
-    app.UseCors("AllowFrontend");
+    // ============================================================================
+    // ENHANCED REQUEST/RESPONSE LOGGING FOR DEBUGGING CORS AND AUTH ISSUES
+    // ============================================================================
 
-    // Authentication and authorization middleware (order matters)
+    // This middleware provides detailed logging to help you understand what's happening
+    // with each request, especially useful for debugging CORS and authentication issues
+    app.Use(async (context, next) =>
+    {
+        if (app.Environment.IsDevelopment())
+        {
+            var origin = context.Request.Headers["Origin"].FirstOrDefault();
+            var method = context.Request.Method;
+            var path = context.Request.Path;
+
+            Log.Debug("Incoming request: {Method} {Path} from origin: {Origin}",
+                method, path, origin ?? "No Origin");
+
+            // Log preflight (OPTIONS) requests separately for debugging
+            // Preflight requests are sent by browsers before certain cross-origin requests
+            if (method == "OPTIONS")
+            {
+                Log.Debug("CORS preflight request detected for {Path}", path);
+            }
+
+            if (context.Request.Headers.ContainsKey("Authorization"))
+            {
+                var authHeader = context.Request.Headers["Authorization"].FirstOrDefault();
+                Log.Debug("Authorization header present: {HasBearer}",
+                    authHeader?.StartsWith("Bearer ") == true ? "Yes (Bearer token)" : "Yes (Other)");
+            }
+        }
+
+        await next();
+
+        if (app.Environment.IsDevelopment())
+        {
+            Log.Debug("Response: {StatusCode} for {Method} {Path}",
+                context.Response.StatusCode,
+                context.Request.Method,
+                context.Request.Path);
+
+            // Log CORS-related response headers for debugging
+            // These headers tell the browser whether the cross-origin request is allowed
+            if (context.Response.Headers.ContainsKey("Access-Control-Allow-Origin"))
+            {
+                var allowOrigin = context.Response.Headers["Access-Control-Allow-Origin"].FirstOrDefault();
+                Log.Debug("CORS response header: Access-Control-Allow-Origin = {AllowOrigin}", allowOrigin);
+            }
+        }
+    });
+
+    // ============================================================================
+    // AUTHENTICATION AND AUTHORIZATION MIDDLEWARE (AFTER CORS)
+    // ============================================================================
+
+    // Authentication and authorization (after CORS to handle preflight requests properly)
     app.UseAuthentication(); // JWT token validation
     app.UseAuthorization(); // Role-based access control
 

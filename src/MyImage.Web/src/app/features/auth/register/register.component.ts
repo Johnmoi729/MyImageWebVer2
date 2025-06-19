@@ -177,7 +177,8 @@ export class RegisterComponent implements OnInit {
     if (this.registerForm.valid) {
       this.isLoading = true;
 
-      const { confirmPassword, ...registerData } = this.registerForm.value;
+      // FIXED: Send all form data including confirmPassword for server-side validation
+      const registerData = this.registerForm.value;
 
       this.authService.register(registerData).subscribe({
         next: (response) => {
