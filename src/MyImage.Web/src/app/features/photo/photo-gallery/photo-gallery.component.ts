@@ -296,20 +296,73 @@ export class PhotoGalleryComponent implements OnInit {
     });
   }
 
+  /**
+   * FIXED: Improved photo data preparation for print selector.
+   * Ensures all required photo properties are correctly formatted and available.
+   */
   selectForPrinting(photo: Photo): void {
+    console.log('Gallery - Original photo data:', photo);
+
+    // Create a complete photo object for the print selector with proper URL formatting
+    const photoForSelector = {
+      id: photo.id,
+      filename: photo.filename,
+      fileSize: photo.fileSize,
+      uploadedAt: photo.uploadedAt,
+      // FIXED: Ensure thumbnail URL is properly formatted
+      thumbnailUrl: this.ensureAbsoluteUrl(photo.thumbnailUrl),
+      downloadUrl: this.ensureAbsoluteUrl(photo.downloadUrl),
+      dimensions: {
+        width: photo.dimensions.width,
+        height: photo.dimensions.height,
+        aspectRatio: photo.dimensions.aspectRatio
+      },
+      isOrdered: photo.isOrdered,
+      sourceFolder: photo.sourceFolder
+    };
+
+    console.log('Gallery - Photo data for selector:', photoForSelector);
+
     const dialogRef = this.dialog.open(PrintSelectorComponent, {
-      data: photo,
+      data: photoForSelector,
       width: '600px',
-      maxHeight: '80vh'
+      maxHeight: '80vh',
+      disableClose: false
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result?.action === 'added') {
         this.snackBar.open('Photo added to cart successfully!', 'Close', { duration: 3000 });
-        // Optionally reload photos to update isOrdered status
+        // Reload photos to update any status changes
         this.loadPhotos();
       }
     });
+  }
+
+  /**
+   * FIXED: Helper method to ensure URLs are absolute.
+   * Converts relative URLs to absolute URLs for proper image loading.
+   */
+  private ensureAbsoluteUrl(url: string): string {
+    if (!url) {
+      console.warn('Gallery - Empty URL provided');
+      return '';
+    }
+
+    // If URL is already absolute, return as-is
+    if (url.startsWith('http://') || url.startsWith('https://')) {
+      return url;
+    }
+
+    // If URL is relative, make it absolute
+    if (url.startsWith('/')) {
+      const baseUrl = `${window.location.protocol}//${window.location.host}`;
+      return `${baseUrl}${url}`;
+    }
+
+    // If URL doesn't start with /, assume it's relative to current path
+    const baseUrl = `${window.location.protocol}//${window.location.host}`;
+    return `${baseUrl}/${url}`;
   }
 
   deletePhoto(photo: Photo): void {

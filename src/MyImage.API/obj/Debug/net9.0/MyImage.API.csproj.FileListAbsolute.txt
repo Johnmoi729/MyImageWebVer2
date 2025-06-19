@@ -72,3 +72,4 @@ E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImag
 E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.API\obj\Debug\net9.0\ref\MyImage.API.dll
 E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.API\bin\Debug\net9.0\FluentValidation.AspNetCore.dll
 E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.API\bin\Debug\net9.0\FluentValidation.DependencyInjectionExtensions.dll
+E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.API\obj\Debug\net9.0\MyImage.API.sourcelink.json

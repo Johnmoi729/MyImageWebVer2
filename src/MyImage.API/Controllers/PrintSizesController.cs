@@ -15,7 +15,7 @@ namespace MyImage.API.Controllers;
 /// and doesn't require authentication for basic price information viewing.
 /// </summary>
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/print-sizes")] // FIXED: Changed from [controller] to match API spec
 [Produces("application/json")]
 public class PrintSizesController : ControllerBase
 {

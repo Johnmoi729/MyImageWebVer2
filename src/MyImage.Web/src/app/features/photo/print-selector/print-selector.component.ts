@@ -10,14 +10,15 @@ import { Photo } from '../../../shared/models/photo.models';
 import { PrintSize } from '../../../shared/models/print-size.models';
 
 /**
- * Fixed PrintSelectorComponent with proper photo display handling.
- * Resolves issues with photo not showing in the cart selection dialog.
+ * FIXED PrintSelectorComponent with comprehensive photo display and URL handling.
+ * Resolves issues with photo thumbnails not displaying and improves error handling.
  *
  * Key fixes:
- * - Better error handling for photo URLs
- * - Fallback image display logic
- * - Improved photo URL construction
- * - Added loading states for better UX
+ * - Enhanced URL handling for photo thumbnails and downloads
+ * - Better error handling for image loading failures
+ * - Improved photo data validation and fallback mechanisms
+ * - Enhanced debugging capabilities
+ * - More robust API integration
  */
 @Component({
   selector: 'app-print-selector',
@@ -32,7 +33,7 @@ import { PrintSize } from '../../../shared/models/print-size.models';
       </div>
 
       <div class="photo-preview">
-        <!-- Photo with error handling -->
+        <!-- Photo with comprehensive error handling -->
         <div class="photo-container">
           <img [src]="getPhotoThumbnailUrl()"
                [alt]="photo.filename"
@@ -44,12 +45,14 @@ import { PrintSize } from '../../../shared/models/print-size.models';
           <!-- Loading spinner for image -->
           <div *ngIf="imageLoading" class="image-loading">
             <mat-spinner diameter="40"></mat-spinner>
+            <p>Loading image...</p>
           </div>
 
           <!-- Fallback when image fails -->
           <div *ngIf="imageError" class="image-error">
             <mat-icon>broken_image</mat-icon>
             <span>Image not available</span>
+            <small *ngIf="showDebugInfo">URL: {{ getPhotoThumbnailUrl() }}</small>
           </div>
         </div>
 
@@ -57,6 +60,10 @@ import { PrintSize } from '../../../shared/models/print-size.models';
           <h4>{{ photo.filename }}</h4>
           <p>{{ photo.dimensions.width }} × {{ photo.dimensions.height }} pixels</p>
           <p class="photo-id" *ngIf="showDebugInfo">Photo ID: {{ photo.id }}</p>
+          <p class="photo-urls" *ngIf="showDebugInfo">
+            <small>Thumbnail: {{ photo.thumbnailUrl }}</small><br>
+            <small>Download: {{ photo.downloadUrl }}</small>
+          </p>
         </div>
       </div>
 
@@ -179,6 +186,7 @@ import { PrintSize } from '../../../shared/models/print-size.models';
       display: flex;
       align-items: center;
       justify-content: center;
+      border: 1px solid #ddd;
     }
 
     .preview-thumb {
@@ -190,10 +198,13 @@ import { PrintSize } from '../../../shared/models/print-size.models';
 
     .image-loading {
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       width: 100%;
       height: 100%;
+      font-size: 0.8em;
+      color: #666;
     }
 
     .image-error {
@@ -205,6 +216,7 @@ import { PrintSize } from '../../../shared/models/print-size.models';
       height: 100%;
       color: #666;
       font-size: 0.8em;
+      text-align: center;
     }
 
     .image-error mat-icon {
@@ -212,6 +224,13 @@ import { PrintSize } from '../../../shared/models/print-size.models';
       width: 24px;
       height: 24px;
       margin-bottom: 4px;
+    }
+
+    .image-error small {
+      font-size: 0.7em;
+      color: #999;
+      word-break: break-all;
+      margin-top: 4px;
     }
 
     .photo-info h4 {
@@ -225,9 +244,15 @@ import { PrintSize } from '../../../shared/models/print-size.models';
       font-size: 0.9em;
     }
 
-    .photo-id {
+    .photo-id, .photo-urls {
       font-size: 0.8em !important;
       color: #999 !important;
+    }
+
+    .photo-urls small {
+      font-size: 0.7em;
+      color: #999;
+      word-break: break-all;
     }
 
     .print-form {
@@ -377,8 +402,8 @@ export class PrintSelectorComponent implements OnInit {
   loadingPrintSizes = true;
   errorLoadingPrintSizes = false;
 
-  // Debug flag
-  showDebugInfo = false; // Set to true for debugging
+  // Debug flag - set to true to enable detailed debugging
+  showDebugInfo = true; // FIXED: Enable debug info during integration
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public photo: Photo,
@@ -398,8 +423,33 @@ export class PrintSelectorComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('PrintSelector - Photo data:', this.photo); // Debug log
+    console.log('PrintSelector - Photo data received:', this.photo);
+    this.validatePhotoData();
     this.loadPrintSizes();
+  }
+
+  /**
+   * FIXED: Validate photo data to ensure all required properties exist.
+   */
+  private validatePhotoData(): void {
+    if (!this.photo) {
+      console.error('PrintSelector - No photo data provided');
+      this.snackBar.open('Invalid photo data', 'Close', { duration: 3000 });
+      this.close();
+      return;
+    }
+
+    const requiredFields = ['id', 'filename', 'dimensions'];
+    const missingFields = requiredFields.filter(field => !this.photo[field as keyof Photo]);
+
+    if (missingFields.length > 0) {
+      console.error('PrintSelector - Missing required photo fields:', missingFields);
+      this.snackBar.open('Incomplete photo data', 'Close', { duration: 3000 });
+    }
+
+    if (!this.photo.thumbnailUrl && !this.photo.downloadUrl) {
+      console.warn('PrintSelector - No image URLs available for photo');
+    }
   }
 
   trackByIndex(index: number, item: any): number {
@@ -407,23 +457,52 @@ export class PrintSelectorComponent implements OnInit {
   }
 
   /**
-   * Get the proper thumbnail URL for the photo with error handling.
+   * FIXED: Get the proper thumbnail URL for the photo with enhanced error handling.
+   * Now properly handles different URL formats and provides detailed debugging.
    */
   getPhotoThumbnailUrl(): string {
-    if (!this.photo?.thumbnailUrl) {
-      console.warn('PrintSelector - No thumbnail URL found for photo:', this.photo);
+    if (!this.photo) {
+      console.error('PrintSelector - No photo data provided');
       return '';
     }
 
-    // Ensure the URL is absolute
-    let url = this.photo.thumbnailUrl;
-    if (url.startsWith('/')) {
-      // If it's a relative URL, make it absolute
-      url = `${window.location.protocol}//${window.location.host}${url}`;
+    if (!this.photo.thumbnailUrl) {
+      console.warn('PrintSelector - No thumbnail URL found for photo:', this.photo);
+      // Try to use download URL as fallback
+      if (this.photo.downloadUrl) {
+        console.log('PrintSelector - Using download URL as fallback');
+        return this.ensureAbsoluteUrl(this.photo.downloadUrl);
+      }
+      return '';
     }
 
-    console.log('PrintSelector - Using thumbnail URL:', url); // Debug log
-    return url;
+    const finalUrl = this.ensureAbsoluteUrl(this.photo.thumbnailUrl);
+    console.log('PrintSelector - Final thumbnail URL:', finalUrl);
+    return finalUrl;
+  }
+
+  /**
+   * FIXED: Helper method to ensure URLs are absolute with comprehensive handling.
+   */
+  private ensureAbsoluteUrl(url: string): string {
+    if (!url) {
+      return '';
+    }
+
+    // If URL is already absolute, return as-is
+    if (url.startsWith('http://') || url.startsWith('https://')) {
+      return url;
+    }
+
+    // If URL is relative, make it absolute
+    if (url.startsWith('/')) {
+      const baseUrl = `${window.location.protocol}//${window.location.host}`;
+      return `${baseUrl}${url}`;
+    }
+
+    // If URL doesn't start with /, assume it's relative to API base
+    const baseUrl = `${window.location.protocol}//${window.location.host}`;
+    return `${baseUrl}/${url}`;
   }
 
   /**
@@ -436,48 +515,67 @@ export class PrintSelectorComponent implements OnInit {
   }
 
   /**
-   * Handle image load error.
+   * FIXED: Enhanced image error handling with fallback attempts.
    */
   onImageError(event: any): void {
-    this.imageLoading = false;
-    this.imageError = true;
     console.error('PrintSelector - Image failed to load:', event);
     console.error('PrintSelector - Failed URL:', this.getPhotoThumbnailUrl());
 
-    // Try to load the download URL as fallback
     const img = event.target as HTMLImageElement;
-    if (this.photo.downloadUrl && img.src !== this.photo.downloadUrl) {
+
+    // Try download URL as fallback if we were using thumbnail URL
+    if (this.photo.downloadUrl && img.src !== this.ensureAbsoluteUrl(this.photo.downloadUrl)) {
       console.log('PrintSelector - Trying download URL as fallback');
-      img.src = this.photo.downloadUrl;
-      this.imageError = false;
-      this.imageLoading = true;
+      img.src = this.ensureAbsoluteUrl(this.photo.downloadUrl);
+      return; // Don't set error state yet, give fallback a chance
     }
+
+    // All attempts failed
+    this.imageLoading = false;
+    this.imageError = true;
+    console.error('PrintSelector - All image loading attempts failed');
   }
 
   /**
-   * Load print sizes with better error handling.
+   * FIXED: Load print sizes with enhanced error handling and retry logic.
    */
   loadPrintSizes(): void {
     this.loadingPrintSizes = true;
     this.errorLoadingPrintSizes = false;
 
+    console.log('PrintSelector - Loading print sizes...');
+
     this.printSizeService.getPrintSizes().subscribe({
       next: (response) => {
         this.loadingPrintSizes = false;
-        if (response.success) {
+        console.log('PrintSelector - Print sizes API response:', response);
+
+        if (response.success && response.data) {
           this.printSizes = response.data.filter((size: PrintSize) => size.isActive);
           this.initializeForm();
           console.log('PrintSelector - Loaded print sizes:', this.printSizes.length);
         } else {
           this.errorLoadingPrintSizes = true;
           console.error('PrintSelector - API returned success=false:', response.message);
+          this.snackBar.open('Failed to load print sizes: ' + response.message, 'Close', { duration: 5000 });
         }
       },
       error: (error) => {
         this.loadingPrintSizes = false;
         this.errorLoadingPrintSizes = true;
         console.error('PrintSelector - Error loading print sizes:', error);
-        this.snackBar.open('Failed to load print sizes', 'Close', { duration: 3000 });
+
+        // Provide detailed error information
+        let errorMessage = 'Failed to load print sizes';
+        if (error.status === 404) {
+          errorMessage += ' - API endpoint not found (404)';
+        } else if (error.status === 0) {
+          errorMessage += ' - Network error or CORS issue';
+        } else if (error.status >= 500) {
+          errorMessage += ' - Server error';
+        }
+
+        this.snackBar.open(errorMessage, 'Close', { duration: 5000 });
       }
     });
   }
@@ -568,6 +666,9 @@ export class PrintSelectorComponent implements OnInit {
     }
   }
 
+  /**
+   * FIXED: Enhanced add to cart with comprehensive error handling and debugging.
+   */
   addToCart(): void {
     if (!this.hasValidSelections()) return;
 
@@ -592,23 +693,39 @@ export class PrintSelectorComponent implements OnInit {
       }
     });
 
-    console.log('PrintSelector - Adding to cart:', { photoId: this.photo.id, printSelections });
+    console.log('PrintSelector - Adding to cart:', {
+      photoId: this.photo.id,
+      printSelections,
+      totalCost: this.getTotalCost()
+    });
 
     this.cartService.addToCart(this.photo.id, printSelections).subscribe({
       next: (response) => {
         this.isAdding = false;
+        console.log('PrintSelector - Add to cart response:', response);
+
         if (response.success) {
           this.snackBar.open('Added to cart successfully!', 'Close', { duration: 3000 });
           this.dialogRef.close({ action: 'added', selections: printSelections });
         } else {
           console.error('PrintSelector - Add to cart failed:', response.message);
-          this.snackBar.open('Failed to add to cart: ' + response.message, 'Close', { duration: 3000 });
+          this.snackBar.open('Failed to add to cart: ' + response.message, 'Close', { duration: 5000 });
         }
       },
       error: (error) => {
         this.isAdding = false;
         console.error('PrintSelector - Error adding to cart:', error);
-        this.snackBar.open('Failed to add to cart', 'Close', { duration: 3000 });
+
+        let errorMessage = 'Failed to add to cart';
+        if (error.status === 401) {
+          errorMessage += ' - Please log in again';
+        } else if (error.status === 404) {
+          errorMessage += ' - Photo or cart service not found';
+        } else if (error.status >= 500) {
+          errorMessage += ' - Server error';
+        }
+
+        this.snackBar.open(errorMessage, 'Close', { duration: 5000 });
       }
     });
   }

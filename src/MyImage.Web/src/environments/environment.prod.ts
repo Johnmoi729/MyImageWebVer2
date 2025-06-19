@@ -6,3 +6,4 @@ export const environment = {
   encryptionPublicKey: '',
   tokenKey: 'myimage_token'
 };
+// Require more config to work
