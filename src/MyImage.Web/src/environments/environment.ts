@@ -10,7 +10,11 @@
 
   // UI configuration
   defaultPageSize: 20,
-  thumbnailSize: 300,
+  imageConfig: {
+    thumbnailMaxWidth: 300,
+    thumbnailMaxHeight: 300,
+    galleryPageSize: 12
+  },
 
   // Debug settings for development
   enableDebugMode: true,

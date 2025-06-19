@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+// src/MyImage.Web/src/app/features/photo/photo-gallery/photo-gallery.component.ts
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { PageEvent } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -29,13 +30,27 @@ import { PrintSelectorComponent } from '../print-selector/print-selector.compone
 
       <!-- Photos Grid -->
       <div class="photos-grid" *ngIf="photos.length > 0">
-        <mat-card class="photo-card" *ngFor="let photo of photos">
+        <mat-card class="photo-card" *ngFor="let photo of photos; trackBy: trackByPhotoId">
           <div class="photo-container" (click)="openPhotoPreview(photo)">
-            <img [src]="photo.thumbnailUrl"
+            <!-- FIXED: Use authenticated blob URL with loading states -->
+            <div *ngIf="!getPhotoImageUrl(photo.id)" class="photo-loading">
+              <mat-spinner diameter="30"></mat-spinner>
+            </div>
+
+            <img *ngIf="getPhotoImageUrl(photo.id)"
+                 [src]="getPhotoImageUrl(photo.id)"
                  [alt]="photo.filename"
                  class="photo-thumbnail"
-                 loading="lazy">
-            <div class="photo-overlay">
+                 loading="lazy"
+                 (error)="onImageError(photo.id)">
+
+            <!-- Error state -->
+            <div *ngIf="imageErrors.has(photo.id)" class="photo-error">
+              <mat-icon>broken_image</mat-icon>
+              <span>Image unavailable</span>
+            </div>
+
+            <div class="photo-overlay" *ngIf="getPhotoImageUrl(photo.id) && !imageErrors.has(photo.id)">
               <mat-icon class="zoom-icon">zoom_in</mat-icon>
             </div>
           </div>
@@ -77,6 +92,12 @@ import { PrintSelectorComponent } from '../print-selector/print-selector.compone
           <mat-icon>add</mat-icon>
           Upload Photos
         </button>
+      </div>
+
+      <!-- Loading -->
+      <div class="loading-container" *ngIf="isLoading">
+        <mat-spinner></mat-spinner>
+        <p>Loading photos...</p>
       </div>
 
       <!-- Pagination -->
@@ -126,6 +147,10 @@ import { PrintSelectorComponent } from '../print-selector/print-selector.compone
       height: 200px;
       cursor: pointer;
       overflow: hidden;
+      background: #f5f5f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .photo-thumbnail {
@@ -137,6 +162,33 @@ import { PrintSelectorComponent } from '../print-selector/print-selector.compone
 
     .photo-container:hover .photo-thumbnail {
       transform: scale(1.05);
+    }
+
+    .photo-loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      color: #666;
+    }
+
+    .photo-error {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      color: #999;
+      font-size: 0.9em;
+    }
+
+    .photo-error mat-icon {
+      font-size: 32px;
+      width: 32px;
+      height: 32px;
+      margin-bottom: 8px;
     }
 
     .photo-overlay {
@@ -212,7 +264,7 @@ import { PrintSelectorComponent } from '../print-selector/print-selector.compone
       height: 16px;
     }
 
-    .empty-state {
+    .empty-state, .loading-container {
       text-align: center;
       padding: 60px 20px;
     }
@@ -239,13 +291,17 @@ import { PrintSelectorComponent } from '../print-selector/print-selector.compone
     }
   `]
 })
-export class PhotoGalleryComponent implements OnInit {
+export class PhotoGalleryComponent implements OnInit, OnDestroy {
   photos: Photo[] = [];
   totalPhotos = 0;
   availablePhotos = 0;
   pageSize = 12;
   currentPage = 1;
   isLoading = false;
+
+  // FIXED: Track image URLs and errors
+  photoImageUrls = new Map<string, string>();
+  imageErrors = new Set<string>();
 
   constructor(
     private photoService: PhotoService,
@@ -257,28 +313,92 @@ export class PhotoGalleryComponent implements OnInit {
     this.loadPhotos();
   }
 
+  ngOnDestroy(): void {
+    // FIXED: Clean up blob URLs to prevent memory leaks
+    this.photoService.clearImageCache();
+  }
+
+  trackByPhotoId(index: number, photo: Photo): string {
+    return photo.id;
+  }
+
   loadPhotos(): void {
     this.isLoading = true;
 
     this.photoService.getPhotos(this.currentPage, this.pageSize).subscribe({
       next: (response) => {
         this.isLoading = false;
-        if (response.success) {
+        console.log('Gallery - Photos loaded:', response);
+
+        if (response.success && response.data) {
           this.photos = response.data.items;
           this.totalPhotos = response.data.totalCount;
           this.availablePhotos = this.photos.filter(p => !p.isOrdered).length;
+
+          // FIXED: Load authenticated image URLs for each photo
+          this.loadPhotoImages();
+        } else {
+          console.error('Gallery - API returned success=false:', response);
+          this.snackBar.open('Failed to load photos: ' + response.message, 'Close', { duration: 5000 });
         }
       },
       error: (error) => {
         this.isLoading = false;
-        this.snackBar.open('Failed to load photos', 'Close', { duration: 3000 });
+        console.error('Gallery - Error loading photos:', error);
+
+        let errorMessage = 'Failed to load photos';
+        if (error.status === 0) {
+          errorMessage += ' - Check API connection';
+        } else if (error.status === 401) {
+          errorMessage += ' - Please log in again';
+        }
+
+        this.snackBar.open(errorMessage, 'Close', { duration: 5000 });
       }
     });
+  }
+
+  /**
+   * FIXED: Load authenticated image URLs for all photos.
+   */
+  private loadPhotoImages(): void {
+    this.photos.forEach(photo => {
+      this.photoService.getThumbnailUrl(photo.id).subscribe({
+        next: (blobUrl) => {
+          this.photoImageUrls.set(photo.id, blobUrl);
+          console.log(`Gallery - Loaded image for ${photo.id}`);
+        },
+        error: (error) => {
+          console.error(`Gallery - Failed to load image for ${photo.id}:`, error);
+          this.imageErrors.add(photo.id);
+        }
+      });
+    });
+  }
+
+  /**
+   * FIXED: Get cached image URL for display.
+   */
+  getPhotoImageUrl(photoId: string): string | null {
+    return this.photoImageUrls.get(photoId) || null;
+  }
+
+  /**
+   * FIXED: Handle image loading errors.
+   */
+  onImageError(photoId: string): void {
+    console.error(`Gallery - Image error for photo ${photoId}`);
+    this.imageErrors.add(photoId);
   }
 
   onPageChange(event: PageEvent): void {
     this.currentPage = event.pageIndex + 1;
     this.pageSize = event.pageSize;
+
+    // Clear current images
+    this.photoImageUrls.clear();
+    this.imageErrors.clear();
+
     this.loadPhotos();
   }
 
@@ -296,35 +416,11 @@ export class PhotoGalleryComponent implements OnInit {
     });
   }
 
-  /**
-   * FIXED: Improved photo data preparation for print selector.
-   * Ensures all required photo properties are correctly formatted and available.
-   */
   selectForPrinting(photo: Photo): void {
-    console.log('Gallery - Original photo data:', photo);
-
-    // Create a complete photo object for the print selector with proper URL formatting
-    const photoForSelector = {
-      id: photo.id,
-      filename: photo.filename,
-      fileSize: photo.fileSize,
-      uploadedAt: photo.uploadedAt,
-      // FIXED: Ensure thumbnail URL is properly formatted
-      thumbnailUrl: this.ensureAbsoluteUrl(photo.thumbnailUrl),
-      downloadUrl: this.ensureAbsoluteUrl(photo.downloadUrl),
-      dimensions: {
-        width: photo.dimensions.width,
-        height: photo.dimensions.height,
-        aspectRatio: photo.dimensions.aspectRatio
-      },
-      isOrdered: photo.isOrdered,
-      sourceFolder: photo.sourceFolder
-    };
-
-    console.log('Gallery - Photo data for selector:', photoForSelector);
+    console.log('Gallery - Selecting photo for printing:', photo);
 
     const dialogRef = this.dialog.open(PrintSelectorComponent, {
-      data: photoForSelector,
+      data: photo,
       width: '600px',
       maxHeight: '80vh',
       disableClose: false
@@ -333,36 +429,9 @@ export class PhotoGalleryComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result?.action === 'added') {
         this.snackBar.open('Photo added to cart successfully!', 'Close', { duration: 3000 });
-        // Reload photos to update any status changes
         this.loadPhotos();
       }
     });
-  }
-
-  /**
-   * FIXED: Helper method to ensure URLs are absolute.
-   * Converts relative URLs to absolute URLs for proper image loading.
-   */
-  private ensureAbsoluteUrl(url: string): string {
-    if (!url) {
-      console.warn('Gallery - Empty URL provided');
-      return '';
-    }
-
-    // If URL is already absolute, return as-is
-    if (url.startsWith('http://') || url.startsWith('https://')) {
-      return url;
-    }
-
-    // If URL is relative, make it absolute
-    if (url.startsWith('/')) {
-      const baseUrl = `${window.location.protocol}//${window.location.host}`;
-      return `${baseUrl}${url}`;
-    }
-
-    // If URL doesn't start with /, assume it's relative to current path
-    const baseUrl = `${window.location.protocol}//${window.location.host}`;
-    return `${baseUrl}/${url}`;
   }
 
   deletePhoto(photo: Photo): void {
@@ -372,9 +441,12 @@ export class PhotoGalleryComponent implements OnInit {
           if (response.success) {
             this.snackBar.open('Photo deleted successfully', 'Close', { duration: 3000 });
             this.loadPhotos();
+          } else {
+            this.snackBar.open('Failed to delete photo: ' + response.message, 'Close', { duration: 5000 });
           }
         },
         error: (error) => {
+          console.error('Gallery - Delete error:', error);
           this.snackBar.open('Failed to delete photo', 'Close', { duration: 3000 });
         }
       });
