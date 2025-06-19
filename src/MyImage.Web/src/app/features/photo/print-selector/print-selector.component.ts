@@ -10,19 +10,17 @@ import { Photo } from '../../../shared/models/photo.models';
 import { PrintSize } from '../../../shared/models/print-size.models';
 
 /**
- * Component for selecting print sizes and quantities for a specific photo.
- * This dialog allows users to choose multiple print sizes for a single photo,
- * calculate totals in real-time, and add selections to their shopping cart.
+ * Fixed PrintSelectorComponent with proper photo display handling.
+ * Resolves issues with photo not showing in the cart selection dialog.
  *
- * Key Features:
- * - Multi-size selection per photo (implements Requirement 2)
- * - Real-time price calculation
- * - Quality indicators based on photo resolution
- * - Form validation and error handling
+ * Key fixes:
+ * - Better error handling for photo URLs
+ * - Fallback image display logic
+ * - Improved photo URL construction
+ * - Added loading states for better UX
  */
 @Component({
   selector: 'app-print-selector',
-  // Modern Angular standalone component
   standalone: false,
   template: `
     <div class="selector-container">
@@ -34,16 +32,36 @@ import { PrintSize } from '../../../shared/models/print-size.models';
       </div>
 
       <div class="photo-preview">
-        <img [src]="photo.thumbnailUrl" [alt]="photo.filename" class="preview-thumb">
+        <!-- Photo with error handling -->
+        <div class="photo-container">
+          <img [src]="getPhotoThumbnailUrl()"
+               [alt]="photo.filename"
+               class="preview-thumb"
+               (error)="onImageError($event)"
+               (load)="onImageLoad()"
+               [style.display]="imageLoading ? 'none' : 'block'">
+
+          <!-- Loading spinner for image -->
+          <div *ngIf="imageLoading" class="image-loading">
+            <mat-spinner diameter="40"></mat-spinner>
+          </div>
+
+          <!-- Fallback when image fails -->
+          <div *ngIf="imageError" class="image-error">
+            <mat-icon>broken_image</mat-icon>
+            <span>Image not available</span>
+          </div>
+        </div>
+
         <div class="photo-info">
           <h4>{{ photo.filename }}</h4>
           <p>{{ photo.dimensions.width }} × {{ photo.dimensions.height }} pixels</p>
+          <p class="photo-id" *ngIf="showDebugInfo">Photo ID: {{ photo.id }}</p>
         </div>
       </div>
 
-      <form [formGroup]="printForm" class="print-form">
+      <form [formGroup]="printForm" class="print-form" *ngIf="printSizes.length > 0">
         <div class="size-selections" formArrayName="selections">
-          <!-- Use ng-container to handle both *ngFor and *ngIf without conflict -->
           <ng-container *ngFor="let selection of selectionsArray.controls; let i = index; trackBy: trackByIndex">
             <div class="size-item"
                  [formGroupName]="i"
@@ -53,7 +71,6 @@ import { PrintSize } from '../../../shared/models/print-size.models';
                 <mat-checkbox formControlName="selected"
                              (change)="onSizeToggle(i, $event.checked)">
                   <div class="size-info">
-                    <!-- Safe to use direct access since we check existence with *ngIf -->
                     <span class="size-name">{{ printSizes[i].displayName }}</span>
                     <span class="size-dimensions">
                       {{ printSizes[i].width }}" × {{ printSizes[i].height }}"
@@ -113,6 +130,19 @@ import { PrintSize } from '../../../shared/models/print-size.models';
           </button>
         </div>
       </form>
+
+      <!-- Loading state for print sizes -->
+      <div *ngIf="loadingPrintSizes" class="loading-print-sizes">
+        <mat-spinner diameter="40"></mat-spinner>
+        <p>Loading print sizes...</p>
+      </div>
+
+      <!-- Error state -->
+      <div *ngIf="errorLoadingPrintSizes" class="error-state">
+        <mat-icon color="warn">error</mat-icon>
+        <p>Failed to load print sizes. Please try again.</p>
+        <button mat-button (click)="loadPrintSizes()">Retry</button>
+      </div>
     </div>
   `,
   styles: [`
@@ -139,11 +169,49 @@ import { PrintSize } from '../../../shared/models/print-size.models';
       background: #fafafa;
     }
 
+    .photo-container {
+      position: relative;
+      width: 80px;
+      height: 80px;
+      border-radius: 4px;
+      overflow: hidden;
+      background: #f0f0f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
     .preview-thumb {
       width: 80px;
       height: 80px;
       object-fit: cover;
       border-radius: 4px;
+    }
+
+    .image-loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+    }
+
+    .image-error {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      color: #666;
+      font-size: 0.8em;
+    }
+
+    .image-error mat-icon {
+      font-size: 24px;
+      width: 24px;
+      height: 24px;
+      margin-bottom: 4px;
     }
 
     .photo-info h4 {
@@ -155,6 +223,11 @@ import { PrintSize } from '../../../shared/models/print-size.models';
       margin: 0;
       color: #666;
       font-size: 0.9em;
+    }
+
+    .photo-id {
+      font-size: 0.8em !important;
+      color: #999 !important;
     }
 
     .print-form {
@@ -275,6 +348,20 @@ import { PrintSize } from '../../../shared/models/print-size.models';
       padding: 16px 0;
       border-top: 1px solid #eee;
     }
+
+    .loading-print-sizes, .error-state {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      text-align: center;
+    }
+
+    .loading-print-sizes mat-spinner,
+    .error-state mat-icon {
+      margin-bottom: 16px;
+    }
   `]
 })
 export class PrintSelectorComponent implements OnInit {
@@ -282,104 +369,143 @@ export class PrintSelectorComponent implements OnInit {
   printSizes: PrintSize[] = [];
   isAdding = false;
 
+  // Image state management
+  imageLoading = true;
+  imageError = false;
+
+  // Loading states
+  loadingPrintSizes = true;
+  errorLoadingPrintSizes = false;
+
+  // Debug flag
+  showDebugInfo = false; // Set to true for debugging
+
   constructor(
-    @Inject(MAT_DIALOG_DATA) public photo: Photo, // Photo data passed from parent component
-    private dialogRef: MatDialogRef<PrintSelectorComponent>, // Dialog reference for closing
-    private fb: FormBuilder, // For building reactive forms
-    private printSizeService: PrintSizeService, // Service to fetch available print sizes
-    private cartService: CartService, // Service to add items to cart
-    private snackBar: MatSnackBar // For user feedback messages
+    @Inject(MAT_DIALOG_DATA) public photo: Photo,
+    private dialogRef: MatDialogRef<PrintSelectorComponent>,
+    private fb: FormBuilder,
+    private printSizeService: PrintSizeService,
+    private cartService: CartService,
+    private snackBar: MatSnackBar
   ) {
-    // Initialize reactive form with FormArray for multiple size selections
     this.printForm = this.fb.group({
       selections: this.fb.array([])
     });
   }
 
-  /**
-   * Getter for the FormArray containing print size selections.
-   * This allows easy access to the selections array in the template.
-   */
   get selectionsArray(): FormArray {
     return this.printForm.get('selections') as FormArray;
   }
 
   ngOnInit(): void {
+    console.log('PrintSelector - Photo data:', this.photo); // Debug log
     this.loadPrintSizes();
   }
 
-  /**
-   * TrackBy function for ngFor to improve performance and prevent unnecessary re-renders.
-   * This helps Angular track which items have changed when the array is updated.
-   */
   trackByIndex(index: number, item: any): number {
     return index;
   }
 
   /**
-   * Loads available print sizes from the API and initializes the form.
-   * This implements the API call to /api/print-sizes endpoint.
+   * Get the proper thumbnail URL for the photo with error handling.
    */
-  private loadPrintSizes(): void {
+  getPhotoThumbnailUrl(): string {
+    if (!this.photo?.thumbnailUrl) {
+      console.warn('PrintSelector - No thumbnail URL found for photo:', this.photo);
+      return '';
+    }
+
+    // Ensure the URL is absolute
+    let url = this.photo.thumbnailUrl;
+    if (url.startsWith('/')) {
+      // If it's a relative URL, make it absolute
+      url = `${window.location.protocol}//${window.location.host}${url}`;
+    }
+
+    console.log('PrintSelector - Using thumbnail URL:', url); // Debug log
+    return url;
+  }
+
+  /**
+   * Handle image load success.
+   */
+  onImageLoad(): void {
+    this.imageLoading = false;
+    this.imageError = false;
+    console.log('PrintSelector - Image loaded successfully');
+  }
+
+  /**
+   * Handle image load error.
+   */
+  onImageError(event: any): void {
+    this.imageLoading = false;
+    this.imageError = true;
+    console.error('PrintSelector - Image failed to load:', event);
+    console.error('PrintSelector - Failed URL:', this.getPhotoThumbnailUrl());
+
+    // Try to load the download URL as fallback
+    const img = event.target as HTMLImageElement;
+    if (this.photo.downloadUrl && img.src !== this.photo.downloadUrl) {
+      console.log('PrintSelector - Trying download URL as fallback');
+      img.src = this.photo.downloadUrl;
+      this.imageError = false;
+      this.imageLoading = true;
+    }
+  }
+
+  /**
+   * Load print sizes with better error handling.
+   */
+  loadPrintSizes(): void {
+    this.loadingPrintSizes = true;
+    this.errorLoadingPrintSizes = false;
+
     this.printSizeService.getPrintSizes().subscribe({
       next: (response) => {
+        this.loadingPrintSizes = false;
         if (response.success) {
-          // Filter to only show active print sizes
           this.printSizes = response.data.filter((size: PrintSize) => size.isActive);
           this.initializeForm();
+          console.log('PrintSelector - Loaded print sizes:', this.printSizes.length);
+        } else {
+          this.errorLoadingPrintSizes = true;
+          console.error('PrintSelector - API returned success=false:', response.message);
         }
       },
       error: (error) => {
-        console.error('Error loading print sizes:', error);
+        this.loadingPrintSizes = false;
+        this.errorLoadingPrintSizes = true;
+        console.error('PrintSelector - Error loading print sizes:', error);
         this.snackBar.open('Failed to load print sizes', 'Close', { duration: 3000 });
       }
     });
   }
 
-  /**
-   * Initializes the reactive form with FormGroups for each print size.
-   * Creates a FormGroup for each size containing selection state, quantity, and pricing info.
-   * Ensures the form array length matches the printSizes array length for consistency.
-   */
   private initializeForm(): void {
     const selectionsArray = this.fb.array(
       this.printSizes.map(size => this.fb.group({
-        selected: [false], // Whether this size is selected
-        quantity: [1, [Validators.min(1), Validators.max(100)]], // Quantity with validation
-        sizeCode: [size.sizeCode], // Size identifier
-        unitPrice: [size.price] // Price per unit
+        selected: [false],
+        quantity: [1, [Validators.min(1), Validators.max(100)]],
+        sizeCode: [size.sizeCode],
+        unitPrice: [size.price]
       }))
     );
 
     this.printForm.setControl('selections', selectionsArray);
   }
 
-  /**
-   * Handles toggling of size selection checkbox.
-   * When unchecked, resets quantity to 1 and recalculates totals.
-   */
   onSizeToggle(index: number, selected: boolean): void {
     if (!selected) {
-      // Reset quantity to 1 when unchecking
       this.selectionsArray.at(index).get('quantity')?.setValue(1);
     }
     this.calculateTotal();
   }
 
-  /**
-   * Triggers recalculation of totals.
-   * This method can be expanded to perform additional calculations if needed.
-   */
   calculateTotal(): void {
-    // The totals are calculated by getters, this just ensures change detection runs
-    // Could be expanded for more complex tax calculations or bulk discounts
+    // Trigger change detection
   }
 
-  /**
-   * Calculates the total cost for a specific print size selection.
-   * Multiplies quantity by unit price only if the size is selected.
-   * Returns 0 if the print size doesn't exist at the given index.
-   */
   getLineTotal(index: number): number {
     const selection = this.selectionsArray.at(index);
     const printSize = this.printSizes[index];
@@ -395,20 +521,12 @@ export class PrintSelectorComponent implements OnInit {
     return selected ? quantity * unitPrice : 0;
   }
 
-  /**
-   * Calculates the total cost for all selected print sizes.
-   * Sums up all line totals across all selections.
-   */
   getTotalCost(): number {
     return this.selectionsArray.controls.reduce((total, control, index) => {
       return total + this.getLineTotal(index);
     }, 0);
   }
 
-  /**
-   * Checks if there are valid selections to enable the Add to Cart button.
-   * Requires at least one size to be selected with a quantity greater than 0.
-   */
   hasValidSelections(): boolean {
     return this.selectionsArray.controls.some(control =>
       control.get('selected')?.value &&
@@ -416,11 +534,6 @@ export class PrintSelectorComponent implements OnInit {
     );
   }
 
-  /**
-   * Determines print quality CSS class based on photo resolution vs print requirements.
-   * Compares photo dimensions with recommended and minimum print size requirements.
-   * Returns 'fair' if print size doesn't exist to prevent errors.
-   */
   getQualityClass(index: number): string {
     const printSize = this.printSizes[index];
     if (!printSize) return 'fair';
@@ -428,24 +541,15 @@ export class PrintSelectorComponent implements OnInit {
     const photoWidth = this.photo.dimensions.width;
     const photoHeight = this.photo.dimensions.height;
 
-    // Check against recommended resolution for excellent quality
     if (photoWidth >= printSize.recommendedWidth && photoHeight >= printSize.recommendedHeight) {
       return 'excellent';
-    }
-    // Check against minimum resolution for good quality
-    else if (photoWidth >= printSize.minWidth && photoHeight >= printSize.minHeight) {
+    } else if (photoWidth >= printSize.minWidth && photoHeight >= printSize.minHeight) {
       return 'good';
-    }
-    // Below minimum resolution - fair quality with potential pixelation
-    else {
+    } else {
       return 'fair';
     }
   }
 
-  /**
-   * Returns appropriate icon for quality rating.
-   * Maps quality levels to Material Design icons.
-   */
   getQualityIcon(index: number): string {
     const quality = this.getQualityClass(index);
     switch (quality) {
@@ -455,10 +559,6 @@ export class PrintSelectorComponent implements OnInit {
     }
   }
 
-  /**
-   * Returns descriptive text for quality rating.
-   * Provides user-friendly explanation of print quality expectations.
-   */
   getQualityText(index: number): string {
     const quality = this.getQualityClass(index);
     switch (quality) {
@@ -468,17 +568,11 @@ export class PrintSelectorComponent implements OnInit {
     }
   }
 
-  /**
-   * Adds selected print sizes to the shopping cart.
-   * Builds PrintSelection array and calls cart service API.
-   * Implements the multi-size selection requirement.
-   */
   addToCart(): void {
     if (!this.hasValidSelections()) return;
 
     this.isAdding = true;
 
-    // Build array of print selections from form data
     const printSelections: PrintSelection[] = [];
 
     this.selectionsArray.controls.forEach((control, index) => {
@@ -486,7 +580,6 @@ export class PrintSelectorComponent implements OnInit {
         const printSize = this.printSizes[index];
         const quantity = control.get('quantity')?.value || 0;
 
-        // Only add if print size exists
         if (printSize) {
           printSelections.push({
             sizeCode: printSize.sizeCode,
@@ -499,26 +592,27 @@ export class PrintSelectorComponent implements OnInit {
       }
     });
 
-    // Call cart service to add selections to cart
+    console.log('PrintSelector - Adding to cart:', { photoId: this.photo.id, printSelections });
+
     this.cartService.addToCart(this.photo.id, printSelections).subscribe({
       next: (response) => {
         this.isAdding = false;
         if (response.success) {
           this.snackBar.open('Added to cart successfully!', 'Close', { duration: 3000 });
           this.dialogRef.close({ action: 'added', selections: printSelections });
+        } else {
+          console.error('PrintSelector - Add to cart failed:', response.message);
+          this.snackBar.open('Failed to add to cart: ' + response.message, 'Close', { duration: 3000 });
         }
       },
       error: (error) => {
         this.isAdding = false;
-        console.error('Error adding to cart:', error);
+        console.error('PrintSelector - Error adding to cart:', error);
         this.snackBar.open('Failed to add to cart', 'Close', { duration: 3000 });
       }
     });
   }
 
-  /**
-   * Closes the dialog without making any changes.
-   */
   close(): void {
     this.dialogRef.close();
   }

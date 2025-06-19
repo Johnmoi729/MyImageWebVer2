@@ -13,4 +13,3 @@ E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImag
 E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.Infrastructure\obj\Debug\net9.0\refint\MyImage.Infrastructure.dll
 E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.Infrastructure\obj\Debug\net9.0\MyImage.Infrastructure.pdb
 E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.Infrastructure\obj\Debug\net9.0\ref\MyImage.Infrastructure.dll
-E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.Infrastructure\obj\Debug\net9.0\MyImage.Infrastructure.sourcelink.json
