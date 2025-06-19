@@ -1,0 +1,699 @@
+2025-06-19 04:31:46.166 +07:00 [INF] Starting MyImage Photo Printing API
+2025-06-19 04:31:46.338 +07:00 [INF] Development mode: HTTPS redirection disabled for easier local development
+2025-06-19 04:31:46.413 +07:00 [INF] Initializing database...
+2025-06-19 04:31:46.441 +07:00 [INF] Connecting to MongoDB database: myimage_dev
+2025-06-19 04:31:46.537 +07:00 [INF] MongoDB context initialized successfully
+2025-06-19 04:31:46.540 +07:00 [INF] Creating MongoDB indexes...
+2025-06-19 04:31:46.610 +07:00 [INF] Database connection established successfully
+2025-06-19 04:31:46.612 +07:00 [INF] Seeding initial data...
+2025-06-19 04:31:46.613 +07:00 [INF] AuthService initialized with JWT expiration: 24 hours
+2025-06-19 04:31:46.621 +07:00 [INF] MongoDB indexes created successfully
+2025-06-19 04:31:46.686 +07:00 [INF] Seeding system settings...
+2025-06-19 04:31:46.699 +07:00 [INF] System settings seeding completed successfully
+2025-06-19 04:31:46.700 +07:00 [INF] Initial data seeding completed successfully
+2025-06-19 04:31:46.702 +07:00 [INF] Database initialization completed successfully
+2025-06-19 04:31:46.703 +07:00 [INF] MyImage API starting on Development environment
+2025-06-19 04:31:46.704 +07:00 [INF] API documentation available at: /swagger (development only)
+2025-06-19 04:31:46.704 +07:00 [INF] Health check available at: /health
+2025-06-19 04:31:46.720 +07:00 [INF] User profile is available. Using 'C:\Users\ACER\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-19 04:31:46.776 +07:00 [INF] Now listening on: http://localhost:5159
+2025-06-19 04:31:46.777 +07:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-19 04:31:46.778 +07:00 [INF] Hosting environment: Development
+2025-06-19 04:31:46.778 +07:00 [INF] Content root path: E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.API
+2025-06-19 04:31:49.402 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5159/ - null null
+2025-06-19 04:31:49.432 +07:00 [INF] Incoming GET request to / from ::1
+2025-06-19 04:31:49.466 +07:00 [INF] Completed GET / with status 404 in 41ms
+2025-06-19 04:31:49.474 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5159/ - 404 0 null 73.5154ms
+2025-06-19 04:31:49.489 +07:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5159/, Response status code: 404
+2025-06-19 04:31:53.623 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5159/swagger/index.html - null null
+2025-06-19 04:31:53.626 +07:00 [INF] Incoming GET request to /swagger/index.html from ::1
+2025-06-19 04:31:53.666 +07:00 [INF] Completed GET /swagger/index.html with status 200 in 40ms
+2025-06-19 04:31:53.668 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5159/swagger/index.html - 200 null text/html;charset=utf-8 46.0424ms
+2025-06-19 04:31:53.689 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5159/swagger/index.js - null null
+2025-06-19 04:31:53.694 +07:00 [INF] Incoming GET request to /swagger/index.js from ::1
+2025-06-19 04:31:53.697 +07:00 [INF] Completed GET /swagger/index.js with status 200 in 4ms
+2025-06-19 04:31:53.700 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5159/swagger/index.js - 200 null application/javascript;charset=utf-8 10.2832ms
+2025-06-19 04:31:53.828 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5159/swagger/v1/swagger.json - null null
+2025-06-19 04:31:53.830 +07:00 [INF] Incoming GET request to /swagger/v1/swagger.json from ::1
+2025-06-19 04:31:53.964 +07:00 [INF] Completed GET /swagger/v1/swagger.json with status 200 in 133ms
+2025-06-19 04:31:53.965 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5159/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 137.3558ms
+2025-06-19 04:32:41.896 +07:00 [INF] Request starting HTTP/1.1 POST http://localhost:5159/api/Auth/login - application/json 88
+2025-06-19 04:32:41.899 +07:00 [INF] Incoming POST request to /api/Auth/login from ::1
+2025-06-19 04:32:41.904 +07:00 [INF] CORS policy execution successful.
+2025-06-19 04:32:41.908 +07:00 [INF] Executing endpoint 'MyImage.API.Controllers.AuthController.Login (MyImage.API)'
+2025-06-19 04:32:41.928 +07:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[MyImage.Core.DTOs.Common.ApiResponse`1[MyImage.Core.DTOs.Auth.AuthResponseDto]]] Login(MyImage.Core.DTOs.Auth.LoginDto) on controller MyImage.API.Controllers.AuthController (MyImage.API).
+2025-06-19 04:32:41.931 +07:00 [INF] AuthService initialized with JWT expiration: 24 hours
+2025-06-19 04:32:41.950 +07:00 [INF] Login attempt for identifier: user@example.com
+2025-06-19 04:32:42.418 +07:00 [INF] Successful login for user USR-2025-000002
+2025-06-19 04:32:42.438 +07:00 [INF] User USR-2025-000002 successfully logged in
+2025-06-19 04:32:42.442 +07:00 [INF] Executing OkObjectResult, writing value of type 'MyImage.Core.DTOs.Common.ApiResponse`1[[MyImage.Core.DTOs.Auth.AuthResponseDto, MyImage.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-19 04:32:42.455 +07:00 [INF] Executed action MyImage.API.Controllers.AuthController.Login (MyImage.API) in 523.2353ms
+2025-06-19 04:32:42.456 +07:00 [INF] Executed endpoint 'MyImage.API.Controllers.AuthController.Login (MyImage.API)'
+2025-06-19 04:32:42.457 +07:00 [INF] Completed POST /api/Auth/login with status 200 in 558ms
+2025-06-19 04:32:42.459 +07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5159/api/Auth/login - 200 null application/json; charset=utf-8 562.8703ms
+2025-06-19 04:32:53.528 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5159/.well-known/appspecific/com.chrome.devtools.json - null null
+2025-06-19 04:32:53.530 +07:00 [INF] Incoming GET request to /.well-known/appspecific/com.chrome.devtools.json from ::1
+2025-06-19 04:32:53.534 +07:00 [INF] Completed GET /.well-known/appspecific/com.chrome.devtools.json with status 404 in 3ms
+2025-06-19 04:32:53.536 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5159/.well-known/appspecific/com.chrome.devtools.json - 404 0 null 7.3656ms
+2025-06-19 04:32:53.538 +07:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5159/.well-known/appspecific/com.chrome.devtools.json, Response status code: 404
+2025-06-19 04:33:44.717 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5159/api/Cart - null null
+2025-06-19 04:33:44.719 +07:00 [INF] Incoming GET request to /api/Cart from ::1
+2025-06-19 04:33:44.752 +07:00 [INF] Executing endpoint 'MyImage.API.Controllers.CartController.GetCart (MyImage.API)'
+2025-06-19 04:33:44.757 +07:00 [INF] Route matched with {action = "GetCart", controller = "Cart"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[MyImage.Core.DTOs.Common.ApiResponse`1[MyImage.Core.DTOs.Cart.CartDto]]] GetCart() on controller MyImage.API.Controllers.CartController (MyImage.API).
+2025-06-19 04:33:44.774 +07:00 [INF] Executing OkObjectResult, writing value of type 'MyImage.Core.DTOs.Common.ApiResponse`1[[MyImage.Core.DTOs.Cart.CartDto, MyImage.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-19 04:33:44.783 +07:00 [INF] Executed action MyImage.API.Controllers.CartController.GetCart (MyImage.API) in 25.3242ms
+2025-06-19 04:33:44.784 +07:00 [INF] Executed endpoint 'MyImage.API.Controllers.CartController.GetCart (MyImage.API)'
+2025-06-19 04:33:44.785 +07:00 [INF] Completed GET /api/Cart with status 200 in 65ms
+2025-06-19 04:33:44.786 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5159/api/Cart - 200 null application/json; charset=utf-8 69.1654ms
+2025-06-19 04:34:16.226 +07:00 [INF] Request starting HTTP/1.1 DELETE http://localhost:5159/api/Cart/items/6852a430d96f78fa0d5a4414 - null null
+2025-06-19 04:34:16.229 +07:00 [INF] Incoming DELETE request to /api/Cart/items/6852a430d96f78fa0d5a4414 from ::1
+2025-06-19 04:34:16.230 +07:00 [INF] CORS policy execution successful.
+2025-06-19 04:34:16.232 +07:00 [INF] Executing endpoint 'MyImage.API.Controllers.CartController.RemoveCartItem (MyImage.API)'
+2025-06-19 04:34:16.247 +07:00 [INF] Route matched with {action = "RemoveCartItem", controller = "Cart"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[MyImage.Core.DTOs.Common.ApiResponse`1[MyImage.Core.DTOs.Cart.CartDto]]] RemoveCartItem(System.String) on controller MyImage.API.Controllers.CartController (MyImage.API).
+2025-06-19 04:34:16.271 +07:00 [INF] Executing OkObjectResult, writing value of type 'MyImage.Core.DTOs.Common.ApiResponse`1[[MyImage.Core.DTOs.Cart.CartDto, MyImage.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-19 04:34:16.272 +07:00 [INF] Executed action MyImage.API.Controllers.CartController.RemoveCartItem (MyImage.API) in 23.3385ms
+2025-06-19 04:34:16.273 +07:00 [INF] Executed endpoint 'MyImage.API.Controllers.CartController.RemoveCartItem (MyImage.API)'
+2025-06-19 04:34:16.274 +07:00 [INF] Completed DELETE /api/Cart/items/6852a430d96f78fa0d5a4414 with status 200 in 45ms
+2025-06-19 04:34:16.276 +07:00 [INF] Request finished HTTP/1.1 DELETE http://localhost:5159/api/Cart/items/6852a430d96f78fa0d5a4414 - 200 null application/json; charset=utf-8 49.8619ms
+2025-06-19 04:34:27.185 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5159/api/Cart - null null
+2025-06-19 04:34:27.188 +07:00 [INF] Incoming GET request to /api/Cart from ::1
+2025-06-19 04:34:27.191 +07:00 [INF] Executing endpoint 'MyImage.API.Controllers.CartController.GetCart (MyImage.API)'
+2025-06-19 04:34:27.193 +07:00 [INF] Route matched with {action = "GetCart", controller = "Cart"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[MyImage.Core.DTOs.Common.ApiResponse`1[MyImage.Core.DTOs.Cart.CartDto]]] GetCart() on controller MyImage.API.Controllers.CartController (MyImage.API).
+2025-06-19 04:34:27.199 +07:00 [INF] Executing OkObjectResult, writing value of type 'MyImage.Core.DTOs.Common.ApiResponse`1[[MyImage.Core.DTOs.Cart.CartDto, MyImage.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-19 04:34:27.201 +07:00 [INF] Executed action MyImage.API.Controllers.CartController.GetCart (MyImage.API) in 6.4078ms
+2025-06-19 04:34:27.204 +07:00 [INF] Executed endpoint 'MyImage.API.Controllers.CartController.GetCart (MyImage.API)'
+2025-06-19 04:34:27.206 +07:00 [INF] Completed GET /api/Cart with status 200 in 18ms
+2025-06-19 04:34:27.208 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5159/api/Cart - 200 null application/json; charset=utf-8 22.3967ms
+2025-06-19 04:36:31.116 +07:00 [INF] Request starting HTTP/1.1 POST http://localhost:5159/api/Cart/calculate-total - application/json 64
+2025-06-19 04:36:31.118 +07:00 [INF] Incoming POST request to /api/Cart/calculate-total from ::1
+2025-06-19 04:36:31.122 +07:00 [INF] CORS policy execution successful.
+2025-06-19 04:36:31.125 +07:00 [INF] Executing endpoint 'MyImage.API.Controllers.CartController.CalculateTotal (MyImage.API)'
+2025-06-19 04:36:31.131 +07:00 [INF] Route matched with {action = "CalculateTotal", controller = "Cart"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[MyImage.Core.DTOs.Common.ApiResponse`1[MyImage.Core.DTOs.Common.TaxCalculationResultDto]]] CalculateTotal(MyImage.Core.DTOs.Common.TaxCalculationDto) on controller MyImage.API.Controllers.CartController (MyImage.API).
+2025-06-19 04:36:31.144 +07:00 [INF] Executing OkObjectResult, writing value of type 'MyImage.Core.DTOs.Common.ApiResponse`1[[MyImage.Core.DTOs.Common.TaxCalculationResultDto, MyImage.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-19 04:36:31.149 +07:00 [INF] Executed action MyImage.API.Controllers.CartController.CalculateTotal (MyImage.API) in 15.3849ms
+2025-06-19 04:36:31.151 +07:00 [INF] Executed endpoint 'MyImage.API.Controllers.CartController.CalculateTotal (MyImage.API)'
+2025-06-19 04:36:31.151 +07:00 [INF] Completed POST /api/Cart/calculate-total with status 200 in 32ms
+2025-06-19 04:36:31.153 +07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5159/api/Cart/calculate-total - 200 null application/json; charset=utf-8 36.9584ms
+2025-06-19 04:39:04.624 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5159/api/Orders?page=1&pageSize=20 - null null
+2025-06-19 04:39:04.625 +07:00 [INF] Incoming GET request to /api/Orders?page=1&pageSize=20 from ::1
+2025-06-19 04:39:04.630 +07:00 [INF] Executing endpoint 'MyImage.API.Controllers.OrdersController.GetOrders (MyImage.API)'
+2025-06-19 04:39:04.637 +07:00 [INF] Route matched with {action = "GetOrders", controller = "Orders"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[MyImage.Core.DTOs.Common.ApiResponse`1[MyImage.Core.DTOs.Common.PagedResult`1[MyImage.Core.DTOs.Orders.OrderSummaryDto]]]] GetOrders(Int32, Int32) on controller MyImage.API.Controllers.OrdersController (MyImage.API).
+2025-06-19 04:39:04.676 +07:00 [INF] Executing OkObjectResult, writing value of type 'MyImage.Core.DTOs.Common.ApiResponse`1[[MyImage.Core.DTOs.Common.PagedResult`1[[MyImage.Core.DTOs.Orders.OrderSummaryDto, MyImage.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], MyImage.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-19 04:39:04.679 +07:00 [INF] Executed action MyImage.API.Controllers.OrdersController.GetOrders (MyImage.API) in 40.2251ms
+2025-06-19 04:39:04.680 +07:00 [INF] Executed endpoint 'MyImage.API.Controllers.OrdersController.GetOrders (MyImage.API)'
+2025-06-19 04:39:04.681 +07:00 [INF] Completed GET /api/Orders with status 200 in 55ms
+2025-06-19 04:39:04.682 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5159/api/Orders?page=1&pageSize=20 - 200 null application/json; charset=utf-8 58.0101ms
+2025-06-19 04:41:18.831 +07:00 [INF] Request starting HTTP/1.1 POST http://localhost:5159/api/Orders - application/json 539
+2025-06-19 04:41:18.833 +07:00 [INF] Incoming POST request to /api/Orders from ::1
+2025-06-19 04:41:18.835 +07:00 [INF] CORS policy execution successful.
+2025-06-19 04:41:18.836 +07:00 [INF] Executing endpoint 'MyImage.API.Controllers.OrdersController.CreateOrder (MyImage.API)'
+2025-06-19 04:41:18.843 +07:00 [INF] Route matched with {action = "CreateOrder", controller = "Orders"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[MyImage.Core.DTOs.Common.ApiResponse`1[MyImage.Core.DTOs.Orders.OrderCreatedDto]]] CreateOrder(MyImage.Core.DTOs.Orders.CreateOrderDto) on controller MyImage.API.Controllers.OrdersController (MyImage.API).
+2025-06-19 04:41:18.892 +07:00 [INF] Created order ORD-2025-0000001 for user 6852992a03301a3fe46be73a with total ¤31.77
+2025-06-19 04:41:18.905 +07:00 [INF] Marked 1 photos as ordered for order 6853327ec634aaec786cbdf6
+2025-06-19 04:41:18.910 +07:00 [INF] Cleared shopping cart for user 6852992a03301a3fe46be73a
+2025-06-19 04:41:18.911 +07:00 [INF] Order ORD-2025-0000001 created successfully for user 6852992a03301a3fe46be73a with total ¤31.77
+2025-06-19 04:41:18.914 +07:00 [INF] Executing CreatedAtActionResult, writing value of type 'MyImage.Core.DTOs.Common.ApiResponse`1[[MyImage.Core.DTOs.Orders.OrderCreatedDto, MyImage.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-19 04:41:18.929 +07:00 [INF] Executed action MyImage.API.Controllers.OrdersController.CreateOrder (MyImage.API) in 83.6279ms
+2025-06-19 04:41:18.930 +07:00 [INF] Executed endpoint 'MyImage.API.Controllers.OrdersController.CreateOrder (MyImage.API)'
+2025-06-19 04:41:18.931 +07:00 [INF] Completed POST /api/Orders with status 201 in 97ms
+2025-06-19 04:41:18.932 +07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5159/api/Orders - 201 null application/json; charset=utf-8 101.5538ms
+2025-06-19 04:41:43.256 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5159/api/Orders?page=1&pageSize=20 - null null
+2025-06-19 04:41:43.258 +07:00 [INF] Incoming GET request to /api/Orders?page=1&pageSize=20 from ::1
+2025-06-19 04:41:43.260 +07:00 [INF] Executing endpoint 'MyImage.API.Controllers.OrdersController.GetOrders (MyImage.API)'
+2025-06-19 04:41:43.261 +07:00 [INF] Route matched with {action = "GetOrders", controller = "Orders"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[MyImage.Core.DTOs.Common.ApiResponse`1[MyImage.Core.DTOs.Common.PagedResult`1[MyImage.Core.DTOs.Orders.OrderSummaryDto]]]] GetOrders(Int32, Int32) on controller MyImage.API.Controllers.OrdersController (MyImage.API).
+2025-06-19 04:41:43.285 +07:00 [INF] Executing OkObjectResult, writing value of type 'MyImage.Core.DTOs.Common.ApiResponse`1[[MyImage.Core.DTOs.Common.PagedResult`1[[MyImage.Core.DTOs.Orders.OrderSummaryDto, MyImage.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], MyImage.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-19 04:41:43.288 +07:00 [INF] Executed action MyImage.API.Controllers.OrdersController.GetOrders (MyImage.API) in 25.633ms
+2025-06-19 04:41:43.289 +07:00 [INF] Executed endpoint 'MyImage.API.Controllers.OrdersController.GetOrders (MyImage.API)'
+2025-06-19 04:41:43.290 +07:00 [INF] Completed GET /api/Orders with status 200 in 31ms
+2025-06-19 04:41:43.291 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5159/api/Orders?page=1&pageSize=20 - 200 null application/json; charset=utf-8 35.119ms
+2025-06-19 04:41:55.986 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5159/api/Orders/6853327ec634aaec786cbdf6 - null null
+2025-06-19 04:41:55.988 +07:00 [INF] Incoming GET request to /api/Orders/6853327ec634aaec786cbdf6 from ::1
+2025-06-19 04:41:55.989 +07:00 [INF] Executing endpoint 'MyImage.API.Controllers.OrdersController.GetOrder (MyImage.API)'
+2025-06-19 04:41:55.993 +07:00 [INF] Route matched with {action = "GetOrder", controller = "Orders"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[MyImage.Core.DTOs.Common.ApiResponse`1[System.Object]]] GetOrder(System.String) on controller MyImage.API.Controllers.OrdersController (MyImage.API).
+2025-06-19 04:41:56.018 +07:00 [INF] Executing OkObjectResult, writing value of type 'MyImage.Core.DTOs.Common.ApiResponse`1[[System.Object, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-19 04:41:56.028 +07:00 [INF] Executed action MyImage.API.Controllers.OrdersController.GetOrder (MyImage.API) in 33.392ms
+2025-06-19 04:41:56.029 +07:00 [INF] Executed endpoint 'MyImage.API.Controllers.OrdersController.GetOrder (MyImage.API)'
+2025-06-19 04:41:56.030 +07:00 [INF] Completed GET /api/Orders/6853327ec634aaec786cbdf6 with status 200 in 41ms
+2025-06-19 04:41:56.032 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5159/api/Orders/6853327ec634aaec786cbdf6 - 200 null application/json; charset=utf-8 45.5485ms
+2025-06-19 04:44:47.377 +07:00 [INF] Request starting HTTP/1.1 POST http://localhost:5159/api/Auth/login - application/json 91
+2025-06-19 04:44:47.380 +07:00 [INF] Incoming POST request to /api/Auth/login from ::1
+2025-06-19 04:44:47.381 +07:00 [INF] CORS policy execution successful.
+2025-06-19 04:44:47.381 +07:00 [INF] Executing endpoint 'MyImage.API.Controllers.AuthController.Login (MyImage.API)'
+2025-06-19 04:44:47.385 +07:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[MyImage.Core.DTOs.Common.ApiResponse`1[MyImage.Core.DTOs.Auth.AuthResponseDto]]] Login(MyImage.Core.DTOs.Auth.LoginDto) on controller MyImage.API.Controllers.AuthController (MyImage.API).
+2025-06-19 04:44:47.391 +07:00 [INF] AuthService initialized with JWT expiration: 24 hours
+2025-06-19 04:44:47.394 +07:00 [INF] Login attempt for identifier: admin@myimage.com
+2025-06-19 04:44:47.398 +07:00 [ERR] Error during login for identifier: admin@myimage.com
+System.ArgumentException: Invalid salt: salt cannot be null or empty (Parameter 'salt')
+   at BCrypt.Net.BCrypt.HashPassword(String inputKey, String salt, Boolean enhancedEntropy, HashType hashType)
+   at BCrypt.Net.BCrypt.Verify(String text, String hash, Boolean enhancedEntropy, HashType hashType)
+   at MyImage.Infrastructure.Services.AuthService.LoginAsync(String identifier, String password) in E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.Infrastructure\Services\AuthService.cs:line 205
+2025-06-19 04:44:47.410 +07:00 [WRN] Login failed for identifier: admin@myimage.com
+2025-06-19 04:44:47.411 +07:00 [INF] Executing UnauthorizedObjectResult, writing value of type 'MyImage.Core.DTOs.Common.ApiResponse`1[[System.Object, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-19 04:44:47.413 +07:00 [INF] Executed action MyImage.API.Controllers.AuthController.Login (MyImage.API) in 23.8384ms
+2025-06-19 04:44:47.414 +07:00 [INF] Executed endpoint 'MyImage.API.Controllers.AuthController.Login (MyImage.API)'
+2025-06-19 04:44:47.414 +07:00 [INF] Completed POST /api/Auth/login with status 401 in 34ms
+2025-06-19 04:44:47.415 +07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5159/api/Auth/login - 401 null application/json; charset=utf-8 38.0708ms
+2025-06-19 04:45:03.363 +07:00 [INF] Request starting HTTP/1.1 POST http://localhost:5159/api/Auth/login - application/json 80
+2025-06-19 04:45:03.365 +07:00 [INF] Incoming POST request to /api/Auth/login from ::1
+2025-06-19 04:45:03.366 +07:00 [INF] CORS policy execution successful.
+2025-06-19 04:45:03.367 +07:00 [INF] Executing endpoint 'MyImage.API.Controllers.AuthController.Login (MyImage.API)'
+2025-06-19 04:45:03.370 +07:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[MyImage.Core.DTOs.Common.ApiResponse`1[MyImage.Core.DTOs.Auth.AuthResponseDto]]] Login(MyImage.Core.DTOs.Auth.LoginDto) on controller MyImage.API.Controllers.AuthController (MyImage.API).
+2025-06-19 04:45:03.372 +07:00 [INF] AuthService initialized with JWT expiration: 24 hours
+2025-06-19 04:45:03.376 +07:00 [INF] Executing BadRequestObjectResult, writing value of type 'MyImage.Core.DTOs.Common.ApiResponse`1[[System.Object, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-19 04:45:03.377 +07:00 [INF] Executed action MyImage.API.Controllers.AuthController.Login (MyImage.API) in 4.9774ms
+2025-06-19 04:45:03.379 +07:00 [INF] Executed endpoint 'MyImage.API.Controllers.AuthController.Login (MyImage.API)'
+2025-06-19 04:45:03.379 +07:00 [INF] Completed POST /api/Auth/login with status 400 in 14ms
+2025-06-19 04:45:03.382 +07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5159/api/Auth/login - 400 null application/json; charset=utf-8 18.9842ms
+2025-06-19 04:47:08.483 +07:00 [INF] Request starting HTTP/1.1 POST http://localhost:5159/api/Auth/login - application/json 91
+2025-06-19 04:47:08.485 +07:00 [INF] Incoming POST request to /api/Auth/login from ::1
+2025-06-19 04:47:08.486 +07:00 [INF] CORS policy execution successful.
+2025-06-19 04:47:08.487 +07:00 [INF] Executing endpoint 'MyImage.API.Controllers.AuthController.Login (MyImage.API)'
+2025-06-19 04:47:08.488 +07:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[MyImage.Core.DTOs.Common.ApiResponse`1[MyImage.Core.DTOs.Auth.AuthResponseDto]]] Login(MyImage.Core.DTOs.Auth.LoginDto) on controller MyImage.API.Controllers.AuthController (MyImage.API).
+2025-06-19 04:47:08.490 +07:00 [INF] AuthService initialized with JWT expiration: 24 hours
+2025-06-19 04:47:08.491 +07:00 [INF] Login attempt for identifier: admin@myimage.com
+2025-06-19 04:47:08.494 +07:00 [ERR] Error during login for identifier: admin@myimage.com
+System.ArgumentException: Invalid salt: salt cannot be null or empty (Parameter 'salt')
+   at BCrypt.Net.BCrypt.HashPassword(String inputKey, String salt, Boolean enhancedEntropy, HashType hashType)
+   at BCrypt.Net.BCrypt.Verify(String text, String hash, Boolean enhancedEntropy, HashType hashType)
+   at MyImage.Infrastructure.Services.AuthService.LoginAsync(String identifier, String password) in E:\P1\dotnet_vscode file collections\testdround3\MyImagePhotoPrinting\src\MyImage.Infrastructure\Services\AuthService.cs:line 205
+2025-06-19 04:47:08.496 +07:00 [WRN] Login failed for identifier: admin@myimage.com
+2025-06-19 04:47:08.497 +07:00 [INF] Executing UnauthorizedObjectResult, writing value of type 'MyImage.Core.DTOs.Common.ApiResponse`1[[System.Object, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-19 04:47:08.499 +07:00 [INF] Executed action MyImage.API.Controllers.AuthController.Login (MyImage.API) in 9.1426ms
+2025-06-19 04:47:08.500 +07:00 [INF] Executed endpoint 'MyImage.API.Controllers.AuthController.Login (MyImage.API)'
+2025-06-19 04:47:08.501 +07:00 [INF] Completed POST /api/Auth/login with status 401 in 15ms
+2025-06-19 04:47:08.503 +07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5159/api/Auth/login - 401 null application/json; charset=utf-8 19.6549ms
+2025-06-19 05:09:38.145 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5159/api/auth/login - null null
+2025-06-19 05:09:38.147 +07:00 [INF] Incoming OPTIONS request to /api/auth/login from ::1
+2025-06-19 05:09:38.148 +07:00 [INF] CORS policy execution successful.
+2025-06-19 05:09:38.149 +07:00 [INF] Completed OPTIONS /api/auth/login with status 204 in 2ms
+2025-06-19 05:09:38.151 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5159/api/auth/login - 204 null null 5.9237ms
+2025-06-19 05:09:38.154 +07:00 [INF] Request starting HTTP/1.1 POST http://localhost:5159/api/auth/login - application/json 56
+2025-06-19 05:09:38.156 +07:00 [INF] Incoming POST request to /api/auth/login from ::1
+2025-06-19 05:09:38.157 +07:00 [INF] CORS policy execution successful.
+2025-06-19 05:09:38.158 +07:00 [INF] Executing endpoint 'MyImage.API.Controllers.AuthController.Login (MyImage.API)'
+2025-06-19 05:09:38.159 +07:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[MyImage.Core.DTOs.Common.ApiResponse`1[MyImage.Core.DTOs.Auth.AuthResponseDto]]] Login(MyImage.Core.DTOs.Auth.LoginDto) on controller MyImage.API.Controllers.AuthController (MyImage.API).
+2025-06-19 05:09:38.160 +07:00 [INF] AuthService initialized with JWT expiration: 24 hours
+2025-06-19 05:09:38.161 +07:00 [INF] Login attempt for identifier: user@example.com
+2025-06-19 05:09:38.420 +07:00 [INF] Successful login for user USR-2025-000002
+2025-06-19 05:09:38.422 +07:00 [INF] User USR-2025-000002 successfully logged in
+2025-06-19 05:09:38.423 +07:00 [INF] Executing OkObjectResult, writing value of type 'MyImage.Core.DTOs.Common.ApiResponse`1[[MyImage.Core.DTOs.Auth.AuthResponseDto, MyImage.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-19 05:09:38.424 +07:00 [INF] Executed action MyImage.API.Controllers.AuthController.Login (MyImage.API) in 263.9695ms
+2025-06-19 05:09:38.425 +07:00 [INF] Executed endpoint 'MyImage.API.Controllers.AuthController.Login (MyImage.API)'
+2025-06-19 05:09:38.426 +07:00 [INF] Completed POST /api/auth/login with status 200 in 270ms
+2025-06-19 05:09:38.427 +07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5159/api/auth/login - 200 null application/json; charset=utf-8 273.6379ms
+2025-06-19 05:09:38.496 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5159/api/photos?page=1&pageSize=12 - null null
+2025-06-19 05:09:38.498 +07:00 [INF] Incoming OPTIONS request to /api/photos?page=1&pageSize=12 from ::1
+2025-06-19 05:09:38.500 +07:00 [INF] CORS policy execution successful.
+2025-06-19 05:09:38.502 +07:00 [INF] Completed OPTIONS /api/photos with status 204 in 3ms
+2025-06-19 05:09:38.503 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5159/api/photos?page=1&pageSize=12 - 204 null null 6.9351ms
+2025-06-19 05:09:38.507 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5159/api/photos?page=1&pageSize=12 - null null
+2025-06-19 05:09:38.509 +07:00 [INF] Incoming GET request to /api/photos?page=1&pageSize=12 from ::1
+2025-06-19 05:09:38.511 +07:00 [INF] CORS policy execution successful.
+2025-06-19 05:09:38.512 +07:00 [INF] Executing endpoint 'MyImage.API.Controllers.PhotosController.GetPhotos (MyImage.API)'
+2025-06-19 05:09:38.519 +07:00 [INF] Route matched with {action = "GetPhotos", controller = "Photos"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[MyImage.Core.DTOs.Common.ApiResponse`1[MyImage.Core.DTOs.Photos.PhotoGalleryPageDto]]] GetPhotos(Int32, Int32) on controller MyImage.API.Controllers.PhotosController (MyImage.API).
+2025-06-19 05:09:38.576 +07:00 [INF] Executing OkObjectResult, writing value of type 'MyImage.Core.DTOs.Common.ApiResponse`1[[MyImage.Core.DTOs.Photos.PhotoGalleryPageDto, MyImage.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-19 05:09:38.595 +07:00 [INF] Executed action MyImage.API.Controllers.PhotosController.GetPhotos (MyImage.API) in 73.8439ms
+2025-06-19 05:09:38.596 +07:00 [INF] Executed endpoint 'MyImage.API.Controllers.PhotosController.GetPhotos (MyImage.API)'
+2025-06-19 05:09:38.597 +07:00 [INF] Completed GET /api/photos with status 200 in 88ms
+2025-06-19 05:09:38.602 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5159/api/photos?page=1&pageSize=12 - 200 null application/json; charset=utf-8 94.462ms
+2025-06-19 05:09:51.777 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5159/api/orders?page=1&pageSize=10 - null null
+2025-06-19 05:09:51.779 +07:00 [INF] Incoming OPTIONS request to /api/orders?page=1&pageSize=10 from ::1
+2025-06-19 05:09:51.780 +07:00 [INF] CORS policy execution successful.
+2025-06-19 05:09:51.781 +07:00 [INF] Completed OPTIONS /api/orders with status 204 in 1ms
+2025-06-19 05:09:51.782 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5159/api/orders?page=1&pageSize=10 - 204 null null 4.8373ms
+2025-06-19 05:09:51.784 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5159/api/orders?page=1&pageSize=10 - null null
+2025-06-19 05:09:51.787 +07:00 [INF] Incoming GET request to /api/orders?page=1&pageSize=10 from ::1
+2025-06-19 05:09:51.789 +07:00 [INF] CORS policy execution successful.
+2025-06-19 05:09:51.790 +07:00 [INF] Executing endpoint 'MyImage.API.Controllers.OrdersController.GetOrders (MyImage.API)'
+2025-06-19 05:09:51.791 +07:00 [INF] Route matched with {action = "GetOrders", controller = "Orders"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[MyImage.Core.DTOs.Common.ApiResponse`1[MyImage.Core.DTOs.Common.PagedResult`1[MyImage.Core.DTOs.Orders.OrderSummaryDto]]]] GetOrders(Int32, Int32) on controller MyImage.API.Controllers.OrdersController (MyImage.API).
+2025-06-19 05:09:51.796 +07:00 [INF] Executing OkObjectResult, writing value of type 'MyImage.Core.DTOs.Common.ApiResponse`1[[MyImage.Core.DTOs.Common.PagedResult`1[[MyImage.Core.DTOs.Orders.OrderSummaryDto, MyImage.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], MyImage.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-19 05:09:51.797 +07:00 [INF] Executed action MyImage.API.Controllers.OrdersController.GetOrders (MyImage.API) in 4.7729ms
+2025-06-19 05:09:51.798 +07:00 [INF] Executed endpoint 'MyImage.API.Controllers.OrdersController.GetOrders (MyImage.API)'
+2025-06-19 05:09:51.799 +07:00 [INF] Completed GET /api/orders with status 200 in 11ms
+2025-06-19 05:09:51.800 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5159/api/orders?page=1&pageSize=10 - 200 null application/json; charset=utf-8 16.1158ms
+2025-06-19 05:09:55.966 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5159/api/photos?page=1&pageSize=12 - null null
+2025-06-19 05:09:55.968 +07:00 [INF] Incoming OPTIONS request to /api/photos?page=1&pageSize=12 from ::1
+2025-06-19 05:09:55.969 +07:00 [INF] CORS policy execution successful.
+2025-06-19 05:09:55.970 +07:00 [INF] Completed OPTIONS /api/photos with status 204 in 1ms
+2025-06-19 05:09:55.971 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5159/api/photos?page=1&pageSize=12 - 204 null null 5.0392ms
+2025-06-19 05:09:55.974 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5159/api/photos?page=1&pageSize=12 - null null
+2025-06-19 05:09:55.976 +07:00 [INF] Incoming GET request to /api/photos?page=1&pageSize=12 from ::1
+2025-06-19 05:09:55.977 +07:00 [INF] CORS policy execution successful.
+2025-06-19 05:09:55.978 +07:00 [INF] Executing endpoint 'MyImage.API.Controllers.PhotosController.GetPhotos (MyImage.API)'
+2025-06-19 05:09:55.979 +07:00 [INF] Route matched with {action = "GetPhotos", controller = "Photos"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[MyImage.Core.DTOs.Common.ApiResponse`1[MyImage.Core.DTOs.Photos.PhotoGalleryPageDto]]] GetPhotos(Int32, Int32) on controller MyImage.API.Controllers.PhotosController (MyImage.API).
+2025-06-19 05:09:55.985 +07:00 [INF] Executing OkObjectResult, writing value of type 'MyImage.Core.DTOs.Common.ApiResponse`1[[MyImage.Core.DTOs.Photos.PhotoGalleryPageDto, MyImage.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-19 05:09:55.986 +07:00 [INF] Executed action MyImage.API.Controllers.PhotosController.GetPhotos (MyImage.API) in 5.9458ms
+2025-06-19 05:09:55.987 +07:00 [INF] Executed endpoint 'MyImage.API.Controllers.PhotosController.GetPhotos (MyImage.API)'
+2025-06-19 05:09:55.988 +07:00 [INF] Completed GET /api/photos with status 200 in 12ms
+2025-06-19 05:09:55.989 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5159/api/photos?page=1&pageSize=12 - 200 null application/json; charset=utf-8 15.5089ms
+2025-06-19 05:10:02.666 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5159/api/cart - null null
+2025-06-19 05:10:02.668 +07:00 [INF] Incoming OPTIONS request to /api/cart from ::1
+2025-06-19 05:10:02.669 +07:00 [INF] CORS policy execution successful.
+2025-06-19 05:10:02.670 +07:00 [INF] Completed OPTIONS /api/cart with status 204 in 1ms
+2025-06-19 05:10:02.671 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5159/api/cart - 204 null null 4.7049ms
+2025-06-19 05:10:02.673 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5159/api/cart - null null
+2025-06-19 05:10:02.675 +07:00 [INF] Incoming GET request to /api/cart from ::1
+2025-06-19 05:10:02.676 +07:00 [INF] CORS policy execution successful.
+2025-06-19 05:10:02.677 +07:00 [INF] Executing endpoint 'MyImage.API.Controllers.CartController.GetCart (MyImage.API)'
+2025-06-19 05:10:02.678 +07:00 [INF] Route matched with {action = "GetCart", controller = "Cart"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[MyImage.Core.DTOs.Common.ApiResponse`1[MyImage.Core.DTOs.Cart.CartDto]]] GetCart() on controller MyImage.API.Controllers.CartController (MyImage.API).
+2025-06-19 05:10:02.683 +07:00 [INF] Executing OkObjectResult, writing value of type 'MyImage.Core.DTOs.Common.ApiResponse`1[[MyImage.Core.DTOs.Cart.CartDto, MyImage.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-19 05:10:02.684 +07:00 [INF] Executed action MyImage.API.Controllers.CartController.GetCart (MyImage.API) in 4.3473ms
+2025-06-19 05:10:02.685 +07:00 [INF] Executed endpoint 'MyImage.API.Controllers.CartController.GetCart (MyImage.API)'
+2025-06-19 05:10:02.686 +07:00 [INF] Completed GET /api/cart with status 200 in 11ms
+2025-06-19 05:10:02.687 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5159/api/cart - 200 null application/json; charset=utf-8 13.9572ms
+2025-06-19 05:10:05.435 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5159/api/photos?page=1&pageSize=12 - null null
+2025-06-19 05:10:05.437 +07:00 [INF] Incoming OPTIONS request to /api/photos?page=1&pageSize=12 from ::1
+2025-06-19 05:10:05.438 +07:00 [INF] CORS policy execution successful.
+2025-06-19 05:10:05.439 +07:00 [INF] Completed OPTIONS /api/photos with status 204 in 1ms
+2025-06-19 05:10:05.440 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5159/api/photos?page=1&pageSize=12 - 204 null null 4.7207ms
+2025-06-19 05:10:05.442 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5159/api/photos?page=1&pageSize=12 - null null
+2025-06-19 05:10:05.444 +07:00 [INF] Incoming GET request to /api/photos?page=1&pageSize=12 from ::1
+2025-06-19 05:10:05.445 +07:00 [INF] CORS policy execution successful.
+2025-06-19 05:10:05.446 +07:00 [INF] Executing endpoint 'MyImage.API.Controllers.PhotosController.GetPhotos (MyImage.API)'
+2025-06-19 05:10:05.447 +07:00 [INF] Route matched with {action = "GetPhotos", controller = "Photos"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[MyImage.Core.DTOs.Common.ApiResponse`1[MyImage.Core.DTOs.Photos.PhotoGalleryPageDto]]] GetPhotos(Int32, Int32) on controller MyImage.API.Controllers.PhotosController (MyImage.API).
+2025-06-19 05:10:05.452 +07:00 [INF] Executing OkObjectResult, writing value of type 'MyImage.Core.DTOs.Common.ApiResponse`1[[MyImage.Core.DTOs.Photos.PhotoGalleryPageDto, MyImage.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-19 05:10:05.453 +07:00 [INF] Executed action MyImage.API.Controllers.PhotosController.GetPhotos (MyImage.API) in 4.9664ms
+2025-06-19 05:10:05.454 +07:00 [INF] Executed endpoint 'MyImage.API.Controllers.PhotosController.GetPhotos (MyImage.API)'
+2025-06-19 05:10:05.455 +07:00 [INF] Completed GET /api/photos with status 200 in 10ms
+2025-06-19 05:10:05.456 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5159/api/photos?page=1&pageSize=12 - 200 null application/json; charset=utf-8 13.19ms
+2025-06-19 05:10:14.063 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5159/api/print-sizes - null null
+2025-06-19 05:10:14.065 +07:00 [INF] Incoming OPTIONS request to /api/print-sizes from ::1
+2025-06-19 05:10:14.066 +07:00 [INF] CORS policy execution successful.
+2025-06-19 05:10:14.067 +07:00 [INF] Completed OPTIONS /api/print-sizes with status 204 in 2ms
+2025-06-19 05:10:14.068 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5159/api/print-sizes - 204 null null 5.3478ms
+2025-06-19 05:10:14.071 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5159/api/print-sizes - null null
+2025-06-19 05:10:14.074 +07:00 [INF] Incoming GET request to /api/print-sizes from ::1
+2025-06-19 05:10:14.075 +07:00 [INF] CORS policy execution successful.
+2025-06-19 05:10:14.076 +07:00 [INF] Completed GET /api/print-sizes with status 404 in 1ms
+2025-06-19 05:10:14.077 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5159/api/print-sizes - 404 0 null 5.955ms
+2025-06-19 05:10:14.080 +07:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5159/api/print-sizes, Response status code: 404
+2025-06-19 05:10:33.999 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5159/api/print-sizes - null null
+2025-06-19 05:10:34.001 +07:00 [INF] Incoming OPTIONS request to /api/print-sizes from ::1
+2025-06-19 05:10:34.002 +07:00 [INF] CORS policy execution successful.
+2025-06-19 05:10:34.003 +07:00 [INF] Completed OPTIONS /api/print-sizes with status 204 in 1ms
+2025-06-19 05:10:34.004 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5159/api/print-sizes - 204 null null 5.5254ms
+2025-06-19 05:10:34.007 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5159/api/print-sizes - null null
+2025-06-19 05:10:34.009 +07:00 [INF] Incoming GET request to /api/print-sizes from ::1
+2025-06-19 05:10:34.011 +07:00 [INF] CORS policy execution successful.
+2025-06-19 05:10:34.012 +07:00 [INF] Completed GET /api/print-sizes with status 404 in 2ms
+2025-06-19 05:10:34.014 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5159/api/print-sizes - 404 0 null 6.337ms
+2025-06-19 05:10:34.016 +07:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5159/api/print-sizes, Response status code: 404
+2025-06-19 05:10:43.687 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5159/api/photos?page=1&pageSize=12 - null null
+2025-06-19 05:10:43.689 +07:00 [INF] Incoming OPTIONS request to /api/photos?page=1&pageSize=12 from ::1
+2025-06-19 05:10:43.690 +07:00 [INF] CORS policy execution successful.
+2025-06-19 05:10:43.691 +07:00 [INF] Completed OPTIONS /api/photos with status 204 in 2ms
+2025-06-19 05:10:43.692 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5159/api/photos?page=1&pageSize=12 - 204 null null 5.2983ms
+2025-06-19 05:10:43.695 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5159/api/photos?page=1&pageSize=12 - null null
+2025-06-19 05:10:43.697 +07:00 [INF] Incoming GET request to /api/photos?page=1&pageSize=12 from ::1
+2025-06-19 05:10:43.698 +07:00 [INF] CORS policy execution successful.
+2025-06-19 05:10:43.699 +07:00 [INF] Executing endpoint 'MyImage.API.Controllers.PhotosController.GetPhotos (MyImage.API)'
+2025-06-19 05:10:43.700 +07:00 [INF] Route matched with {action = "GetPhotos", controller = "Photos"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[MyImage.Core.DTOs.Common.ApiResponse`1[MyImage.Core.DTOs.Photos.PhotoGalleryPageDto]]] GetPhotos(Int32, Int32) on controller MyImage.API.Controllers.PhotosController (MyImage.API).
+2025-06-19 05:10:43.705 +07:00 [INF] Executing OkObjectResult, writing value of type 'MyImage.Core.DTOs.Common.ApiResponse`1[[MyImage.Core.DTOs.Photos.PhotoGalleryPageDto, MyImage.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-19 05:10:43.706 +07:00 [INF] Executed action MyImage.API.Controllers.PhotosController.GetPhotos (MyImage.API) in 4.3088ms
+2025-06-19 05:10:43.707 +07:00 [INF] Executed endpoint 'MyImage.API.Controllers.PhotosController.GetPhotos (MyImage.API)'
+2025-06-19 05:10:43.707 +07:00 [INF] Completed GET /api/photos with status 200 in 10ms
+2025-06-19 05:10:43.709 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5159/api/photos?page=1&pageSize=12 - 200 null application/json; charset=utf-8 13.8567ms
+2025-06-19 05:10:48.395 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5159/api/print-sizes - null null
+2025-06-19 05:10:48.397 +07:00 [INF] Incoming OPTIONS request to /api/print-sizes from ::1
+2025-06-19 05:10:48.398 +07:00 [INF] CORS policy execution successful.
+2025-06-19 05:10:48.399 +07:00 [INF] Completed OPTIONS /api/print-sizes with status 204 in 1ms
+2025-06-19 05:10:48.400 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5159/api/print-sizes - 204 null null 5.1597ms
+2025-06-19 05:10:48.403 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5159/api/print-sizes - null null
+2025-06-19 05:10:48.405 +07:00 [INF] Incoming GET request to /api/print-sizes from ::1
+2025-06-19 05:10:48.406 +07:00 [INF] CORS policy execution successful.
+2025-06-19 05:10:48.407 +07:00 [INF] Completed GET /api/print-sizes with status 404 in 2ms
+2025-06-19 05:10:48.408 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5159/api/print-sizes - 404 0 null 5.4351ms
+2025-06-19 05:10:48.411 +07:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5159/api/print-sizes, Response status code: 404
+2025-06-19 05:11:12.844 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5159/api/orders?page=1&pageSize=10 - null null
+2025-06-19 05:11:12.846 +07:00 [INF] Incoming OPTIONS request to /api/orders?page=1&pageSize=10 from ::1
+2025-06-19 05:11:12.847 +07:00 [INF] CORS policy execution successful.
+2025-06-19 05:11:12.848 +07:00 [INF] Completed OPTIONS /api/orders with status 204 in 1ms
+2025-06-19 05:11:12.849 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5159/api/orders?page=1&pageSize=10 - 204 null null 4.8917ms
+2025-06-19 05:11:12.852 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5159/api/orders?page=1&pageSize=10 - null null
+2025-06-19 05:11:12.855 +07:00 [INF] Incoming GET request to /api/orders?page=1&pageSize=10 from ::1
+2025-06-19 05:11:12.856 +07:00 [INF] CORS policy execution successful.
+2025-06-19 05:11:12.857 +07:00 [INF] Executing endpoint 'MyImage.API.Controllers.OrdersController.GetOrders (MyImage.API)'
+2025-06-19 05:11:12.858 +07:00 [INF] Route matched with {action = "GetOrders", controller = "Orders"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[MyImage.Core.DTOs.Common.ApiResponse`1[MyImage.Core.DTOs.Common.PagedResult`1[MyImage.Core.DTOs.Orders.OrderSummaryDto]]]] GetOrders(Int32, Int32) on controller MyImage.API.Controllers.OrdersController (MyImage.API).
+2025-06-19 05:11:12.864 +07:00 [INF] Executing OkObjectResult, writing value of type 'MyImage.Core.DTOs.Common.ApiResponse`1[[MyImage.Core.DTOs.Common.PagedResult`1[[MyImage.Core.DTOs.Orders.OrderSummaryDto, MyImage.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], MyImage.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-19 05:11:12.865 +07:00 [INF] Executed action MyImage.API.Controllers.OrdersController.GetOrders (MyImage.API) in 6.3061ms
+2025-06-19 05:11:12.866 +07:00 [INF] Executed endpoint 'MyImage.API.Controllers.OrdersController.GetOrders (MyImage.API)'
+2025-06-19 05:11:12.867 +07:00 [INF] Completed GET /api/orders with status 200 in 12ms
+2025-06-19 05:11:12.869 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5159/api/orders?page=1&pageSize=10 - 200 null application/json; charset=utf-8 16.864ms
+2025-06-19 05:11:14.879 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5159/api/cart - null null
+2025-06-19 05:11:14.880 +07:00 [INF] Incoming OPTIONS request to /api/cart from ::1
+2025-06-19 05:11:14.881 +07:00 [INF] CORS policy execution successful.
+2025-06-19 05:11:14.882 +07:00 [INF] Completed OPTIONS /api/cart with status 204 in 1ms
+2025-06-19 05:11:14.883 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5159/api/cart - 204 null null 4.7975ms
+2025-06-19 05:11:14.887 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5159/api/cart - null null
+2025-06-19 05:11:14.889 +07:00 [INF] Incoming GET request to /api/cart from ::1
+2025-06-19 05:11:14.890 +07:00 [INF] CORS policy execution successful.
+2025-06-19 05:11:14.890 +07:00 [INF] Executing endpoint 'MyImage.API.Controllers.CartController.GetCart (MyImage.API)'
+2025-06-19 05:11:14.891 +07:00 [INF] Route matched with {action = "GetCart", controller = "Cart"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[MyImage.Core.DTOs.Common.ApiResponse`1[MyImage.Core.DTOs.Cart.CartDto]]] GetCart() on controller MyImage.API.Controllers.CartController (MyImage.API).
+2025-06-19 05:11:14.894 +07:00 [INF] Executing OkObjectResult, writing value of type 'MyImage.Core.DTOs.Common.ApiResponse`1[[MyImage.Core.DTOs.Cart.CartDto, MyImage.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-19 05:11:14.896 +07:00 [INF] Executed action MyImage.API.Controllers.CartController.GetCart (MyImage.API) in 3.1178ms
+2025-06-19 05:11:14.897 +07:00 [INF] Executed endpoint 'MyImage.API.Controllers.CartController.GetCart (MyImage.API)'
+2025-06-19 05:11:14.897 +07:00 [INF] Completed GET /api/cart with status 200 in 8ms
+2025-06-19 05:11:14.898 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5159/api/cart - 200 null application/json; charset=utf-8 11.6979ms
+2025-06-19 05:11:15.896 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5159/api/photos?page=1&pageSize=12 - null null
+2025-06-19 05:11:15.898 +07:00 [INF] Incoming OPTIONS request to /api/photos?page=1&pageSize=12 from ::1
+2025-06-19 05:11:15.899 +07:00 [INF] CORS policy execution successful.
+2025-06-19 05:11:15.900 +07:00 [INF] Completed OPTIONS /api/photos with status 204 in 1ms
+2025-06-19 05:11:15.901 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5159/api/photos?page=1&pageSize=12 - 204 null null 4.6282ms
+2025-06-19 05:11:15.903 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5159/api/photos?page=1&pageSize=12 - null null
+2025-06-19 05:11:15.905 +07:00 [INF] Incoming GET request to /api/photos?page=1&pageSize=12 from ::1
+2025-06-19 05:11:15.906 +07:00 [INF] CORS policy execution successful.
+2025-06-19 05:11:15.907 +07:00 [INF] Executing endpoint 'MyImage.API.Controllers.PhotosController.GetPhotos (MyImage.API)'
+2025-06-19 05:11:15.908 +07:00 [INF] Route matched with {action = "GetPhotos", controller = "Photos"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[MyImage.Core.DTOs.Common.ApiResponse`1[MyImage.Core.DTOs.Photos.PhotoGalleryPageDto]]] GetPhotos(Int32, Int32) on controller MyImage.API.Controllers.PhotosController (MyImage.API).
+2025-06-19 05:11:15.912 +07:00 [INF] Executing OkObjectResult, writing value of type 'MyImage.Core.DTOs.Common.ApiResponse`1[[MyImage.Core.DTOs.Photos.PhotoGalleryPageDto, MyImage.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-19 05:11:15.913 +07:00 [INF] Executed action MyImage.API.Controllers.PhotosController.GetPhotos (MyImage.API) in 3.8389ms
+2025-06-19 05:11:15.913 +07:00 [INF] Executed endpoint 'MyImage.API.Controllers.PhotosController.GetPhotos (MyImage.API)'
+2025-06-19 05:11:15.914 +07:00 [INF] Completed GET /api/photos with status 200 in 9ms
+2025-06-19 05:11:15.915 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5159/api/photos?page=1&pageSize=12 - 200 null application/json; charset=utf-8 12.0356ms
+2025-06-19 05:11:27.007 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5159/api/photos/68529f22d96f78fa0d5a43f0 - null null
+2025-06-19 05:11:27.009 +07:00 [INF] Incoming OPTIONS request to /api/photos/68529f22d96f78fa0d5a43f0 from ::1
+2025-06-19 05:11:27.010 +07:00 [INF] CORS policy execution successful.
+2025-06-19 05:11:27.011 +07:00 [INF] Completed OPTIONS /api/photos/68529f22d96f78fa0d5a43f0 with status 204 in 1ms
+2025-06-19 05:11:27.012 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5159/api/photos/68529f22d96f78fa0d5a43f0 - 204 null null 5.5883ms
+2025-06-19 05:11:27.015 +07:00 [INF] Request starting HTTP/1.1 DELETE http://localhost:5159/api/photos/68529f22d96f78fa0d5a43f0 - null null
+2025-06-19 05:11:27.016 +07:00 [INF] Incoming DELETE request to /api/photos/68529f22d96f78fa0d5a43f0 from ::1
+2025-06-19 05:11:27.017 +07:00 [INF] CORS policy execution successful.
+2025-06-19 05:11:27.018 +07:00 [INF] Executing endpoint 'MyImage.API.Controllers.PhotosController.DeletePhoto (MyImage.API)'
+2025-06-19 05:11:27.022 +07:00 [INF] Route matched with {action = "DeletePhoto", controller = "Photos"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[MyImage.Core.DTOs.Common.ApiResponse`1[System.Object]]] DeletePhoto(System.String) on controller MyImage.API.Controllers.PhotosController (MyImage.API).
+2025-06-19 05:11:27.064 +07:00 [INF] Successfully deleted photo 68529f22d96f78fa0d5a43f0, freed 786411 bytes
+2025-06-19 05:11:27.066 +07:00 [INF] Photo 68529f22d96f78fa0d5a43f0 deleted by user 6852992a03301a3fe46be73a
+2025-06-19 05:11:27.067 +07:00 [INF] Executing OkObjectResult, writing value of type 'MyImage.Core.DTOs.Common.ApiResponse`1[[System.Object, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-19 05:11:27.068 +07:00 [INF] Executed action MyImage.API.Controllers.PhotosController.DeletePhoto (MyImage.API) in 44.2213ms
+2025-06-19 05:11:27.069 +07:00 [INF] Executed endpoint 'MyImage.API.Controllers.PhotosController.DeletePhoto (MyImage.API)'
+2025-06-19 05:11:27.070 +07:00 [INF] Completed DELETE /api/photos/68529f22d96f78fa0d5a43f0 with status 200 in 53ms
+2025-06-19 05:11:27.072 +07:00 [INF] Request finished HTTP/1.1 DELETE http://localhost:5159/api/photos/68529f22d96f78fa0d5a43f0 - 200 null application/json; charset=utf-8 56.8823ms
+2025-06-19 05:11:27.080 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5159/api/photos?page=1&pageSize=12 - null null
+2025-06-19 05:11:27.082 +07:00 [INF] Incoming OPTIONS request to /api/photos?page=1&pageSize=12 from ::1
+2025-06-19 05:11:27.084 +07:00 [INF] CORS policy execution successful.
+2025-06-19 05:11:27.085 +07:00 [INF] Completed OPTIONS /api/photos with status 204 in 3ms
+2025-06-19 05:11:27.088 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5159/api/photos?page=1&pageSize=12 - 204 null null 8.1432ms
+2025-06-19 05:11:27.091 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5159/api/photos?page=1&pageSize=12 - null null
+2025-06-19 05:11:27.093 +07:00 [INF] Incoming GET request to /api/photos?page=1&pageSize=12 from ::1
+2025-06-19 05:11:27.094 +07:00 [INF] CORS policy execution successful.
+2025-06-19 05:11:27.094 +07:00 [INF] Executing endpoint 'MyImage.API.Controllers.PhotosController.GetPhotos (MyImage.API)'
+2025-06-19 05:11:27.095 +07:00 [INF] Route matched with {action = "GetPhotos", controller = "Photos"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[MyImage.Core.DTOs.Common.ApiResponse`1[MyImage.Core.DTOs.Photos.PhotoGalleryPageDto]]] GetPhotos(Int32, Int32) on controller MyImage.API.Controllers.PhotosController (MyImage.API).
+2025-06-19 05:11:27.100 +07:00 [INF] Executing OkObjectResult, writing value of type 'MyImage.Core.DTOs.Common.ApiResponse`1[[MyImage.Core.DTOs.Photos.PhotoGalleryPageDto, MyImage.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-19 05:11:27.101 +07:00 [INF] Executed action MyImage.API.Controllers.PhotosController.GetPhotos (MyImage.API) in 4.2372ms
+2025-06-19 05:11:27.102 +07:00 [INF] Executed endpoint 'MyImage.API.Controllers.PhotosController.GetPhotos (MyImage.API)'
+2025-06-19 05:11:27.103 +07:00 [INF] Completed GET /api/photos with status 200 in 10ms
+2025-06-19 05:11:27.104 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5159/api/photos?page=1&pageSize=12 - 200 null application/json; charset=utf-8 13.8911ms
+2025-06-19 05:11:31.048 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5159/api/orders?page=1&pageSize=10 - null null
+2025-06-19 05:11:31.050 +07:00 [INF] Incoming OPTIONS request to /api/orders?page=1&pageSize=10 from ::1
+2025-06-19 05:11:31.051 +07:00 [INF] CORS policy execution successful.
+2025-06-19 05:11:31.051 +07:00 [INF] Completed OPTIONS /api/orders with status 204 in 1ms
+2025-06-19 05:11:31.053 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5159/api/orders?page=1&pageSize=10 - 204 null null 4.7139ms
+2025-06-19 05:11:31.055 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5159/api/orders?page=1&pageSize=10 - null null
+2025-06-19 05:11:31.058 +07:00 [INF] Incoming GET request to /api/orders?page=1&pageSize=10 from ::1
+2025-06-19 05:11:31.059 +07:00 [INF] CORS policy execution successful.
+2025-06-19 05:11:31.060 +07:00 [INF] Executing endpoint 'MyImage.API.Controllers.OrdersController.GetOrders (MyImage.API)'
+2025-06-19 05:11:31.060 +07:00 [INF] Route matched with {action = "GetOrders", controller = "Orders"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[MyImage.Core.DTOs.Common.ApiResponse`1[MyImage.Core.DTOs.Common.PagedResult`1[MyImage.Core.DTOs.Orders.OrderSummaryDto]]]] GetOrders(Int32, Int32) on controller MyImage.API.Controllers.OrdersController (MyImage.API).
+2025-06-19 05:11:31.066 +07:00 [INF] Executing OkObjectResult, writing value of type 'MyImage.Core.DTOs.Common.ApiResponse`1[[MyImage.Core.DTOs.Common.PagedResult`1[[MyImage.Core.DTOs.Orders.OrderSummaryDto, MyImage.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], MyImage.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-19 05:11:31.067 +07:00 [INF] Executed action MyImage.API.Controllers.OrdersController.GetOrders (MyImage.API) in 5.5549ms
+2025-06-19 05:11:31.068 +07:00 [INF] Executed endpoint 'MyImage.API.Controllers.OrdersController.GetOrders (MyImage.API)'
+2025-06-19 05:11:31.069 +07:00 [INF] Completed GET /api/orders with status 200 in 11ms
+2025-06-19 05:11:31.070 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5159/api/orders?page=1&pageSize=10 - 200 null application/json; charset=utf-8 15.1764ms
+2025-06-19 05:11:33.031 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5159/api/photos?page=1&pageSize=12 - null null
+2025-06-19 05:11:33.033 +07:00 [INF] Incoming OPTIONS request to /api/photos?page=1&pageSize=12 from ::1
+2025-06-19 05:11:33.034 +07:00 [INF] CORS policy execution successful.
+2025-06-19 05:11:33.035 +07:00 [INF] Completed OPTIONS /api/photos with status 204 in 1ms
+2025-06-19 05:11:33.036 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5159/api/photos?page=1&pageSize=12 - 204 null null 4.5846ms
+2025-06-19 05:11:33.038 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5159/api/photos?page=1&pageSize=12 - null null
+2025-06-19 05:11:33.040 +07:00 [INF] Incoming GET request to /api/photos?page=1&pageSize=12 from ::1
+2025-06-19 05:11:33.041 +07:00 [INF] CORS policy execution successful.
+2025-06-19 05:11:33.042 +07:00 [INF] Executing endpoint 'MyImage.API.Controllers.PhotosController.GetPhotos (MyImage.API)'
+2025-06-19 05:11:33.043 +07:00 [INF] Route matched with {action = "GetPhotos", controller = "Photos"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[MyImage.Core.DTOs.Common.ApiResponse`1[MyImage.Core.DTOs.Photos.PhotoGalleryPageDto]]] GetPhotos(Int32, Int32) on controller MyImage.API.Controllers.PhotosController (MyImage.API).
+2025-06-19 05:11:33.047 +07:00 [INF] Executing OkObjectResult, writing value of type 'MyImage.Core.DTOs.Common.ApiResponse`1[[MyImage.Core.DTOs.Photos.PhotoGalleryPageDto, MyImage.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-19 05:11:33.048 +07:00 [INF] Executed action MyImage.API.Controllers.PhotosController.GetPhotos (MyImage.API) in 3.8387ms
+2025-06-19 05:11:33.049 +07:00 [INF] Executed endpoint 'MyImage.API.Controllers.PhotosController.GetPhotos (MyImage.API)'
+2025-06-19 05:11:33.050 +07:00 [INF] Completed GET /api/photos with status 200 in 9ms
+2025-06-19 05:11:33.051 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5159/api/photos?page=1&pageSize=12 - 200 null application/json; charset=utf-8 12.4786ms
+2025-06-19 05:11:36.247 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5159/api/cart - null null
+2025-06-19 05:11:36.249 +07:00 [INF] Incoming OPTIONS request to /api/cart from ::1
+2025-06-19 05:11:36.250 +07:00 [INF] CORS policy execution successful.
+2025-06-19 05:11:36.251 +07:00 [INF] Completed OPTIONS /api/cart with status 204 in 1ms
+2025-06-19 05:11:36.252 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5159/api/cart - 204 null null 4.7296ms
+2025-06-19 05:11:36.254 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5159/api/cart - null null
+2025-06-19 05:11:36.256 +07:00 [INF] Incoming GET request to /api/cart from ::1
+2025-06-19 05:11:36.257 +07:00 [INF] CORS policy execution successful.
+2025-06-19 05:11:36.258 +07:00 [INF] Executing endpoint 'MyImage.API.Controllers.CartController.GetCart (MyImage.API)'
+2025-06-19 05:11:36.259 +07:00 [INF] Route matched with {action = "GetCart", controller = "Cart"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[MyImage.Core.DTOs.Common.ApiResponse`1[MyImage.Core.DTOs.Cart.CartDto]]] GetCart() on controller MyImage.API.Controllers.CartController (MyImage.API).
+2025-06-19 05:11:36.263 +07:00 [INF] Executing OkObjectResult, writing value of type 'MyImage.Core.DTOs.Common.ApiResponse`1[[MyImage.Core.DTOs.Cart.CartDto, MyImage.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-19 05:11:36.264 +07:00 [INF] Executed action MyImage.API.Controllers.CartController.GetCart (MyImage.API) in 3.9976ms
+2025-06-19 05:11:36.265 +07:00 [INF] Executed endpoint 'MyImage.API.Controllers.CartController.GetCart (MyImage.API)'
+2025-06-19 05:11:36.266 +07:00 [INF] Completed GET /api/cart with status 200 in 9ms
+2025-06-19 05:11:36.267 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5159/api/cart - 200 null application/json; charset=utf-8 12.7897ms
+2025-06-19 05:11:37.206 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5159/api/photos?page=1&pageSize=12 - null null
+2025-06-19 05:11:37.208 +07:00 [INF] Incoming GET request to /api/photos?page=1&pageSize=12 from ::1
+2025-06-19 05:11:37.209 +07:00 [INF] CORS policy execution successful.
+2025-06-19 05:11:37.210 +07:00 [INF] Executing endpoint 'MyImage.API.Controllers.PhotosController.GetPhotos (MyImage.API)'
+2025-06-19 05:11:37.211 +07:00 [INF] Route matched with {action = "GetPhotos", controller = "Photos"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[MyImage.Core.DTOs.Common.ApiResponse`1[MyImage.Core.DTOs.Photos.PhotoGalleryPageDto]]] GetPhotos(Int32, Int32) on controller MyImage.API.Controllers.PhotosController (MyImage.API).
+2025-06-19 05:11:37.215 +07:00 [INF] Executing OkObjectResult, writing value of type 'MyImage.Core.DTOs.Common.ApiResponse`1[[MyImage.Core.DTOs.Photos.PhotoGalleryPageDto, MyImage.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-19 05:11:37.216 +07:00 [INF] Executed action MyImage.API.Controllers.PhotosController.GetPhotos (MyImage.API) in 4.346ms
+2025-06-19 05:11:37.217 +07:00 [INF] Executed endpoint 'MyImage.API.Controllers.PhotosController.GetPhotos (MyImage.API)'
+2025-06-19 05:11:37.218 +07:00 [INF] Completed GET /api/photos with status 200 in 10ms
+2025-06-19 05:11:37.219 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5159/api/photos?page=1&pageSize=12 - 200 null application/json; charset=utf-8 12.8133ms
+2025-06-19 05:11:39.068 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5159/api/orders?page=1&pageSize=10 - null null
+2025-06-19 05:11:39.070 +07:00 [INF] Incoming OPTIONS request to /api/orders?page=1&pageSize=10 from ::1
+2025-06-19 05:11:39.071 +07:00 [INF] CORS policy execution successful.
+2025-06-19 05:11:39.071 +07:00 [INF] Completed OPTIONS /api/orders with status 204 in 1ms
+2025-06-19 05:11:39.072 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5159/api/orders?page=1&pageSize=10 - 204 null null 4.3903ms
+2025-06-19 05:11:39.075 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5159/api/orders?page=1&pageSize=10 - null null
+2025-06-19 05:11:39.077 +07:00 [INF] Incoming GET request to /api/orders?page=1&pageSize=10 from ::1
+2025-06-19 05:11:39.079 +07:00 [INF] CORS policy execution successful.
+2025-06-19 05:11:39.080 +07:00 [INF] Executing endpoint 'MyImage.API.Controllers.OrdersController.GetOrders (MyImage.API)'
+2025-06-19 05:11:39.080 +07:00 [INF] Route matched with {action = "GetOrders", controller = "Orders"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[MyImage.Core.DTOs.Common.ApiResponse`1[MyImage.Core.DTOs.Common.PagedResult`1[MyImage.Core.DTOs.Orders.OrderSummaryDto]]]] GetOrders(Int32, Int32) on controller MyImage.API.Controllers.OrdersController (MyImage.API).
+2025-06-19 05:11:39.085 +07:00 [INF] Executing OkObjectResult, writing value of type 'MyImage.Core.DTOs.Common.ApiResponse`1[[MyImage.Core.DTOs.Common.PagedResult`1[[MyImage.Core.DTOs.Orders.OrderSummaryDto, MyImage.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], MyImage.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-19 05:11:39.086 +07:00 [INF] Executed action MyImage.API.Controllers.OrdersController.GetOrders (MyImage.API) in 3.9562ms
+2025-06-19 05:11:39.087 +07:00 [INF] Executed endpoint 'MyImage.API.Controllers.OrdersController.GetOrders (MyImage.API)'
+2025-06-19 05:11:39.087 +07:00 [INF] Completed GET /api/orders with status 200 in 9ms
+2025-06-19 05:11:39.089 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5159/api/orders?page=1&pageSize=10 - 200 null application/json; charset=utf-8 13.1596ms
+2025-06-19 05:11:39.902 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5159/api/photos?page=1&pageSize=12 - null null
+2025-06-19 05:11:39.904 +07:00 [INF] Incoming OPTIONS request to /api/photos?page=1&pageSize=12 from ::1
+2025-06-19 05:11:39.905 +07:00 [INF] CORS policy execution successful.
+2025-06-19 05:11:39.905 +07:00 [INF] Completed OPTIONS /api/photos with status 204 in 1ms
+2025-06-19 05:11:39.907 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5159/api/photos?page=1&pageSize=12 - 204 null null 4.5368ms
+2025-06-19 05:11:39.909 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5159/api/photos?page=1&pageSize=12 - null null
+2025-06-19 05:11:39.912 +07:00 [INF] Incoming GET request to /api/photos?page=1&pageSize=12 from ::1
+2025-06-19 05:11:39.913 +07:00 [INF] CORS policy execution successful.
+2025-06-19 05:11:39.913 +07:00 [INF] Executing endpoint 'MyImage.API.Controllers.PhotosController.GetPhotos (MyImage.API)'
+2025-06-19 05:11:39.914 +07:00 [INF] Route matched with {action = "GetPhotos", controller = "Photos"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[MyImage.Core.DTOs.Common.ApiResponse`1[MyImage.Core.DTOs.Photos.PhotoGalleryPageDto]]] GetPhotos(Int32, Int32) on controller MyImage.API.Controllers.PhotosController (MyImage.API).
+2025-06-19 05:11:39.919 +07:00 [INF] Executing OkObjectResult, writing value of type 'MyImage.Core.DTOs.Common.ApiResponse`1[[MyImage.Core.DTOs.Photos.PhotoGalleryPageDto, MyImage.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-19 05:11:39.920 +07:00 [INF] Executed action MyImage.API.Controllers.PhotosController.GetPhotos (MyImage.API) in 4.3532ms
+2025-06-19 05:11:39.921 +07:00 [INF] Executed endpoint 'MyImage.API.Controllers.PhotosController.GetPhotos (MyImage.API)'
+2025-06-19 05:11:39.922 +07:00 [INF] Completed GET /api/photos with status 200 in 10ms
+2025-06-19 05:11:39.924 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5159/api/photos?page=1&pageSize=12 - 200 null application/json; charset=utf-8 14.3151ms
+2025-06-19 05:11:42.726 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5159/api/print-sizes - null null
+2025-06-19 05:11:42.728 +07:00 [INF] Incoming OPTIONS request to /api/print-sizes from ::1
+2025-06-19 05:11:42.730 +07:00 [INF] CORS policy execution successful.
+2025-06-19 05:11:42.730 +07:00 [INF] Completed OPTIONS /api/print-sizes with status 204 in 2ms
+2025-06-19 05:11:42.731 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5159/api/print-sizes - 204 null null 5.7381ms
+2025-06-19 05:11:42.734 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5159/api/print-sizes - null null
+2025-06-19 05:11:42.736 +07:00 [INF] Incoming GET request to /api/print-sizes from ::1
+2025-06-19 05:11:42.737 +07:00 [INF] CORS policy execution successful.
+2025-06-19 05:11:42.738 +07:00 [INF] Completed GET /api/print-sizes with status 404 in 1ms
+2025-06-19 05:11:42.739 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5159/api/print-sizes - 404 0 null 5.43ms
+2025-06-19 05:11:42.741 +07:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5159/api/print-sizes, Response status code: 404
+2025-06-19 05:12:52.813 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5159/api/auth/register - null null
+2025-06-19 05:12:52.815 +07:00 [INF] Incoming OPTIONS request to /api/auth/register from ::1
+2025-06-19 05:12:52.816 +07:00 [INF] CORS policy execution successful.
+2025-06-19 05:12:52.817 +07:00 [INF] Completed OPTIONS /api/auth/register with status 204 in 2ms
+2025-06-19 05:12:52.818 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5159/api/auth/register - 204 null null 5.3325ms
+2025-06-19 05:12:52.820 +07:00 [INF] Request starting HTTP/1.1 POST http://localhost:5159/api/auth/register - application/json 91
+2025-06-19 05:12:52.822 +07:00 [INF] Incoming POST request to /api/auth/register from ::1
+2025-06-19 05:12:52.824 +07:00 [INF] CORS policy execution successful.
+2025-06-19 05:12:52.824 +07:00 [INF] Executing endpoint 'MyImage.API.Controllers.AuthController.Register (MyImage.API)'
+2025-06-19 05:12:52.829 +07:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[MyImage.Core.DTOs.Common.ApiResponse`1[MyImage.Core.DTOs.Auth.AuthResponseDto]]] Register(MyImage.Core.DTOs.Auth.RegisterDto) on controller MyImage.API.Controllers.AuthController (MyImage.API).
+2025-06-19 05:12:52.830 +07:00 [INF] AuthService initialized with JWT expiration: 24 hours
+2025-06-19 05:12:52.838 +07:00 [INF] Executing BadRequestObjectResult, writing value of type 'MyImage.Core.DTOs.Common.ApiResponse`1[[System.Object, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-19 05:12:52.839 +07:00 [INF] Executed action MyImage.API.Controllers.AuthController.Register (MyImage.API) in 8.7406ms
+2025-06-19 05:12:52.840 +07:00 [INF] Executed endpoint 'MyImage.API.Controllers.AuthController.Register (MyImage.API)'
+2025-06-19 05:12:52.841 +07:00 [INF] Completed POST /api/auth/register with status 400 in 18ms
+2025-06-19 05:12:52.842 +07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5159/api/auth/register - 400 null application/json; charset=utf-8 21.8722ms
+2025-06-19 05:13:28.316 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5159/api/auth/register - null null
+2025-06-19 05:13:28.317 +07:00 [INF] Incoming OPTIONS request to /api/auth/register from ::1
+2025-06-19 05:13:28.318 +07:00 [INF] CORS policy execution successful.
+2025-06-19 05:13:28.319 +07:00 [INF] Completed OPTIONS /api/auth/register with status 204 in 1ms
+2025-06-19 05:13:28.320 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5159/api/auth/register - 204 null null 4.723ms
+2025-06-19 05:13:28.322 +07:00 [INF] Request starting HTTP/1.1 POST http://localhost:5159/api/auth/register - application/json 88
+2025-06-19 05:13:28.325 +07:00 [INF] Incoming POST request to /api/auth/register from ::1
+2025-06-19 05:13:28.326 +07:00 [INF] CORS policy execution successful.
+2025-06-19 05:13:28.326 +07:00 [INF] Executing endpoint 'MyImage.API.Controllers.AuthController.Register (MyImage.API)'
+2025-06-19 05:13:28.327 +07:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[MyImage.Core.DTOs.Common.ApiResponse`1[MyImage.Core.DTOs.Auth.AuthResponseDto]]] Register(MyImage.Core.DTOs.Auth.RegisterDto) on controller MyImage.API.Controllers.AuthController (MyImage.API).
+2025-06-19 05:13:28.328 +07:00 [INF] AuthService initialized with JWT expiration: 24 hours
+2025-06-19 05:13:28.330 +07:00 [INF] Executing BadRequestObjectResult, writing value of type 'MyImage.Core.DTOs.Common.ApiResponse`1[[System.Object, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-19 05:13:28.331 +07:00 [INF] Executed action MyImage.API.Controllers.AuthController.Register (MyImage.API) in 2.527ms
+2025-06-19 05:13:28.332 +07:00 [INF] Executed endpoint 'MyImage.API.Controllers.AuthController.Register (MyImage.API)'
+2025-06-19 05:13:28.333 +07:00 [INF] Completed POST /api/auth/register with status 400 in 8ms
+2025-06-19 05:13:28.334 +07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5159/api/auth/register - 400 null application/json; charset=utf-8 11.4704ms
+2025-06-19 05:14:28.490 +07:00 [INF] Request starting HTTP/1.1 POST http://localhost:5159/api/Auth/register - application/json 139
+2025-06-19 05:14:28.491 +07:00 [INF] Incoming POST request to /api/Auth/register from ::1
+2025-06-19 05:14:28.492 +07:00 [INF] CORS policy execution successful.
+2025-06-19 05:14:28.493 +07:00 [INF] Executing endpoint 'MyImage.API.Controllers.AuthController.Register (MyImage.API)'
+2025-06-19 05:14:28.494 +07:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[MyImage.Core.DTOs.Common.ApiResponse`1[MyImage.Core.DTOs.Auth.AuthResponseDto]]] Register(MyImage.Core.DTOs.Auth.RegisterDto) on controller MyImage.API.Controllers.AuthController (MyImage.API).
+2025-06-19 05:14:28.496 +07:00 [INF] AuthService initialized with JWT expiration: 24 hours
+2025-06-19 05:14:28.498 +07:00 [INF] Registration attempt for email: test1@gmail.com
+2025-06-19 05:14:28.500 +07:00 [INF] Starting user registration for email: test1@gmail.com
+2025-06-19 05:14:28.755 +07:00 [INF] Creating new user with email: test1@gmail.com
+2025-06-19 05:14:28.762 +07:00 [INF] Successfully created user USR-2025-000003 with email test1@gmail.com
+2025-06-19 05:14:28.763 +07:00 [INF] Successfully registered user USR-2025-000003 with email test1@gmail.com
+2025-06-19 05:14:28.764 +07:00 [INF] User USR-2025-000003 successfully registered with email test1@gmail.com
+2025-06-19 05:14:28.765 +07:00 [INF] Executing CreatedAtActionResult, writing value of type 'MyImage.Core.DTOs.Common.ApiResponse`1[[MyImage.Core.DTOs.Auth.AuthResponseDto, MyImage.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-19 05:14:28.767 +07:00 [INF] Executed action MyImage.API.Controllers.AuthController.Register (MyImage.API) in 271.0944ms
+2025-06-19 05:14:28.768 +07:00 [INF] Executed endpoint 'MyImage.API.Controllers.AuthController.Register (MyImage.API)'
+2025-06-19 05:14:28.768 +07:00 [INF] Completed POST /api/Auth/register with status 201 in 277ms
+2025-06-19 05:14:28.770 +07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5159/api/Auth/register - 201 null application/json; charset=utf-8 280.0986ms
+2025-06-19 05:15:16.475 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5159/api/auth/register - null null
+2025-06-19 05:15:16.477 +07:00 [INF] Incoming OPTIONS request to /api/auth/register from ::1
+2025-06-19 05:15:16.478 +07:00 [INF] CORS policy execution successful.
+2025-06-19 05:15:16.480 +07:00 [INF] Completed OPTIONS /api/auth/register with status 204 in 2ms
+2025-06-19 05:15:16.482 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5159/api/auth/register - 204 null null 6.4646ms
+2025-06-19 05:15:16.484 +07:00 [INF] Request starting HTTP/1.1 POST http://localhost:5159/api/auth/register - application/json 88
+2025-06-19 05:15:16.485 +07:00 [INF] Incoming POST request to /api/auth/register from ::1
+2025-06-19 05:15:16.486 +07:00 [INF] CORS policy execution successful.
+2025-06-19 05:15:16.487 +07:00 [INF] Executing endpoint 'MyImage.API.Controllers.AuthController.Register (MyImage.API)'
+2025-06-19 05:15:16.488 +07:00 [INF] Route matched with {action = "Register", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[MyImage.Core.DTOs.Common.ApiResponse`1[MyImage.Core.DTOs.Auth.AuthResponseDto]]] Register(MyImage.Core.DTOs.Auth.RegisterDto) on controller MyImage.API.Controllers.AuthController (MyImage.API).
+2025-06-19 05:15:16.489 +07:00 [INF] AuthService initialized with JWT expiration: 24 hours
+2025-06-19 05:15:16.490 +07:00 [INF] Executing BadRequestObjectResult, writing value of type 'MyImage.Core.DTOs.Common.ApiResponse`1[[System.Object, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-19 05:15:16.491 +07:00 [INF] Executed action MyImage.API.Controllers.AuthController.Register (MyImage.API) in 1.965ms
+2025-06-19 05:15:16.492 +07:00 [INF] Executed endpoint 'MyImage.API.Controllers.AuthController.Register (MyImage.API)'
+2025-06-19 05:15:16.493 +07:00 [INF] Completed POST /api/auth/register with status 400 in 7ms
+2025-06-19 05:15:16.494 +07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5159/api/auth/register - 400 null application/json; charset=utf-8 10.3363ms
+2025-06-19 05:15:35.890 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5159/api/auth/login - null null
+2025-06-19 05:15:35.892 +07:00 [INF] Incoming OPTIONS request to /api/auth/login from ::1
+2025-06-19 05:15:35.893 +07:00 [INF] CORS policy execution successful.
+2025-06-19 05:15:35.893 +07:00 [INF] Completed OPTIONS /api/auth/login with status 204 in 1ms
+2025-06-19 05:15:35.895 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5159/api/auth/login - 204 null null 4.6492ms
+2025-06-19 05:15:35.897 +07:00 [INF] Request starting HTTP/1.1 POST http://localhost:5159/api/auth/login - application/json 55
+2025-06-19 05:15:35.900 +07:00 [INF] Incoming POST request to /api/auth/login from ::1
+2025-06-19 05:15:35.900 +07:00 [INF] CORS policy execution successful.
+2025-06-19 05:15:35.901 +07:00 [INF] Executing endpoint 'MyImage.API.Controllers.AuthController.Login (MyImage.API)'
+2025-06-19 05:15:35.902 +07:00 [INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[MyImage.Core.DTOs.Common.ApiResponse`1[MyImage.Core.DTOs.Auth.AuthResponseDto]]] Login(MyImage.Core.DTOs.Auth.LoginDto) on controller MyImage.API.Controllers.AuthController (MyImage.API).
+2025-06-19 05:15:35.903 +07:00 [INF] AuthService initialized with JWT expiration: 24 hours
+2025-06-19 05:15:35.904 +07:00 [INF] Login attempt for identifier: test1@gmail.com
+2025-06-19 05:15:36.173 +07:00 [INF] Successful login for user USR-2025-000003
+2025-06-19 05:15:36.174 +07:00 [INF] User USR-2025-000003 successfully logged in
+2025-06-19 05:15:36.175 +07:00 [INF] Executing OkObjectResult, writing value of type 'MyImage.Core.DTOs.Common.ApiResponse`1[[MyImage.Core.DTOs.Auth.AuthResponseDto, MyImage.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-19 05:15:36.176 +07:00 [INF] Executed action MyImage.API.Controllers.AuthController.Login (MyImage.API) in 272.98ms
+2025-06-19 05:15:36.177 +07:00 [INF] Executed endpoint 'MyImage.API.Controllers.AuthController.Login (MyImage.API)'
+2025-06-19 05:15:36.178 +07:00 [INF] Completed POST /api/auth/login with status 200 in 278ms
+2025-06-19 05:15:36.179 +07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5159/api/auth/login - 200 null application/json; charset=utf-8 281.4218ms
+2025-06-19 05:15:36.193 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5159/api/photos?page=1&pageSize=12 - null null
+2025-06-19 05:15:36.195 +07:00 [INF] Incoming OPTIONS request to /api/photos?page=1&pageSize=12 from ::1
+2025-06-19 05:15:36.197 +07:00 [INF] CORS policy execution successful.
+2025-06-19 05:15:36.198 +07:00 [INF] Completed OPTIONS /api/photos with status 204 in 2ms
+2025-06-19 05:15:36.199 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5159/api/photos?page=1&pageSize=12 - 204 null null 5.4639ms
+2025-06-19 05:15:36.201 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5159/api/photos?page=1&pageSize=12 - null null
+2025-06-19 05:15:36.203 +07:00 [INF] Incoming GET request to /api/photos?page=1&pageSize=12 from ::1
+2025-06-19 05:15:36.205 +07:00 [INF] CORS policy execution successful.
+2025-06-19 05:15:36.206 +07:00 [INF] Executing endpoint 'MyImage.API.Controllers.PhotosController.GetPhotos (MyImage.API)'
+2025-06-19 05:15:36.207 +07:00 [INF] Route matched with {action = "GetPhotos", controller = "Photos"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[MyImage.Core.DTOs.Common.ApiResponse`1[MyImage.Core.DTOs.Photos.PhotoGalleryPageDto]]] GetPhotos(Int32, Int32) on controller MyImage.API.Controllers.PhotosController (MyImage.API).
+2025-06-19 05:15:36.214 +07:00 [INF] Executing OkObjectResult, writing value of type 'MyImage.Core.DTOs.Common.ApiResponse`1[[MyImage.Core.DTOs.Photos.PhotoGalleryPageDto, MyImage.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-19 05:15:36.215 +07:00 [INF] Executed action MyImage.API.Controllers.PhotosController.GetPhotos (MyImage.API) in 6.9306ms
+2025-06-19 05:15:36.216 +07:00 [INF] Executed endpoint 'MyImage.API.Controllers.PhotosController.GetPhotos (MyImage.API)'
+2025-06-19 05:15:36.217 +07:00 [INF] Completed GET /api/photos with status 200 in 13ms
+2025-06-19 05:15:36.219 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5159/api/photos?page=1&pageSize=12 - 200 null application/json; charset=utf-8 17.2426ms
+2025-06-19 05:15:57.748 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5159/api/photos/bulk-upload - null null
+2025-06-19 05:15:57.751 +07:00 [INF] Incoming OPTIONS request to /api/photos/bulk-upload from ::1
+2025-06-19 05:15:57.752 +07:00 [INF] CORS policy execution successful.
+2025-06-19 05:15:57.752 +07:00 [INF] Completed OPTIONS /api/photos/bulk-upload with status 204 in 1ms
+2025-06-19 05:15:57.753 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5159/api/photos/bulk-upload - 204 null null 4.9903ms
+2025-06-19 05:15:57.755 +07:00 [INF] Request starting HTTP/1.1 POST http://localhost:5159/api/photos/bulk-upload - multipart/form-data; boundary=----WebKitFormBoundaryZ0rogQkyBuBsoqAW 1191920
+2025-06-19 05:15:57.758 +07:00 [INF] Incoming POST request to /api/photos/bulk-upload from ::1
+2025-06-19 05:15:57.759 +07:00 [INF] CORS policy execution successful.
+2025-06-19 05:15:57.760 +07:00 [INF] Executing endpoint 'MyImage.API.Controllers.PhotosController.BulkUpload (MyImage.API)'
+2025-06-19 05:15:57.763 +07:00 [INF] Route matched with {action = "BulkUpload", controller = "Photos"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[MyImage.Core.DTOs.Common.ApiResponse`1[MyImage.Core.DTOs.Photos.PhotoUploadResultDto]]] BulkUpload(Microsoft.AspNetCore.Http.IFormFileCollection, System.String) on controller MyImage.API.Controllers.PhotosController (MyImage.API).
+2025-06-19 05:15:57.783 +07:00 [INF] Bulk upload request from user 68533a44c634aaec786cbdf7: 3 files
+2025-06-19 05:15:57.874 +07:00 [INF] Successfully uploaded file 68533a44c634aaec786cbdf7_2025_06_18_22_15_57_c5de53ab.jpeg to GridFS with ID 68533a9dc634aaec786cbdf8
+2025-06-19 05:15:58.044 +07:00 [INF] Generated thumbnail: 768552 bytes -> 17859 bytes
+2025-06-19 05:15:58.047 +07:00 [INF] Successfully uploaded file thumb_68533a44c634aaec786cbdf7_2025_06_18_22_15_57_c5de53ab.jpeg to GridFS with ID 68533a9ec634aaec786cbdfa
+2025-06-19 05:15:58.053 +07:00 [INF] Successfully created photo 68533a9ec634aaec786cbdfc for user 68533a44c634aaec786cbdf7: sample_1920×1280.jpeg
+2025-06-19 05:15:58.059 +07:00 [INF] Successfully uploaded file 68533a44c634aaec786cbdf7_2025_06_18_22_15_58_0b50f24f.jpeg to GridFS with ID 68533a9ec634aaec786cbdfd
+2025-06-19 05:15:58.102 +07:00 [INF] Generated thumbnail: 334137 bytes -> 17962 bytes
+2025-06-19 05:15:58.105 +07:00 [INF] Successfully uploaded file thumb_68533a44c634aaec786cbdf7_2025_06_18_22_15_58_0b50f24f.jpeg to GridFS with ID 68533a9ec634aaec786cbdff
+2025-06-19 05:15:58.107 +07:00 [INF] Successfully created photo 68533a9ec634aaec786cbe01 for user 68533a44c634aaec786cbdf7: sample_1280×853.jpeg
+2025-06-19 05:15:58.110 +07:00 [INF] Successfully uploaded file 68533a44c634aaec786cbdf7_2025_06_18_22_15_58_ec97b3e9.jpeg to GridFS with ID 68533a9ec634aaec786cbe02
+2025-06-19 05:15:58.126 +07:00 [INF] Generated thumbnail: 88731 bytes -> 18497 bytes
+2025-06-19 05:15:58.129 +07:00 [INF] Successfully uploaded file thumb_68533a44c634aaec786cbdf7_2025_06_18_22_15_58_ec97b3e9.jpeg to GridFS with ID 68533a9ec634aaec786cbe04
+2025-06-19 05:15:58.130 +07:00 [INF] Successfully created photo 68533a9ec634aaec786cbe06 for user 68533a44c634aaec786cbdf7: sample_640×426.jpeg
+2025-06-19 05:15:58.132 +07:00 [INF] Bulk upload completed for user 68533a44c634aaec786cbdf7: 3/3 files successful
+2025-06-19 05:15:58.133 +07:00 [INF] Executing CreatedAtActionResult, writing value of type 'MyImage.Core.DTOs.Common.ApiResponse`1[[MyImage.Core.DTOs.Photos.PhotoUploadResultDto, MyImage.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-19 05:15:58.136 +07:00 [INF] Executed action MyImage.API.Controllers.PhotosController.BulkUpload (MyImage.API) in 370.8649ms
+2025-06-19 05:15:58.136 +07:00 [INF] Executed endpoint 'MyImage.API.Controllers.PhotosController.BulkUpload (MyImage.API)'
+2025-06-19 05:15:58.137 +07:00 [INF] Completed POST /api/photos/bulk-upload with status 201 in 379ms
+2025-06-19 05:15:58.139 +07:00 [INF] Request finished HTTP/1.1 POST http://localhost:5159/api/photos/bulk-upload - 201 null application/json; charset=utf-8 383.7388ms
+2025-06-19 05:16:00.275 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5159/api/photos?page=1&pageSize=12 - null null
+2025-06-19 05:16:00.277 +07:00 [INF] Incoming OPTIONS request to /api/photos?page=1&pageSize=12 from ::1
+2025-06-19 05:16:00.278 +07:00 [INF] CORS policy execution successful.
+2025-06-19 05:16:00.279 +07:00 [INF] Completed OPTIONS /api/photos with status 204 in 2ms
+2025-06-19 05:16:00.281 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5159/api/photos?page=1&pageSize=12 - 204 null null 5.9218ms
+2025-06-19 05:16:00.283 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5159/api/photos?page=1&pageSize=12 - null null
+2025-06-19 05:16:00.285 +07:00 [INF] Incoming GET request to /api/photos?page=1&pageSize=12 from ::1
+2025-06-19 05:16:00.286 +07:00 [INF] CORS policy execution successful.
+2025-06-19 05:16:00.287 +07:00 [INF] Executing endpoint 'MyImage.API.Controllers.PhotosController.GetPhotos (MyImage.API)'
+2025-06-19 05:16:00.288 +07:00 [INF] Route matched with {action = "GetPhotos", controller = "Photos"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[MyImage.Core.DTOs.Common.ApiResponse`1[MyImage.Core.DTOs.Photos.PhotoGalleryPageDto]]] GetPhotos(Int32, Int32) on controller MyImage.API.Controllers.PhotosController (MyImage.API).
+2025-06-19 05:16:00.293 +07:00 [INF] Executing OkObjectResult, writing value of type 'MyImage.Core.DTOs.Common.ApiResponse`1[[MyImage.Core.DTOs.Photos.PhotoGalleryPageDto, MyImage.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-19 05:16:00.295 +07:00 [INF] Executed action MyImage.API.Controllers.PhotosController.GetPhotos (MyImage.API) in 5.2249ms
+2025-06-19 05:16:00.296 +07:00 [INF] Executed endpoint 'MyImage.API.Controllers.PhotosController.GetPhotos (MyImage.API)'
+2025-06-19 05:16:00.297 +07:00 [INF] Completed GET /api/photos with status 200 in 11ms
+2025-06-19 05:16:00.298 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5159/api/photos?page=1&pageSize=12 - 200 null application/json; charset=utf-8 15.1586ms
+2025-06-19 05:16:02.516 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5159/api/print-sizes - null null
+2025-06-19 05:16:02.518 +07:00 [INF] Incoming OPTIONS request to /api/print-sizes from ::1
+2025-06-19 05:16:02.519 +07:00 [INF] CORS policy execution successful.
+2025-06-19 05:16:02.520 +07:00 [INF] Completed OPTIONS /api/print-sizes with status 204 in 1ms
+2025-06-19 05:16:02.522 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5159/api/print-sizes - 204 null null 5.0706ms
+2025-06-19 05:16:02.524 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5159/api/print-sizes - null null
+2025-06-19 05:16:02.527 +07:00 [INF] Incoming GET request to /api/print-sizes from ::1
+2025-06-19 05:16:02.528 +07:00 [INF] CORS policy execution successful.
+2025-06-19 05:16:02.529 +07:00 [INF] Completed GET /api/print-sizes with status 404 in 1ms
+2025-06-19 05:16:02.530 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5159/api/print-sizes - 404 0 null 5.632ms
+2025-06-19 05:16:02.532 +07:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5159/api/print-sizes, Response status code: 404
+2025-06-19 05:16:06.470 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5159/api/cart - null null
+2025-06-19 05:16:06.472 +07:00 [INF] Incoming OPTIONS request to /api/cart from ::1
+2025-06-19 05:16:06.473 +07:00 [INF] CORS policy execution successful.
+2025-06-19 05:16:06.474 +07:00 [INF] Completed OPTIONS /api/cart with status 204 in 2ms
+2025-06-19 05:16:06.475 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5159/api/cart - 204 null null 5.1357ms
+2025-06-19 05:16:06.477 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5159/api/cart - null null
+2025-06-19 05:16:06.479 +07:00 [INF] Incoming GET request to /api/cart from ::1
+2025-06-19 05:16:06.480 +07:00 [INF] CORS policy execution successful.
+2025-06-19 05:16:06.480 +07:00 [INF] Executing endpoint 'MyImage.API.Controllers.CartController.GetCart (MyImage.API)'
+2025-06-19 05:16:06.481 +07:00 [INF] Route matched with {action = "GetCart", controller = "Cart"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[MyImage.Core.DTOs.Common.ApiResponse`1[MyImage.Core.DTOs.Cart.CartDto]]] GetCart() on controller MyImage.API.Controllers.CartController (MyImage.API).
+2025-06-19 05:16:06.488 +07:00 [INF] Executing OkObjectResult, writing value of type 'MyImage.Core.DTOs.Common.ApiResponse`1[[MyImage.Core.DTOs.Cart.CartDto, MyImage.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-19 05:16:06.489 +07:00 [INF] Executed action MyImage.API.Controllers.CartController.GetCart (MyImage.API) in 7.0733ms
+2025-06-19 05:16:06.490 +07:00 [INF] Executed endpoint 'MyImage.API.Controllers.CartController.GetCart (MyImage.API)'
+2025-06-19 05:16:06.491 +07:00 [INF] Completed GET /api/cart with status 200 in 12ms
+2025-06-19 05:16:06.492 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5159/api/cart - 200 null application/json; charset=utf-8 15.2503ms
+2025-06-19 05:16:07.745 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5159/api/photos?page=1&pageSize=12 - null null
+2025-06-19 05:16:07.747 +07:00 [INF] Incoming OPTIONS request to /api/photos?page=1&pageSize=12 from ::1
+2025-06-19 05:16:07.748 +07:00 [INF] CORS policy execution successful.
+2025-06-19 05:16:07.748 +07:00 [INF] Completed OPTIONS /api/photos with status 204 in 1ms
+2025-06-19 05:16:07.750 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5159/api/photos?page=1&pageSize=12 - 204 null null 5.2693ms
+2025-06-19 05:16:07.753 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5159/api/photos?page=1&pageSize=12 - null null
+2025-06-19 05:16:07.754 +07:00 [INF] Incoming GET request to /api/photos?page=1&pageSize=12 from ::1
+2025-06-19 05:16:07.755 +07:00 [INF] CORS policy execution successful.
+2025-06-19 05:16:07.756 +07:00 [INF] Executing endpoint 'MyImage.API.Controllers.PhotosController.GetPhotos (MyImage.API)'
+2025-06-19 05:16:07.757 +07:00 [INF] Route matched with {action = "GetPhotos", controller = "Photos"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[MyImage.Core.DTOs.Common.ApiResponse`1[MyImage.Core.DTOs.Photos.PhotoGalleryPageDto]]] GetPhotos(Int32, Int32) on controller MyImage.API.Controllers.PhotosController (MyImage.API).
+2025-06-19 05:16:07.761 +07:00 [INF] Executing OkObjectResult, writing value of type 'MyImage.Core.DTOs.Common.ApiResponse`1[[MyImage.Core.DTOs.Photos.PhotoGalleryPageDto, MyImage.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-19 05:16:07.761 +07:00 [INF] Executed action MyImage.API.Controllers.PhotosController.GetPhotos (MyImage.API) in 3.2759ms
+2025-06-19 05:16:07.762 +07:00 [INF] Executed endpoint 'MyImage.API.Controllers.PhotosController.GetPhotos (MyImage.API)'
+2025-06-19 05:16:07.763 +07:00 [INF] Completed GET /api/photos with status 200 in 8ms
+2025-06-19 05:16:07.764 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5159/api/photos?page=1&pageSize=12 - 200 null application/json; charset=utf-8 11.7348ms
+2025-06-19 05:16:13.522 +07:00 [INF] Request starting HTTP/1.1 OPTIONS http://localhost:5159/api/cart - null null
+2025-06-19 05:16:13.524 +07:00 [INF] Incoming OPTIONS request to /api/cart from ::1
+2025-06-19 05:16:13.525 +07:00 [INF] CORS policy execution successful.
+2025-06-19 05:16:13.526 +07:00 [INF] Completed OPTIONS /api/cart with status 204 in 1ms
+2025-06-19 05:16:13.527 +07:00 [INF] Request finished HTTP/1.1 OPTIONS http://localhost:5159/api/cart - 204 null null 4.6181ms
+2025-06-19 05:16:13.529 +07:00 [INF] Request starting HTTP/1.1 GET http://localhost:5159/api/cart - null null
+2025-06-19 05:16:13.531 +07:00 [INF] Incoming GET request to /api/cart from ::1
+2025-06-19 05:16:13.532 +07:00 [INF] CORS policy execution successful.
+2025-06-19 05:16:13.533 +07:00 [INF] Executing endpoint 'MyImage.API.Controllers.CartController.GetCart (MyImage.API)'
+2025-06-19 05:16:13.534 +07:00 [INF] Route matched with {action = "GetCart", controller = "Cart"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[MyImage.Core.DTOs.Common.ApiResponse`1[MyImage.Core.DTOs.Cart.CartDto]]] GetCart() on controller MyImage.API.Controllers.CartController (MyImage.API).
+2025-06-19 05:16:13.538 +07:00 [INF] Executing OkObjectResult, writing value of type 'MyImage.Core.DTOs.Common.ApiResponse`1[[MyImage.Core.DTOs.Cart.CartDto, MyImage.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-19 05:16:13.539 +07:00 [INF] Executed action MyImage.API.Controllers.CartController.GetCart (MyImage.API) in 2.6386ms
+2025-06-19 05:16:13.540 +07:00 [INF] Executed endpoint 'MyImage.API.Controllers.CartController.GetCart (MyImage.API)'
+2025-06-19 05:16:13.540 +07:00 [INF] Completed GET /api/cart with status 200 in 9ms
+2025-06-19 05:16:13.542 +07:00 [INF] Request finished HTTP/1.1 GET http://localhost:5159/api/cart - 200 null application/json; charset=utf-8 12.3853ms
+2025-06-19 05:18:29.903 +07:00 [INF] Application is shutting down...
